@@ -1,0 +1,369 @@
+#!/bin/bash
+set -euo pipefail
+
+exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
+
+dnf update -y
+dnf install -y python3 python3-pip
+
+su - ec2-user -c '
+  set -euo pipefail
+  python3 -m venv ~/geo_env
+  source ~/geo_env/bin/activate
+  pip install --upgrade pip
+  pip install numpy pystac-client rasterio matplotlib boto3
+'
+
+cat <<'PYEOF' > /home/ec2-user/ndvi_gdl.py
+#!/usr/bin/env python3
+"""Sentinel-2 L2A cloud-free median mosaic NDVI for Guadalajara with optional S3 preview."""
+
+import argparse
+import io
+import math
+import os
+from collections import defaultdict
+
+import boto3
+import numpy as np
+import pystac_client
+import rasterio
+from rasterio.crs import CRS
+from rasterio.io import MemoryFile
+from rasterio.transform import from_origin
+from rasterio.warp import Resampling, reproject, transform_bounds
+
+DEFAULT_S3_BUCKET = "${s3_bucket}"
+DEFAULT_AWS_REGION = "${aws_region}"
+
+# Guadalajara bbox (WGS84) and canonical UTM Zone 13N 10 m grid
+GDL_BBOX = [-103.42, 20.62, -103.32, 20.72]
+TARGET_CRS = CRS.from_epsg(32613)
+PIXEL_SIZE = 10.0
+
+# Sentinel-2 SCL classes to keep (clear land, vegetation, bare soil, water, snow)
+# Excludes: 0=nodata, 1=saturated/defective, 3=cloud_shadow, 8=cloud_med, 9=cloud_high, 10=cirrus
+VALID_SCL_CLASSES = {2, 4, 5, 6, 7, 11}
+
+
+def build_target_grid(bbox, dst_crs: CRS, resolution: float):
+    """Build a canonical snapped UTM grid covering the entire bbox."""
+    minx, miny, maxx, maxy = transform_bounds("EPSG:4326", dst_crs, *bbox)
+    minx = math.floor(minx / resolution) * resolution
+    miny = math.floor(miny / resolution) * resolution
+    maxx = math.ceil(maxx / resolution) * resolution
+    maxy = math.ceil(maxy / resolution) * resolution
+
+    width = int(round((maxx - minx) / resolution))
+    height = int(round((maxy - miny) / resolution))
+    transform = from_origin(minx, maxy, resolution, resolution)
+    return height, width, transform
+
+
+def get_scale_offset(asset) -> tuple:
+    """Read STAC raster:bands scale/offset (handles Sentinel-2 Baseline 04.00+ -1000 offset)."""
+    raster_bands = asset.extra_fields.get("raster:bands")
+    if raster_bands and isinstance(raster_bands, list):
+        info = raster_bands[0]
+        return float(info.get("scale", 0.0001)), float(info.get("offset", -0.1))
+    return 0.0001, -0.1
+
+
+def read_band_to_grid(href: str, height: int, width: int, dst_transform, dst_crs: CRS, resampling: Resampling):
+    """Stream and reproject a COG band directly onto the canonical target grid."""
+    dst = np.zeros((height, width), dtype="float32")
+    with rasterio.open(href) as src:
+        reproject(
+            source=rasterio.band(src, 1),
+            destination=dst,
+            src_transform=src.transform,
+            src_crs=src.crs,
+            dst_transform=dst_transform,
+            dst_crs=dst_crs,
+            resampling=resampling,
+            dst_nodata=0,
+        )
+    return dst
+
+
+def stretch_rgb(band: np.ndarray) -> np.ndarray:
+    """Apply 2-98 percentile contrast stretch for visual RGB preview."""
+    valid = band[np.isfinite(band) & (band > 0)]
+    if valid.size == 0:
+        return np.zeros_like(band, dtype="float32")
+    p2, p98 = np.percentile(valid, (2, 98))
+    if p98 <= p2:
+        return np.zeros_like(band, dtype="float32")
+    return np.clip((band - p2) / (p98 - p2), 0.0, 1.0)
+
+
+def save_preview_to_s3(
+    red: np.ndarray,
+    green: np.ndarray,
+    blue: np.ndarray,
+    ndvi: np.ndarray,
+    date_range: str,
+    n_scenes: int,
+    tiles: list,
+    bucket: str,
+    prefix: str,
+    region: str,
+) -> str:
+    """Render a side-by-side True-Color RGB + NDVI PNG and upload it to S3."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    rgb = np.dstack([stretch_rgb(red), stretch_rgb(green), stretch_rgb(blue)])
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 7), dpi=150)
+
+    axes[0].imshow(rgb)
+    axes[0].set_title("True Color (RGB) - Mosaico sin nubes GDL")
+    axes[0].axis("off")
+
+    im = axes[1].imshow(ndvi, cmap="RdYlGn", vmin=-0.2, vmax=0.8)
+    axes[1].set_title(f"NDVI Mediano (promedio: {np.nanmean(ndvi):.3f})")
+    axes[1].axis("off")
+    fig.colorbar(im, ax=axes[1], fraction=0.046, pad=0.04, label="NDVI")
+
+    tiles_str = ", ".join(sorted(tiles))
+    fig.suptitle(
+        f"Mosaico Sentinel-2 L2A ({date_range}) | {n_scenes} escenas | "
+        f"Tiles: {tiles_str} | {ndvi.shape[0]}x{ndvi.shape[1]} px",
+        fontsize=11,
+    )
+    plt.tight_layout()
+
+    buf = io.BytesIO()
+    fig.savefig(buf, format="png", bbox_inches="tight")
+    plt.close(fig)
+    buf.seek(0)
+
+    safe_range = date_range.replace("/", "_")
+    key = f"{prefix.rstrip('/')}/ndvi_mosaic_{safe_range}.png"
+    s3 = boto3.client("s3", region_name=region)
+    s3.put_object(
+        Bucket=bucket,
+        Key=key,
+        Body=buf.getvalue(),
+        ContentType="image/png",
+    )
+
+    presigned_url = s3.generate_presigned_url(
+        "get_object",
+        Params={"Bucket": bucket, "Key": key},
+        ExpiresIn=3600,
+    )
+    print(f"Imagen guardada en: s3://{bucket}/{key}")
+    print(f"URL temporal (1 hora) para ver la imagen:\n{presigned_url}")
+    return f"s3://{bucket}/{key}"
+
+
+def save_geotiff_to_s3(
+    ndvi: np.ndarray,
+    transform,
+    crs: CRS,
+    date_range: str,
+    bucket: str,
+    prefix: str,
+    region: str,
+) -> str:
+    """Write georeferenced NDVI GeoTIFF (EPSG:32613, DEFLATE) and upload it to S3."""
+    profile = {
+        "driver": "GTiff",
+        "dtype": "float32",
+        "count": 1,
+        "height": ndvi.shape[0],
+        "width": ndvi.shape[1],
+        "crs": crs,
+        "transform": transform,
+        "nodata": np.nan,
+        "compress": "deflate",
+        "tiled": True,
+    }
+    with MemoryFile() as memfile:
+        with memfile.open(**profile) as dst:
+            dst.write(ndvi.astype("float32"), 1)
+            dst.set_band_description(1, "NDVI")
+        tif_bytes = memfile.read()
+
+    safe_range = date_range.replace("/", "_")
+    key = f"{prefix.rstrip('/')}/ndvi_mosaic_{safe_range}.tif"
+    s3 = boto3.client("s3", region_name=region)
+    s3.put_object(
+        Bucket=bucket,
+        Key=key,
+        Body=tif_bytes,
+        ContentType="image/tiff",
+    )
+
+    presigned_url = s3.generate_presigned_url(
+        "get_object",
+        Params={"Bucket": bucket, "Key": key},
+        ExpiresIn=3600,
+    )
+    print(f"GeoTIFF guardado en: s3://{bucket}/{key}")
+    print(f"URL temporal (1 hora) para descargar el GeoTIFF:\n{presigned_url}")
+    return f"s3://{bucket}/{key}"
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Calcula mosaico NDVI sin nubes con Sentinel-2 L2A para Guadalajara (GDL)."
+    )
+    parser.add_argument(
+        "--save-image",
+        action="store_true",
+        help="Genera y sube a S3 una imagen PNG (RGB + NDVI) de la zona analizada.",
+    )
+    parser.add_argument(
+        "--save-geotiff",
+        action="store_true",
+        help="Exporta y sube a S3 el mosaico NDVI como GeoTIFF georreferenciado (EPSG:32613).",
+    )
+    parser.add_argument(
+        "--datetime",
+        default="2026-06-01/2026-10-31",
+        help="Rango de fechas STAC (por defecto: 2026-06-01/2026-10-31).",
+    )
+    parser.add_argument(
+        "--max-cloud",
+        type=float,
+        default=20.0,
+        help="Porcentaje máximo de nubes por escena (por defecto: 20).",
+    )
+    parser.add_argument(
+        "--max-per-tile",
+        type=int,
+        default=5,
+        help="Máximo de escenas más despejadas por tile MGRS para el compuesto mediano (por defecto: 5).",
+    )
+    parser.add_argument(
+        "--s3-bucket",
+        default=os.environ.get("NDVI_S3_BUCKET", DEFAULT_S3_BUCKET),
+        help="Bucket S3 destino para la imagen de vista previa.",
+    )
+    parser.add_argument(
+        "--s3-prefix",
+        default="previews",
+        help="Prefijo/carpeta dentro del bucket S3 (por defecto: previews).",
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+
+    height, width, dst_transform = build_target_grid(GDL_BBOX, TARGET_CRS, PIXEL_SIZE)
+    catalog = pystac_client.Client.open("https://earth-search.aws.element84.com/v1")
+
+    search = catalog.search(
+        collections=["sentinel-2-l2a"],
+        bbox=GDL_BBOX,
+        datetime=args.datetime,
+        query={"eo:cloud_cover": {"lt": args.max_cloud}},
+    )
+
+    all_items = list(search.items())
+    if not all_items:
+        raise RuntimeError("No se encontraron escenas con los filtros indicados.")
+
+    # Group by MGRS tile and pick the clearest scenes per tile so all tiles covering GDL are represented
+    by_tile = defaultdict(list)
+    for item in all_items:
+        tile = item.properties.get("grid:code") or item.id.split("_")[1]
+        by_tile[tile].append(item)
+
+    selected_items = []
+    for tile, tile_items in sorted(by_tile.items()):
+        tile_items.sort(key=lambda it: it.properties.get("eo:cloud_cover", 100.0))
+        chosen = tile_items[: args.max_per_tile]
+        selected_items.extend(chosen)
+        print(
+            f"Tile {tile}: usando {len(chosen)}/{len(tile_items)} escenas "
+            f"(nubes: {[round(c.properties['eo:cloud_cover'], 1) for c in chosen]}%)"
+        )
+
+    band_names = ["red", "nir"] + (["green", "blue"] if args.save_image else [])
+    stacks = {b: [] for b in band_names}
+
+    with rasterio.Env(AWS_NO_SIGN_REQUEST="YES", GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR"):
+        for item in selected_items:
+            scl = read_band_to_grid(
+                item.assets["scl"].href,
+                height,
+                width,
+                dst_transform,
+                TARGET_CRS,
+                Resampling.nearest,
+            )
+            clear_mask = np.isin(scl.astype("uint8"), list(VALID_SCL_CLASSES))
+            if not np.any(clear_mask):
+                continue
+
+            for b in band_names:
+                asset = item.assets[b]
+                scale, offset = get_scale_offset(asset)
+                raw = read_band_to_grid(
+                    asset.href,
+                    height,
+                    width,
+                    dst_transform,
+                    TARGET_CRS,
+                    Resampling.bilinear,
+                )
+                refl = np.where(clear_mask & (raw > 0), raw * scale + offset, np.nan)
+                refl = np.clip(refl, 0.0, 1.0)
+                stacks[b].append(refl.astype("float32"))
+
+    if not stacks["red"]:
+        raise RuntimeError("No quedaron píxeles libres de nubes tras aplicar la máscara SCL.")
+
+    composites = {b: np.nanmedian(np.stack(arrs, axis=0), axis=0) for b, arrs in stacks.items()}
+    red = composites["red"]
+    nir = composites["nir"]
+
+    denom = nir + red
+    ndvi = np.where((denom == 0) | np.isnan(denom), np.nan, (nir - red) / denom)
+    valid_pct = 100.0 * np.isfinite(ndvi).mean()
+
+    print(f"Tamaño del recorte completo: {ndvi.shape} píxeles (10 m/píxel)")
+    print(f"Cobertura válida libre de nubes: {valid_pct:.1f}%")
+    print(f"NDVI promedio en la zona: {np.nanmean(ndvi):.3f}")
+
+    if args.save_image:
+        save_preview_to_s3(
+            red=red,
+            green=composites["green"],
+            blue=composites["blue"],
+            ndvi=ndvi,
+            date_range=args.datetime,
+            n_scenes=len(selected_items),
+            tiles=list(by_tile.keys()),
+            bucket=args.s3_bucket,
+            prefix=args.s3_prefix,
+            region=DEFAULT_AWS_REGION,
+        )
+
+    if args.save_geotiff:
+        save_geotiff_to_s3(
+            ndvi=ndvi,
+            transform=dst_transform,
+            crs=TARGET_CRS,
+            date_range=args.datetime,
+            bucket=args.s3_bucket,
+            prefix="geotiffs",
+            region=DEFAULT_AWS_REGION,
+        )
+
+
+if __name__ == "__main__":
+    main()
+PYEOF
+
+chmod +x /home/ec2-user/ndvi_gdl.py
+chown ec2-user:ec2-user /home/ec2-user/ndvi_gdl.py
+
+echo 'export NDVI_S3_BUCKET="${s3_bucket}"' >> /home/ec2-user/.bashrc

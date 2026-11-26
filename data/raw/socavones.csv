@@ -1,0 +1,15 @@
+id,fecha_incidente,municipio,colonia,calle_principal,cruces,latitud,longitud,causa_aparente,tamano_categoria,estado,fuente,reportes_sumados,verificado,creado_en
+1,2026-11-16,Guadalajara,El Parián,Calle Enrique Díaz de León Norte,,20.710128,-103.360558,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-16 20:02:33
+2,2026-11-24,Guadalajara,Jardines del Country,Calle La Perpetua,Cerca del Oxxo,20.709385,-103.360497,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-24 20:50:04
+3,2026-11-24,Guadalajara,Jardines de la Victoria,lateral lazaro cardenas,lazaro cardenas y lateral mariano otero,20.65893,-103.383554,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,3,0,2026-11-24 21:53:47
+4,2026-11-24,Guadalajara,Santa Tere,Calle General Coronado,Calle Garibaldi y Calle Joaquín Angulo,20.681567,-103.364764,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-24 22:05:52
+5,2026-08-24,Guadalajara,Mezquitán Country,Calle Nicolás Romero,Av. de los Maestros y Miraflores,20.693122,-103.361912,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-24 22:12:14
+6,2026-11-10,Guadalajara,Mezquitán Country,Avenida Plan de San Luis,Av. de los Maestros y Miraflores,20.697031,-103.360613,Obra / Desconocida,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-24 22:13:21
+7,2026-11-10,Zapopan,Paseos del Sol,Calle Antonio Flores,Av. Felipe Zetter y Juan de Dios de la torre,20.635985,-103.432822,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-24 22:30:01
+8,2026-08-28,Guadalajara,,Privada del Parque,Artes y Ciencias,20.654315,-103.301028,Obra / Desconocida,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-24 22:34:21
+9,2026-11-24,Guadalajara,Colonia Belisario Domínguez,Avenida fraternidad,Calzada independencia,20.70626,-103.31507,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-24 22:36:58
+10,2026-11-24,San Pedro Tlaquepaque,,,Entre av agrícola y barda que  límita al rio,20.600375,-103.415779,Fuga de agua potable,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-24 23:57:33
+11,2026-11-25,Guadalajara,Miraflores,Calle Joaquín Aguirre Berlanga,Entre paseo de los filósofos y fray junipero serra,20.701077,-103.341933,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-25 01:57:41
+12,2026-11-25,Zapopan,Hogares del Batán,Prolongación Avenida Fray Antonio Alcalde,Saucito y Pedro Ramirez,20.725912,-103.345288,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-25 04:40:28
+13,2026-11-25,Guadalajara,,Calle Silverio García,Casi al cruce de avenida  revolución,20.67,-103.35,Obra / Desconocida,,Reportado / Activo,Reporte ciudadano,3,0,2026-11-25 05:38:05
+14,2026-11-25,Guadalajara,,Calle Nueva Galicia,,20.67,-103.35,Obra / Desconocida,,Reportado / Activo,Reporte ciudadano,1,0,2026-11-25 20:41:46

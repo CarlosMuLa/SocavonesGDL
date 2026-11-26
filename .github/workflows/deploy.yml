@@ -1,0 +1,250 @@
+name: CD - Deploy AWS Resources & Sync EC2
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+    inputs:
+      provision_ec2:
+        description: "Provision a new Amazon Linux 2023 EC2 instance via CloudFormation (true/false)"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+      run_smoke_test:
+        description: "Run GDAL/S3 COG & Element 84 STAC smoke test on EC2 after deploy"
+        required: false
+        default: true
+        type: boolean
+      sync_config_to_s3:
+        description: "Sync config/ and data/templates/ to the deployed S3 bucket"
+        required: false
+        default: true
+        type: boolean
+
+concurrency:
+  group: deploy-socavones-gdl-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: us-west-2
+  CFN_STACK_NAME: socavones-gdl-stack
+
+jobs:
+  validate:
+    name: Pre-Deploy Validation (Python 3.9 + cfn-lint)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -r requirements.txt pytest cfn-lint
+          python -m pip install --no-deps -e .
+
+      - name: Run tests & lint CloudFormation
+        run: |
+          bash -n scripts/setup_ec2_env.sh
+          pytest -v
+          cfn-lint infra/cloudformation.yaml
+
+  deploy-aws-infra:
+    name: Deploy CloudFormation Stack (us-west-2)
+    needs: validate
+    runs-on: ubuntu-latest
+    outputs:
+      aws_configured: ${{ steps.check_auth.outputs.configured }}
+      data_bucket: ${{ steps.stack_outputs.outputs.data_bucket }}
+      provisioned_instance_id: ${{ steps.stack_outputs.outputs.instance_id }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check whether AWS deployment credentials are configured
+        id: check_auth
+        env:
+          HAS_OIDC_ROLE: ${{ secrets.AWS_ROLE_TO_ASSUME != '' }}
+          HAS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID != '' }}
+        run: |
+          if [ "$HAS_OIDC_ROLE" = "true" ] || [ "$HAS_ACCESS_KEY" = "true" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::AWS_ROLE_TO_ASSUME (or AWS_ACCESS_KEY_ID) secret not yet configured — skipping live AWS deploy. See README.md for one-time setup."
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Configure AWS credentials (OIDC preferred)
+        if: steps.check_auth.outputs.configured == 'true' && secrets.AWS_ROLE_TO_ASSUME != ''
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Configure AWS credentials (access key fallback)
+        if: steps.check_auth.outputs.configured == 'true' && secrets.AWS_ROLE_TO_ASSUME == '' && secrets.AWS_ACCESS_KEY_ID != ''
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Validate CloudFormation template against AWS API
+        if: steps.check_auth.outputs.configured == 'true'
+        run: aws cloudformation validate-template --template-body file://infra/cloudformation.yaml
+
+      - name: Deploy CloudFormation stack
+        if: steps.check_auth.outputs.configured == 'true'
+        env:
+          PROVISION_EC2: ${{ inputs.provision_ec2 || vars.PROVISION_EC2_INSTANCE || 'false' }}
+          EC2_INSTANCE_TYPE: ${{ vars.EC2_INSTANCE_TYPE || 't3.xlarge' }}
+          VPC_ID: ${{ vars.AWS_VPC_ID || '' }}
+          SUBNET_ID: ${{ vars.AWS_SUBNET_ID || '' }}
+          ENVIRONMENT: ${{ vars.DEPLOY_ENVIRONMENT || 'prod' }}
+        run: |
+          aws cloudformation deploy \
+            --stack-name "${CFN_STACK_NAME}" \
+            --template-file infra/cloudformation.yaml \
+            --region "${AWS_REGION}" \
+            --capabilities CAPABILITY_IAM \
+            --no-fail-on-empty-changeset \
+            --parameter-overrides \
+              Environment="${ENVIRONMENT}" \
+              GitHubRepo="${GITHUB_REPOSITORY}" \
+              GitHubBranch="${GITHUB_REF_NAME}" \
+              ProvisionEc2Instance="${PROVISION_EC2}" \
+              Ec2InstanceType="${EC2_INSTANCE_TYPE}" \
+              VpcId="${VPC_ID}" \
+              SubnetId="${SUBNET_ID}"
+
+      - name: Read stack outputs
+        id: stack_outputs
+        if: steps.check_auth.outputs.configured == 'true'
+        run: |
+          DATA_BUCKET=$(aws cloudformation describe-stacks \
+            --stack-name "${CFN_STACK_NAME}" \
+            --region "${AWS_REGION}" \
+            --query "Stacks[0].Outputs[?OutputKey=='DataBucketName'].OutputValue | [0]" \
+            --output text)
+          INSTANCE_ID=$(aws cloudformation describe-stacks \
+            --stack-name "${CFN_STACK_NAME}" \
+            --region "${AWS_REGION}" \
+            --query "Stacks[0].Outputs[?OutputKey=='ComputeInstanceId'].OutputValue | [0]" \
+            --output text)
+          [ "${INSTANCE_ID}" = "None" ] && INSTANCE_ID=""
+          echo "data_bucket=${DATA_BUCKET}" >> "$GITHUB_OUTPUT"
+          echo "instance_id=${INSTANCE_ID}" >> "$GITHUB_OUTPUT"
+          echo "Deployed S3 DataBucket: ${DATA_BUCKET}"
+
+      - name: Sync config & CSV templates to S3 bucket
+        if: steps.check_auth.outputs.configured == 'true' && (github.event_name != 'workflow_dispatch' || inputs.sync_config_to_s3 == true)
+        env:
+          DATA_BUCKET: ${{ steps.stack_outputs.outputs.data_bucket }}
+        run: |
+          aws s3 sync config/ "s3://${DATA_BUCKET}/config/" --delete
+          aws s3 sync data/templates/ "s3://${DATA_BUCKET}/templates/" --delete
+
+  deploy-to-ec2:
+    name: Sync Code & ~/geo_env on EC2 (SSM or SSH)
+    needs: deploy-aws-infra
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve EC2 deployment method
+        id: method
+        env:
+          AWS_OK: ${{ needs.deploy-aws-infra.outputs.aws_configured }}
+          TARGET_INSTANCE_ID: ${{ secrets.EC2_INSTANCE_ID || vars.EC2_INSTANCE_ID || needs.deploy-aws-infra.outputs.provisioned_instance_id }}
+          HAS_SSH: ${{ secrets.EC2_HOST != '' && secrets.EC2_SSH_KEY != '' }}
+        run: |
+          if [ "$AWS_OK" = "true" ] && [ -n "$TARGET_INSTANCE_ID" ]; then
+            echo "mode=ssm" >> "$GITHUB_OUTPUT"
+            echo "instance_id=${TARGET_INSTANCE_ID}" >> "$GITHUB_OUTPUT"
+          elif [ "$HAS_SSH" = "true" ]; then
+            echo "mode=ssh" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::No EC2_INSTANCE_ID (SSM) or EC2_HOST/EC2_SSH_KEY (SSH) configured — skipping EC2 code sync."
+            echo "mode=skip" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Configure AWS credentials for SSM (OIDC preferred)
+        if: steps.method.outputs.mode == 'ssm' && secrets.AWS_ROLE_TO_ASSUME != ''
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Configure AWS credentials for SSM (access key fallback)
+        if: steps.method.outputs.mode == 'ssm' && secrets.AWS_ROLE_TO_ASSUME == '' && secrets.AWS_ACCESS_KEY_ID != ''
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy repo & update ~/geo_env via AWS SSM Run Command
+        if: steps.method.outputs.mode == 'ssm'
+        env:
+          TARGET_INSTANCE_ID: ${{ steps.method.outputs.instance_id }}
+          SKIP_SMOKE: ${{ github.event_name == 'workflow_dispatch' && inputs.run_smoke_test == false && '1' || '0' }}
+        run: |
+          python3 - <<'PYEOF' > /tmp/ssm_params.json
+          import json, os
+          repo = os.environ["GITHUB_REPOSITORY"]
+          branch = os.environ["GITHUB_REF_NAME"]
+          skip_smoke = os.environ["SKIP_SMOKE"]
+          inner = (
+              f"set -euo pipefail; "
+              f"if [ ! -d ~/SocavonesGDL/.git ]; then git clone https://github.com/{repo}.git ~/SocavonesGDL; fi; "
+              f"cd ~/SocavonesGDL && git fetch origin && git checkout {branch} && git reset --hard origin/{branch} && "
+              f"SKIP_NETWORK_SMOKE={skip_smoke} bash scripts/setup_ec2_env.sh"
+          )
+          print(json.dumps({"commands": [f"su - ec2-user -c {json.dumps(inner)}"]}))
+          PYEOF
+          CMD_ID=$(aws ssm send-command \
+            --region "${AWS_REGION}" \
+            --document-name "AWS-RunShellScript" \
+            --instance-ids "${TARGET_INSTANCE_ID}" \
+            --comment "SocavonesGDL CI/CD deploy commit ${GITHUB_SHA}" \
+            --parameters file:///tmp/ssm_params.json \
+            --query "Command.CommandId" \
+            --output text)
+          echo "Dispatched SSM CommandId: ${CMD_ID}"
+          aws ssm wait command-executed \
+            --region "${AWS_REGION}" \
+            --command-id "${CMD_ID}" \
+            --instance-id "${TARGET_INSTANCE_ID}"
+          aws ssm get-command-invocation \
+            --region "${AWS_REGION}" \
+            --command-id "${CMD_ID}" \
+            --instance-id "${TARGET_INSTANCE_ID}" \
+            --query "{Status:Status, StdOut:StandardOutputContent, StdErr:StandardErrorContent}"
+
+      - name: Deploy repo & update ~/geo_env via SSH fallback
+        if: steps.method.outputs.mode == 'ssh'
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ vars.EC2_USER || 'ec2-user' }}
+          EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+          SKIP_SMOKE: ${{ github.event_name == 'workflow_dispatch' && inputs.run_smoke_test == false && '1' || '0' }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "${EC2_SSH_KEY}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${EC2_HOST}" >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key "${EC2_USER}@${EC2_HOST}" \
+            "set -euo pipefail; if [ ! -d ~/SocavonesGDL/.git ]; then git clone https://github.com/${GITHUB_REPOSITORY}.git ~/SocavonesGDL; fi; cd ~/SocavonesGDL && git fetch origin && git checkout ${GITHUB_REF_NAME} && git reset --hard origin/${GITHUB_REF_NAME} && SKIP_NETWORK_SMOKE=${SKIP_SMOKE} bash scripts/setup_ec2_env.sh"
+          rm -f ~/.ssh/deploy_key
