@@ -1,0 +1,606 @@
+﻿id_colonia,colonia,municipio,lat,lon,fuente_ubicacion,osm,sitios_inundables_500m,zonas_criticas_500m,claves_MUI,grupo_inundacion,socavones_2020_2024,socavones_por_anio,ids_socavones,colonia_en_base,elev_media,pendiente_media,pct_area_baja
+1,1o de Mayo,Guadalajara,20.6175886,-103.3616514,OSM (punto de la colonia),node/6641827646,2,1,SI-GDL-008;SI-GDL-010;SI-GDL-010/1,alta,0,0.0,,,1592.01,4.09,80.03
+2,5 de Mayo 1a. Sección,Guadalajara,20.6182514,-103.3577032,OSM (punto de la colonia),node/6641827649,1,1,SI-GDL-007;SI-GDL-007/1,alta,0,0.0,,,1585.51,3.98,74.98
+3,5 de Mayo 2a. Sección,Guadalajara,20.6235332,-103.3562226,OSM (punto de la colonia),node/6641827650,0,0,,baja,0,0.0,,,1567.01,2.85,80.29
+4,Aldrete,Guadalajara,20.705687,-103.3806952,OSM (punto de la colonia),node/4840355560,1,0,SI-GDL-024,alta,0,0.0,,,1545.9,3.28,55.83
+5,Americana,Guadalajara,20.6721658,-103.3643856,OSM (punto de la colonia),node/4795981036,0,0,,baja,0,0.0,,,1562.34,3.09,54.42
+6,Ampliación Lagos del Country,Guadalajara,20.7119575,-103.3651001,OSM (punto de la colonia),node/4882407457,2,0,SI-GDL-055;SI-ZPN-053,alta,0,0.0,,,1524.01,2.64,82.72
+7,Ampliación Monraz,Guadalajara,20.6868083,-103.3974858,OSM (punto de la colonia),node/4840355552,0,0,,baja,0,0.0,,,1599.8,3.45,31.04
+8,Analco,Guadalajara,20.6671443,-103.3416314,OSM (punto de la colonia),node/4795980919,0,0,,baja,0,0.0,,,1545.92,2.66,41.6
+9,Arboledas del Sur,Guadalajara,20.6158386,-103.3873282,OSM (punto de la colonia),node/4840483334,0,0,,baja,0,0.0,,,1624.09,4.73,69.64
+10,Arcos Sur,Guadalajara,20.6709194,-103.3870599,OSM (punto de la colonia),node/4840452997,3,0,SI-GDL-005;SI-GDL-042;SI-GDL-057,alta,0,0.0,,,1592.49,2.55,52.19
+11,Arcos Vallarta,Guadalajara,20.6746659,-103.3822867,OSM (punto de la colonia),node/4795981051,0,0,,baja,0,0.0,,,1586.4,2.64,57.47
+12,Arcos Vallarta Sur,Guadalajara,20.6722846,-103.3862016,OSM (punto de la colonia),node/4840452996,2,0,SI-GDL-005;SI-GDL-057,alta,0,0.0,,,1591.6,2.67,46.51
+13,Autocinema,Guadalajara,20.7176763,-103.3425358,OSM (punto de la colonia),node/4880522103,1,0,SI-GDL-064,alta,0,0.0,,,1505.75,2.65,50.16
+14,Balcones del Cuatro,Guadalajara,20.6144151,-103.3757733,OSM (punto de la colonia),node/4840483360,1,0,SI-GDL-002,alta,0,0.0,,,1623.61,5.54,64.36
+15,Balcones y Prados de Huentitán,Guadalajara,20.7338741,-103.3181345,OSM (punto de la colonia),node/4880522083,1,0,SI-GDL-062,alta,0,0.0,,,1516.29,3.73,9.12
+16,Barranquitas,Guadalajara,20.693421,-103.3418614,OSM (punto de la colonia),node/4795980916,0,0,,baja,0,0.0,,,1530.14,2.92,73.43
+17,Barrio de Mezquitán,Guadalajara,20.6996837,-103.3534486,OSM (punto de la colonia),node/4882407445,1,1,SI-GDL-017;SI-GDL-017/1,alta,0,0.0,,,1545.99,2.24,32.0
+18,Becerra,Guadalajara,20.6934829,-103.3775409,OSM (punto de la colonia),node/4840355570,1,0,SI-GDL-016,alta,0,0.0,,,1571.81,3.04,42.62
+19,Blanco y Cuéllar,Guadalajara,20.67297,-103.30859,Aproximada: centroide del CP 44730,,0,0,,baja,1,0.2,38,Blanco y Cuéllar,1565.7,2.14,35.87
+20,Capilla de Jesús,Guadalajara,20.6817539,-103.3557964,OSM (punto de la colonia),node/4795981039,0,0,,baja,0,0.0,,,1556.86,2.21,39.34
+21,Carvallo,Guadalajara,20.7067792,-103.3484811,OSM (punto de la colonia),node/4882407450,1,0,SI-GDL-041,alta,0,0.0,,,1531.57,2.29,37.25
+22,Centro Barranquitas,Guadalajara,20.6829382,-103.3429969,OSM (punto de la colonia),node/4795980920,1,1,SI-GDL-053;SI-GDL-053/1,alta,0,0.0,,,1542.88,2.83,63.2
+23,Chapalita,Guadalajara,20.6644623,-103.3969701,OSM (punto de la colonia),node/4831281777,0,0,,baja,0,0.0,,,1606.42,2.38,36.68
+24,Chapultepec Country,Guadalajara,20.6968865,-103.3670597,OSM (punto de la colonia),node/4795980913,1,1,SI-GDL-052;SI-GDL-052/1,alta,0,0.0,,,1562.17,2.28,37.59
+25,Circunvalación,Guadalajara,20.6851523,-103.3816608,OSM (punto de la colonia),node/4840355574,0,0,,baja,0,0.0,,,1584.93,2.03,34.48
+26,Circunvalación Guevara,Guadalajara,20.6829842,-103.3824761,OSM (punto de la colonia),node/4840355575,1,0,SI-GDL-065,alta,0,0.0,,,1585.72,2.08,47.22
+27,Circunvalación Metro,Guadalajara,20.7080938,-103.3501548,OSM (punto de la colonia),node/4882407449,2,0,SI-GDL-041;SI-GDL-067,alta,0,0.0,,,1529.95,2.37,37.19
+28,Circunvalación Oblatos,Guadalajara,20.6876964,-103.3007213,OSM (punto de la colonia),node/5729213869,0,0,,baja,0,0.0,,,1571.72,2.37,27.51
+29,Circunvalación Vallarta,Guadalajara,20.682924,-103.3855231,OSM (punto de la colonia),node/4840355576,1,0,SI-GDL-065,alta,0,0.0,,,1589.39,2.19,48.4
+30,Colinas de San Javier,Guadalajara,20.7030517,-103.4022405,OSM (punto de la colonia),node/4838888310,0,0,,baja,0,0.0,,,1571.88,3.95,72.75
+31,Colinas de la Normal,Guadalajara,20.6983589,-103.3419043,OSM (punto de la colonia),node/4882407442,1,0,SI-GDL-063,alta,0,0.0,,,1527.65,2.63,56.93
+32,Colomos Providencia,Guadalajara,20.7026561,-103.3842571,OSM (punto de la colonia),node/4840355559,0,0,,baja,0,0.0,,,1552.39,3.15,59.19
+33,Colomos R.,Guadalajara,20.7080755,-103.3871539,OSM (punto de la colonia),node/4840355562,1,1,SI-ZPN-012;SI-ZPN-012/1,alta,0,0.0,,,1546.71,4.27,59.53
+34,Colonia Belisario Domínguez,Guadalajara,20.7068374,-103.3196158,OSM (punto de la colonia),node/4795981041,3,0,SI-GDL-018;SI-GDL-073;SI-GDL-080,alta,0,0.0,,,1535.38,2.79,62.16
+35,Colonia del Periodista,Guadalajara,20.6609377,-103.3326814,OSM (punto de la colonia),node/4795981022,0,0,,baja,0,0.0,,,1546.44,2.23,64.22
+36,Colonial Independencia,Guadalajara,20.7303923,-103.3183813,OSM (punto de la colonia),node/4880522082,0,0,,baja,0,0.0,,,1512.86,3.58,44.7
+37,Colón C.R.O.C.,Guadalajara,20.6308368,-103.3840881,OSM (punto de la colonia),node/4840483326,1,2,SI-GDL-048;SI-GDL-048/1;SI-GDL-048/3,alta,0,0.0,,,1579.76,2.4,66.93
+38,Colón INFONAVIT,Guadalajara,20.6318107,-103.3877681,OSM (punto de la colonia),node/4840483325,1,0,SI-GDL-048,alta,0,0.0,,,1583.86,2.41,67.01
+39,Country Plaza,Guadalajara,20.7108436,-103.3768589,OSM (punto de la colonia),node/4882407458,5,0,SI-GDL-024;SI-GDL-068;SI-GDL-074;SI-ZPN-011;SI-ZPN-047,alta,0,0.0,,,1536.65,3.53,64.81
+40,Del Fresno,Guadalajara,20.65678,-103.369,OSM: calle Fresno,,0,0,,baja,1,0.2,51,Del Fresno,1570.7,2.1,43.55
+41,División del Norte,Guadalajara,20.7225332,-103.3384159,OSM (punto de la colonia),node/4880522102,1,0,SI-GDL-072,alta,0,0.0,,,1496.07,3.55,72.3
+42,Echeverría 1a Sección,Guadalajara,20.6294976,-103.364398,OSM (punto de la colonia),node/6641827642,2,1,SI-GDL-029;SI-GDL-048;SI-GDL-048/2,alta,0,0.0,,,1564.37,2.28,58.68
+43,Echeverría 2a Sección,Guadalajara,20.6255213,-103.3652778,OSM (punto de la colonia),node/6641827643,0,0,,baja,0,0.0,,,1571.06,2.14,58.09
+44,Echeverría 3a. Sección,Guadalajara,20.6303008,-103.358583,OSM (punto de la colonia),node/6641827651,1,0,SI-GDL-029,alta,0,0.0,,,1558.98,2.38,60.97
+45,El Carmen,Guadalajara,20.6207414,-103.3839272,OSM (punto de la colonia),node/4840483367,0,0,,baja,0,0.0,,,1605.39,3.91,44.9
+46,El Deán,Guadalajara,20.6389759,-103.3507509,OSM (punto de la colonia),node/6641827654,3,1,SI-GDL-001;SI-GDL-001/1;SI-GDL-015;SI-GDL-078,alta,0,0.0,,,1549.21,3.27,63.94
+47,El Jagüey,Guadalajara,20.7225453,-103.3261168,OSM (punto de la colonia),node/4880522088,2,2,SI-GDL-056;SI-GDL-056/2;SI-GDL-056/3;SI-GDL-061,alta,0,0.0,,,1516.31,3.92,23.33
+48,El Manantial,Guadalajara,20.621063,-103.3432622,OSM (punto de la colonia),node/6641827662,1,0,SI-GDL-046,alta,0,0.0,,,1573.98,2.6,47.59
+49,El Parián,Guadalajara,20.7117066,-103.3620745,OSM (punto de la colonia),node/4882407456,3,1,SI-GDL-017;SI-GDL-028;SI-GDL-028/1;SI-ZPN-053,alta,0,0.0,,,1523.17,2.8,74.72
+50,El Rocío,Guadalajara,20.6160823,-103.3635826,OSM (punto de la colonia),node/6641827647,2,1,SI-GDL-008;SI-GDL-010;SI-GDL-010/1,alta,0,0.0,,,1603.97,5.02,83.37
+51,El Sauz,Guadalajara,20.6261963,-103.392859,OSM (punto de la colonia),node/4840483331,1,0,SI-GDL-058,alta,0,0.0,,,1594.54,3.33,61.96
+52,Emiliano Zapata,Guadalajara,20.62222,-103.3872049,OSM (punto de la colonia),node/4840483333,1,0,SI-GDL-011,alta,0,0.0,,,1596.8,3.3,73.91
+53,Estadio Poniente,Guadalajara,20.7089878,-103.333112,OSM (punto de la colonia),node/4880522095,1,0,SI-GDL-004,alta,0,0.0,,,1512.32,3.66,76.05
+54,Ex Penal,Guadalajara,20.67117,-103.31156,OSM: lugar «Penal»,,0,0,,baja,1,0.2,40,Ex Penal,1564.42,2.13,40.89
+55,FOVISSSTE Estadio,Guadalajara,20.7103951,-103.3255102,OSM (punto de la colonia),node/4795981025,3,1,SI-GDL-018;SI-GDL-018/1;SI-GDL-073;SI-GDL-080,alta,0,0.0,,,1523.97,3.46,71.25
+56,Ferrocarril,Guadalajara,20.6464657,-103.3514161,OSM (punto de la colonia),node/6641827658,3,1,SI-GDL-015;SI-GDL-050;SI-GDL-050/1;SI-GDL-078,alta,0,0.0,,,1547.71,2.71,65.52
+57,Fidel Velázquez,Guadalajara,20.7114024,-103.3535248,OSM (punto de la colonia),node/4882407448,2,0,SI-GDL-067;SI-ZPN-017,alta,0,0.0,,,1522.15,2.67,60.01
+58,Flores Magón,Guadalajara,20.7196252,-103.3215463,OSM (punto de la colonia),node/4880522089,2,0,SI-GDL-056;SI-GDL-061,alta,0,0.0,,,1535.69,2.99,7.14
+59,Francisco Villa,Guadalajara,20.619376,-103.3687754,OSM (punto de la colonia),node/6641827644,1,1,SI-GDL-010;SI-GDL-010/1,alta,0,0.0,,,1588.38,3.42,91.87
+60,Fábrica de Atemajac,Guadalajara,20.71265,-103.3567101,OSM (punto de la colonia),node/4882407454,4,0,SI-GDL-017;SI-GDL-067;SI-ZPN-017;SI-ZPN-053,alta,0,0.0,,,1519.4,2.9,75.29
+61,Guadalajara Centro,Guadalajara,20.6763989,-103.3479102,OSM: Guadalajara Centro,node/4795981049,1,1,SI-GDL-037;SI-GDL-037/1,alta,1,0.2,3,Centro,1552.99,3.23,21.18
+62,Hacendarios,Guadalajara,20.6929811,-103.3761676,OSM (punto de la colonia),node/4840355569,2,1,SI-GDL-016;SI-GDL-081;SI-GDL-081/1,alta,0,0.0,,,1572.7,2.8,34.37
+63,Higuerillas,Guadalajara,20.6311242,-103.3486052,OSM (punto de la colonia),node/6641827655,2,0,SI-GDL-001;SI-GDL-029,alta,0,0.0,,,1554.41,2.78,79.55
+64,Huentitán El Bajo,Guadalajara,20.7395834,-103.3192932,OSM (punto de la colonia),node/4880522079,0,0,,baja,2,0.4,6;13,Huentitán El Bajo,1485.93,13.46,6.72
+65,INFONAVIT Independencia,Guadalajara,20.7112659,-103.3286488,OSM (punto de la colonia),node/4880522094,0,0,,baja,0,0.0,,,1519.1,3.88,59.33
+66,INFONAVIT Planetario,Guadalajara,20.7247229,-103.3177376,OSM (punto de la colonia),node/4880522087,0,0,,baja,0,0.0,,,1525.71,3.48,48.29
+67,Ibarra y Molodom,Guadalajara,20.7068201,-103.3443236,OSM (punto de la colonia),node/4880522099,1,0,SI-GDL-041,alta,0,0.0,,,1527.73,2.19,31.8
+68,Independencia,Guadalajara,20.7037132,-103.3293441,OSM (punto de la colonia),node/4795981047,0,0,,baja,3,0.6,12;14;22,Independencia,1533.19,4.33,39.9
+69,Independencia Oriente,Guadalajara,20.6977658,-103.3269315,OSM (punto de la colonia),node/4795980918,0,0,,baja,0,0.0,,,1541.36,2.37,7.26
+70,Independencia Poniente,Guadalajara,20.7031369,-103.333863,OSM (punto de la colonia),node/4880522097,2,0,SI-GDL-003;SI-GDL-063,alta,0,0.0,,,1517.28,3.21,90.2
+71,Independencia Sur,Guadalajara,20.6920704,-103.3354662,OSM (punto de la colonia),node/4882407441,1,1,SI-GDL-063;SI-GDL-063/1,alta,0,0.0,,,1530.14,2.62,49.14
+72,Inmuebles Turquesa,Guadalajara,20.6491702,-103.3964584,OSM (punto de la colonia),node/4840453005,1,1,SI-GDL-051;SI-GDL-051/1,alta,0,0.0,,,1600.01,3.06,50.44
+73,Italia,Guadalajara,20.6905522,-103.377734,OSM (punto de la colonia),node/4840355571,1,0,SI-GDL-016,alta,0,0.0,,,1576.37,2.6,40.41
+74,Italia Providencia,Guadalajara,20.6924391,-103.3801802,OSM (punto de la colonia),node/4840355572,0,0,,baja,0,0.0,,,1574.91,3.14,37.16
+75,Jardines Alcalde,Guadalajara,20.7065692,-103.3406222,OSM (punto de la colonia),node/4880522098,0,0,,baja,0,0.0,,,1521.57,2.58,33.21
+76,Jardines El Sauz,Guadalajara,20.6264674,-103.3964746,OSM (punto de la colonia),node/4840483330,1,0,SI-TLQ-025,alta,0,0.0,,,1599.89,3.34,65.83
+77,Jardines Plaza del Sol,Guadalajara,20.6549428,-103.3941517,OSM (punto de la colonia),node/4840453003,1,1,SI-GDL-051;SI-GDL-051/1,alta,0,0.0,,,1597.97,3.69,55.55
+78,Jardines de Los Arcos,Guadalajara,20.6693611,-103.3986009,OSM (punto de la colonia),node/4831281778,0,0,,baja,0,0.0,,,1607.41,2.35,54.82
+79,Jardines de Los Arcos 1a Sección,Guadalajara,20.6669342,-103.3915768,OSM (punto de la colonia),node/4840452998,2,0,SI-GDL-005;SI-GDL-057,alta,0,0.0,,,1598.89,2.26,48.91
+80,Jardines de Providencia,Guadalajara,20.7039608,-103.3776482,OSM (punto de la colonia),node/4840355565,1,0,SI-GDL-024,alta,0,0.0,,,1547.29,3.65,64.87
+81,Jardines de San José,Guadalajara,20.6330457,-103.3832405,OSM (punto de la colonia),node/4840483324,1,3,SI-GDL-048;SI-GDL-048/1;SI-GDL-048/2;SI-GDL-048/3,alta,0,0.0,,,1578.75,2.51,68.46
+82,Jardines de la Cruz 2a Sección,Guadalajara,20.6422126,-103.3844958,OSM (punto de la colonia),node/4840453020,0,0,,baja,0,0.0,,,1588.03,2.62,33.18
+83,Jardines de la Cruz 3a Sección,Guadalajara,20.6480959,-103.3803652,OSM (punto de la colonia),node/4840453018,1,0,SI-GDL-054,alta,0,0.0,,,1582.47,2.2,53.69
+84,Jardines de la Victoria,Guadalajara,20.6471924,-103.3899889,OSM (punto de la colonia),node/4840453011,0,0,,baja,0,0.0,,,1594.92,3.02,34.43
+85,Jardines del Bosque,Guadalajara,20.6632852,-103.3852897,OSM (punto de la colonia),node/4840453000,2,1,SI-GDL-042;SI-GDL-047;SI-GDL-047/1,alta,0,0.0,,,1590.47,2.32,57.33
+86,Jardines del Bosque Norte,Guadalajara,20.6676068,-103.3872853,OSM (punto de la colonia),node/4840452999,3,0,SI-GDL-005;SI-GDL-042;SI-GDL-057,alta,0,0.0,,,1592.92,2.15,50.97
+87,Jardines del Country,Guadalajara,20.7082042,-103.3619351,OSM (punto de la colonia),node/4882407453,2,1,SI-GDL-017;SI-GDL-028;SI-GDL-028/1,alta,0,0.0,,,1532.46,2.82,48.88
+88,Jardines del Sur 1a Sección,Guadalajara,20.6350539,-103.3915231,OSM (punto de la colonia),node/4840483323,0,0,,baja,0,0.0,,,1589.23,2.67,62.52
+89,Jardines del Valle,Guadalajara,20.6435278,-103.3916519,OSM (punto de la colonia),node/4840453010,0,0,,baja,0,0.0,,,1595.78,2.78,43.89
+90,José Clemente Orozco,Guadalajara,20.6194764,-103.3460517,OSM (punto de la colonia),node/6641827660,1,0,SI-GDL-046,alta,0,0.0,,,1578.73,2.44,42.53
+91,Juan Diego,Guadalajara,20.6574124,-103.3949242,OSM (punto de la colonia),node/4840453002,3,2,SI-GDL-051;SI-GDL-051/1;SI-ZPN-001;SI-ZPN-001/1;SI-ZPN-034,alta,0,0.0,,,1600.86,2.97,45.21
+92,Juan Manuel,Guadalajara,20.6819202,-103.3918961,OSM (punto de la colonia),node/4840355578,0,0,,baja,0,0.0,,,1597.34,2.26,53.88
+93,La Guadalupana,Guadalajara,20.7069899,-103.3527726,OSM (punto de la colonia),node/4882407446,3,0,SI-GDL-017;SI-GDL-041;SI-GDL-067,alta,0,0.0,,,1532.79,2.44,40.38
+94,La Nogalera,Guadalajara,20.6324295,-103.3411164,OSM (punto de la colonia),node/6641827656,0,0,,baja,0,0.0,,,1560.07,3.43,35.67
+95,La Normal,Guadalajara,20.6955306,-103.350486,OSM (punto de la colonia),node/4795981045,0,0,,baja,0,0.0,,,1545.5,2.96,33.55
+96,La Perla,Guadalajara,20.6808736,-103.3365818,OSM (punto de la colonia),node/4795980912,2,1,SI-GDL-021;SI-GDL-053;SI-GDL-053/1,alta,0,0.0,,,1540.3,2.61,46.77
+97,Ladrón de Guevara,Guadalajara,20.6760789,-103.3779083,OSM (punto de la colonia),node/4840452994,0,0,,baja,0,0.0,,,1581.49,2.73,49.11
+98,Las Conchas,Guadalajara,20.6592794,-103.3369298,OSM (punto de la colonia),node/4795981031,1,1,SI-GDL-027;SI-GDL-027/1,alta,0,0.0,,,1543.57,2.2,72.66
+99,Las Lomas Independencia,Guadalajara,20.7129117,-103.3231878,OSM (punto de la colonia),node/4880522092,3,2,SI-GDL-018;SI-GDL-018/1;SI-GDL-073;SI-GDL-073/1;SI-GDL-080,alta,0,0.0,,,1526.48,3.17,67.81
+100,Las Nueve Esquinas,Guadalajara,20.670521,-103.3485592,OSM (punto de la colonia),node/1831696777,0,0,,baja,0,0.0,,,1546.77,3.06,62.16
+101,Loma Linda,Guadalajara,20.6152687,-103.3704947,OSM (punto de la colonia),node/4840483363,1,0,SI-GDL-008,alta,0,0.0,,,1618.23,5.75,63.96
+102,Lomas Providencia,Guadalajara,20.6931216,-103.3882268,OSM (punto de la colonia),node/4840355557,0,0,,baja,0,0.0,,,1577.91,2.84,43.69
+103,Lomas de Guevara,Guadalajara,20.6898697,-103.3834417,OSM (punto de la colonia),node/4840355573,0,0,,baja,0,0.0,,,1582.97,2.6,23.47
+104,Lomas de Independencia,Guadalajara,20.717809,-103.3235863,OSM (punto de la colonia),node/4795981034,2,0,SI-GDL-056;SI-GDL-061,alta,0,0.0,,,1533.2,2.84,14.6
+105,Lomas de Polanco,Guadalajara,20.6307524,-103.3742283,OSM (punto de la colonia),node/4840483371,1,1,SI-GDL-048;SI-GDL-048/3,alta,0,0.0,,,1570.32,2.07,68.2
+106,Lomas de San Eugenio,Guadalajara,20.68241,-103.28829,OSM: cruce Cairo y Demóstenes,,1,0,SI-GDL-006,alta,1,0.2,31,Lomas de San Eugenio,1556.07,4.48,44.45
+107,Lomas de la Pradera,Guadalajara,20.7346969,-103.3209562,OSM (punto de la colonia),node/4880522084,0,0,,baja,0,0.0,,,1492.22,9.4,13.75
+108,Lomas del Bosque,Guadalajara,20.7081106,-103.4053608,OSM (punto de la colonia),node/4840355549,1,0,SI-ZPN-056,alta,0,0.0,,,1566.05,3.61,71.36
+109,Lomas del Paraíso,Guadalajara,20.7285761,-103.3250224,OSM (punto de la colonia),node/4880522085,2,3,SI-GDL-056;SI-GDL-056/1;SI-GDL-056/2;SI-GDL-071;SI-GDL-071/1,alta,0,0.0,,,1489.6,6.81,31.29
+110,Lomas del Pedregal,Guadalajara,20.6134612,-103.3726941,OSM (punto de la colonia),node/4840483362,1,0,SI-GDL-002,alta,0,0.0,,,1634.05,5.8,48.23
+111,Lomas del Sur,Guadalajara,20.6250416,-103.3891039,OSM (punto de la colonia),node/4840483332,2,0,SI-GDL-011;SI-GDL-058,alta,0,0.0,,,1590.8,2.64,72.47
+112,Los Colomos,Guadalajara,20.7080956,-103.3836992,OSM (punto de la colonia),node/4840355561,2,0,SI-GDL-074;SI-ZPN-012,alta,0,0.0,,,1543.38,3.54,56.06
+113,Los Colorines,Guadalajara,20.6116436,-103.3782946,OSM (punto de la colonia),node/4840483359,1,0,SI-GDL-002,alta,0,0.0,,,1641.89,4.89,52.3
+114,Los Viveros,Guadalajara,20.7062139,-103.4021206,OSM (punto de la colonia),node/4840355551,0,0,,baja,0,0.0,,,1564.14,3.81,69.5
+115,Lázaro Cárdenas,Guadalajara,20.6184419,-103.3802043,OSM (punto de la colonia),node/4840483366,0,0,,baja,0,0.0,,,1611.74,4.78,39.99
+116,López Portillo 1a Sección,Guadalajara,20.6276328,-103.3799456,OSM (punto de la colonia),node/4840483369,1,0,SI-GDL-048,alta,0,0.0,,,1577.41,2.51,78.71
+117,López Portillo 2a Sección,Guadalajara,20.6249487,-103.3755373,OSM (punto de la colonia),node/4840483370,0,0,,baja,0,0.0,,,1578.24,2.55,72.78
+118,López de Legazpi,Guadalajara,20.6401945,-103.3831654,OSM (punto de la colonia),node/4840483321,0,0,,baja,0,0.0,,,1585.18,2.65,36.06
+119,Margal,Guadalajara,20.6452647,-103.3870063,OSM (punto de la colonia),node/4840453019,0,0,,baja,0,0.0,,,1591.28,2.66,36.06
+120,Mexicaltzingo,Guadalajara,20.6667482,-103.3514981,OSM (punto de la colonia),node/4795981055,1,0,SI-GDL-014,alta,0,0.0,,,1545.98,2.92,67.55
+121,Mezquitán,Guadalajara,20.6934163,-103.356686,OSM (punto de la colonia),node/4795981038,0,0,,baja,0,0.0,,,1554.46,2.43,33.61
+122,Mezquitán Country,Guadalajara,20.6964982,-103.3617562,OSM (punto de la colonia),node/4795981029,0,0,,baja,3,0.6,4;20;43,Mezquitán Country,1556.46,2.35,44.85
+123,Mirador El Álamo,Guadalajara,20.6297586,-103.3237572,OSM (punto de la colonia),node/6641827664,0,0,,baja,0,0.0,,,1569.99,3.29,35.47
+124,Miraflores,Guadalajara,20.6998041,-103.3454448,OSM (punto de la colonia),node/4882407443,0,0,,baja,1,0.2,48,Miraflores,1536.78,2.64,27.17
+125,Miravalle,Guadalajara,20.612166,-103.3455796,OSM (punto de la colonia),node/6641827661,1,0,SI-GDL-049,alta,0,0.0,,,1594.59,2.59,47.16
+126,Moderna,Guadalajara,20.6649322,-103.3608351,OSM (punto de la colonia),node/4795981027,1,0,SI-GDL-082,alta,0,0.0,,,1555.98,2.88,63.29
+127,Monraz,Guadalajara,20.6817797,-103.3957584,OSM (punto de la colonia),node/4840355554,0,0,,baja,0,0.0,,,1603.16,2.22,45.27
+128,Monumental,Guadalajara,20.701772,-103.3228981,OSM (punto de la colonia),node/4880522096,1,0,SI-GDL-070,alta,0,0.0,,,1536.43,2.47,58.77
+129,Nueva España,Guadalajara,20.6143951,-103.3921348,OSM (punto de la colonia),node/4840483357,0,0,,baja,0,0.0,,,1623.02,5.28,85.91
+130,Nueva Santa María,Guadalajara,20.6136218,-103.3806978,OSM (punto de la colonia),node/4840483358,0,0,,baja,0,0.0,,,1636.18,5.12,48.88
+131,Oblatos,Guadalajara,20.6744795,-103.3248636,OSM (punto de la colonia),node/4795981044,0,0,,baja,0,0.0,,,1553.32,2.33,45.55
+132,Obrera,Guadalajara,20.6700079,-103.3719172,OSM (punto de la colonia),node/4795981043,0,0,,baja,0,0.0,,,1572.38,2.83,56.34
+133,Obreros de la Construcción,Guadalajara,20.6577136,-103.3778224,OSM (punto de la colonia),node/4840453017,2,0,SI-GDL-047;SI-GDL-054,alta,0,0.0,,,1583.04,2.31,38.21
+134,Observatorio,Guadalajara,20.6999446,-103.3494789,OSM (punto de la colonia),node/4882407444,0,0,,baja,0,0.0,,,1542.87,2.54,24.68
+135,Palomera Colomos,Guadalajara,20.706811,-103.377734,OSM (punto de la colonia),node/4840355564,1,0,SI-GDL-024,alta,0,0.0,,,1543.42,3.93,52.81
+136,Panoramica 1a. Sección,Guadalajara,20.7287266,-103.3123839,OSM (punto de la colonia),node/4880522081,1,0,SI-GDL-062,alta,0,0.0,,,1520.71,3.58,39.11
+137,Panoramica 2a. Sección,Guadalajara,20.7365733,-103.3103776,OSM (punto de la colonia),node/4880522080,1,0,SI-GDL-062,alta,0,0.0,,,1496.94,10.29,18.44
+138,Paseos Independencia,Guadalajara,20.7156915,-103.3250224,OSM (punto de la colonia),node/4880522091,0,0,,baja,0,0.0,,,1527.2,2.91,38.46
+139,Patria,Guadalajara,20.6250692,-103.3827899,OSM (punto de la colonia),node/4840483368,2,0,SI-GDL-011;SI-GDL-048,alta,0,0.0,,,1586.53,3.01,70.74
+140,Patria Nueva,Guadalajara,20.6215447,-103.3758269,OSM (punto de la colonia),node/4840483365,0,0,,baja,0,0.0,,,1588.21,3.54,75.23
+141,Polanco Oriente,Guadalajara,20.626716,-103.3689068,OSM (punto de la colonia),node/4840483372,1,0,SI-GDL-048,alta,0,0.0,,,1571.24,2.09,62.84
+142,Polanquito,Guadalajara,20.6191448,-103.3719753,OSM (punto de la colonia),node/4840483364,0,0,,baja,0,0.0,,,1592.59,3.75,83.76
+143,Praderas del Paraíso,Guadalajara,20.7258969,-103.3198404,OSM (punto de la colonia),node/4880522086,0,0,,baja,0,0.0,,,1516.16,3.84,53.57
+144,Prados Providencia,Guadalajara,20.6885448,-103.3899005,OSM (punto de la colonia),node/4840355556,0,0,,baja,0,0.0,,,1591.97,2.45,19.37
+145,Providencia,Guadalajara,20.69376,-103.37986,OSM: calle Milán,,1,0,SI-GDL-016,alta,1,0.2,16,Providencia,1571.87,3.23,41.74
+146,Providencia 1a Sección,Guadalajara,20.6980796,-103.3756097,OSM (punto de la colonia),node/4840355568,3,2,SI-GDL-016;SI-GDL-052;SI-GDL-052/1;SI-GDL-081;SI-GDL-081/1,alta,0,0.0,,,1563.23,3.52,39.2
+147,Providencia 2a Sección,Guadalajara,20.6973972,-103.3786781,OSM (punto de la colonia),node/4840355567,1,0,SI-GDL-016,alta,0,0.0,,,1562.05,3.43,55.86
+148,Providencia 3a Sección,Guadalajara,20.6990632,-103.3811458,OSM (punto de la colonia),node/4840355566,0,0,,baja,0,0.0,,,1555.81,3.03,76.22
+149,Providencia 4a Sección,Guadalajara,20.6974975,-103.3859523,OSM (punto de la colonia),node/4840355558,0,0,,baja,0,0.0,,,1562.54,3.09,73.79
+150,Rancho Nuevo,Guadalajara,20.7204681,-103.331331,OSM (punto de la colonia),node/4880522090,0,0,,baja,1,0.2,45,Rancho Nuevo,1512.29,3.68,15.62
+151,Reforma,Guadalajara,20.6687935,-103.3341515,OSM (punto de la colonia),node/4795981037,0,0,,baja,0,0.0,,,1549.33,2.4,38.04
+152,Residencial de la Cruz,Guadalajara,20.6384174,-103.3855365,OSM (punto de la colonia),node/4840483322,0,0,,baja,0,0.0,,,1585.92,2.94,47.13
+153,Residencial del Bosque,Guadalajara,20.6549729,-103.387414,OSM (punto de la colonia),node/4840453015,2,1,SI-GDL-012;SI-GDL-012/1;SI-GDL-054,alta,0,0.0,,,1592.57,3.06,46.54
+154,Revolucion,Guadalajara,20.6658883,-103.3269891,OSM (punto de la colonia),node/4795980915,1,1,SI-GDL-023;SI-GDL-023/1,alta,0,0.0,,,1554.13,2.38,38.83
+155,Revolucionaria,Guadalajara,20.6140235,-103.3741962,OSM (punto de la colonia),node/4840483361,1,0,SI-GDL-002,alta,0,0.0,,,1627.57,5.7,58.12
+156,Riconada de la Arboleda,Guadalajara,20.6480558,-103.3862875,OSM (punto de la colonia),node/4840453014,2,0,SI-GDL-012;SI-GDL-054,alta,0,0.0,,,1589.67,2.64,48.91
+157,Rinconada de Santa Rita,Guadalajara,20.6846705,-103.4006722,OSM (punto de la colonia),node/4840355553,1,0,SI-ZPN-009,alta,0,0.0,,,1605.52,3.37,31.32
+158,Rinconada de la Victoria,Guadalajara,20.6500938,-103.3898494,OSM (punto de la colonia),node/4840453012,2,1,SI-GDL-012;SI-GDL-012/1;SI-GDL-054,alta,0,0.0,,,1593.12,3.03,53.91
+159,Rinconada del Bosque,Guadalajara,20.6530354,-103.3883796,OSM (punto de la colonia),node/4840453013,3,1,SI-GDL-012;SI-GDL-012/1;SI-GDL-051;SI-GDL-054,alta,0,0.0,,,1592.42,3.12,50.07
+160,Rojas Ladrón de Guevara,Guadalajara,20.6809903,-103.3790304,OSM (punto de la colonia),node/4795980914,1,0,SI-GDL-065,alta,0,0.0,,,1581.37,2.18,60.8
+161,San Antonio,Guadalajara,20.6635,-103.30878,OSM: cruce Ramos Arizpe y 12 de Octubre,,1,0,SI-GDL-030,alta,1,0.2,32,San Antonio,1564.96,1.99,49.45
+162,San Elías,Guadalajara,20.7112203,-103.332851,OSM (punto de la colonia),node/4795981040,2,0,SI-GDL-004;SI-GDL-069,alta,0,0.0,,,1508.78,3.77,77.32
+163,San Jorge,Guadalajara,20.6787283,-103.4009083,OSM (punto de la colonia),node/4840355555,1,0,SI-ZPN-051,alta,0,0.0,,,1611.77,2.66,44.34
+164,San José Colomos,Guadalajara,20.7075537,-103.3894284,OSM (punto de la colonia),node/4840355563,1,1,SI-ZPN-012;SI-ZPN-012/1,alta,0,0.0,,,1549.63,4.63,59.25
+165,San Juan Bosco,Guadalajara,20.67855,-103.31973,OSM: cruce Celestino Negrete y Federación,,0,0,,baja,1,0.2,28,San Juan Bosco,1556.51,2.16,28.33
+166,San Juan de Dios,Guadalajara,20.676454,-103.3359944,OSM (punto de la colonia),node/4795981028,2,0,SI-GDL-021;SI-GDL-053,alta,0,0.0,,,1542.84,2.54,50.83
+167,San Lucas,Guadalajara,20.677042,-103.392175,OSM (punto de la colonia),node/4840355580,0,0,,baja,0,0.0,,,1597.77,2.38,57.27
+168,San Miguel de Mezquitán,Guadalajara,20.7015843,-103.3559968,OSM (punto de la colonia),node/4795981053,1,1,SI-GDL-017;SI-GDL-017/1,alta,0,0.0,,,1544.32,2.26,41.91
+169,San Patricio,Guadalajara,20.7168738,-103.3180861,OSM (punto de la colonia),node/4795981050,0,0,,baja,0,0.0,,,1542.98,2.45,18.19
+170,San Rafael (unidad habitacional),Guadalajara,20.65296,-103.29775,OSM/Nominatim: Parque San Rafael,,1,0,SI-GDL-044,alta,1,0.2,25,San Rafael (unidad habitacional),1566.96,2.5,67.86
+171,Santa Eduwiges,Guadalajara,20.6395017,-103.3940659,OSM (punto de la colonia),node/4840453009,0,0,,baja,0,0.0,,,1595.5,2.65,55.78
+172,Santa Elena,Guadalajara,20.7164118,-103.3485117,OSM (punto de la colonia),node/4880522106,2,0,SI-GDL-064;SI-ZPN-017,alta,0,0.0,,,1511.3,2.68,62.33
+173,Santa Elena Alcalde Oriente,Guadalajara,20.7136388,-103.3450855,OSM: Santa Elena Alcalde Oriente,node/4880522104,1,0,SI-GDL-064,alta,1,0.2,9,Santa Elena Alcalde,1513.7,2.46,54.08
+174,Santa Elena Alcalde Poniente,Guadalajara,20.714184,-103.3501425,OSM (punto de la colonia),node/4880522105,2,0,SI-GDL-064;SI-ZPN-017,alta,0,0.0,,,1515.7,2.72,58.63
+175,Santa Elena Estadio,Guadalajara,20.7119389,-103.3389451,OSM (punto de la colonia),node/4795981032,2,0,SI-GDL-004;SI-GDL-069,alta,0,0.0,,,1509.74,2.69,48.09
+176,Santa Elena de la Cruz,Guadalajara,20.7165022,-103.3388021,OSM (punto de la colonia),node/4795981023,1,0,SI-GDL-069,alta,1,0.2,30,Santa Elena de la Cruz,1504.11,3.07,46.99
+177,Santa Tere,Guadalajara,20.6831053,-103.3671819,OSM (punto de la colonia),node/2925264560,0,0,,baja,1,0.2,27,Santa Tere,1566.25,2.22,60.1
+178,Simón Bolívar,Guadalajara,20.7082845,-103.3551974,OSM (punto de la colonia),node/4882407447,2,0,SI-GDL-017;SI-GDL-067,alta,0,0.0,,,1529.98,2.73,47.95
+179,Terranova,Guadalajara,20.6822414,-103.3883126,OSM (punto de la colonia),node/4840355577,1,0,SI-GDL-065,alta,0,0.0,,,1592.58,2.38,54.56
+180,Unidad Modelo,Guadalajara,20.6617911,-103.3283721,OSM (punto de la colonia),node/4795981052,1,1,SI-GDL-023;SI-GDL-023/1,alta,0,0.0,,,1549.24,2.31,64.76
+181,Valentín Gómez Farías,Guadalajara,20.6188338,-103.3645911,OSM (punto de la colonia),node/6641827645,2,1,SI-GDL-008;SI-GDL-010;SI-GDL-010/1,alta,0,0.0,,,1588.66,3.52,77.69
+182,Vallarta Cuauhtémoc,Guadalajara,20.6728343,-103.3997596,OSM (punto de la colonia),node/4831281779,0,0,,baja,0,0.0,,,1608.85,2.68,60.55
+183,Vallarta Norte,Guadalajara,20.6778651,-103.3876689,OSM (punto de la colonia),node/4840355581,1,0,SI-GDL-065,alta,0,0.0,,,1592.14,2.61,55.13
+184,Vallarta Poniente,Guadalajara,20.673296,-103.3919705,OSM (punto de la colonia),node/4831281781,1,0,SI-GDL-005,alta,0,0.0,,,1598.55,2.59,52.3
+185,Vallarta San Jorge,Guadalajara,20.675978,-103.3979042,OSM (punto de la colonia),node/4840355579,0,0,,baja,0,0.0,,,1606.58,2.8,53.4
+186,Vallarta Sur,Guadalajara,20.6701341,-103.3938051,OSM (punto de la colonia),node/4831281780,1,0,SI-GDL-005,alta,0,0.0,,,1600.95,2.37,57.53
+187,Valle Verde 2a Sección,Guadalajara,20.6457567,-103.3948062,OSM (punto de la colonia),node/4840453007,0,0,,baja,0,0.0,,,1599.5,2.9,41.85
+188,Valle del Álamo,Guadalajara,20.6409839,-103.3436055,OSM (punto de la colonia),node/6641827657,2,1,SI-GDL-001;SI-GDL-015;SI-GDL-015/1,alta,0,0.0,,,1548.82,2.93,60.18
+189,Verde Valle,Guadalajara,20.6470217,-103.3972416,OSM (punto de la colonia),node/4840453006,1,0,SI-GDL-051,alta,0,0.0,,,1601.64,2.93,44.2
+190,Verde Valle 3a Sección,Guadalajara,20.6517302,-103.3943663,OSM (punto de la colonia),node/4840453004,2,1,SI-GDL-012;SI-GDL-051;SI-GDL-051/1,alta,0,0.0,,,1597.01,3.54,58.26
+191,Victoria,Guadalajara,20.6424636,-103.3955786,OSM (punto de la colonia),node/4840453008,0,0,,baja,0,0.0,,,1599.5,2.77,43.83
+192,Villa Vicente Guerrero,Guadalajara,20.6296319,-103.3891413,OSM (punto de la colonia),node/4840483327,1,0,SI-GDL-058,alta,0,0.0,,,1586.03,2.51,66.39
+193,Villahermosa,Guadalajara,20.6252402,-103.349442,OSM (punto de la colonia),node/6641827659,1,0,SI-GDL-029,alta,0,0.0,,,1564.67,2.67,61.51
+194,Villas de San Juan,Guadalajara,20.7015149,-103.3354323,OSM (punto de la colonia),node/4795981054,2,1,SI-GDL-003;SI-GDL-063;SI-GDL-063/1,alta,0,0.0,,,1516.69,2.94,88.93
+195,Villas de los Colomos,Guadalajara,20.7059329,-103.4037943,OSM (punto de la colonia),node/4840355550,0,0,,baja,0,0.0,,,1566.85,3.48,70.88
+196,Villaseñor,Guadalajara,20.6890244,-103.3672188,OSM (punto de la colonia),node/4795981030,0,0,,baja,0,0.0,,,1568.05,2.12,36.49
+197,Vistas del Sur,Guadalajara,20.6176288,-103.3657069,OSM (punto de la colonia),node/6641827648,2,1,SI-GDL-008;SI-GDL-010;SI-GDL-010/1,alta,0,0.0,,,1595.64,4.14,88.28
+198,Zona Industrial,Guadalajara,20.6375702,-103.358583,OSM (punto de la colonia),node/6641827653,0,0,,baja,0,0.0,,,1553.5,2.32,68.23
+199,Zona Industrial Sur,Guadalajara,20.6333331,-103.363368,OSM (punto de la colonia),node/6641827652,2,2,SI-GDL-029;SI-GDL-029/1;SI-GDL-048;SI-GDL-048/2,alta,0,0.0,,,1560.05,2.3,61.34
+200,Álamo Industrial,Guadalajara,20.6270676,-103.3324475,OSM (punto de la colonia),node/6641827663,0,0,,baja,0,0.0,,,1560.37,3.16,73.76
+201,12 de Diciembre,Zapopan,20.6471147,-103.4616542,OSM (punto de la colonia),node/4831281921,0,0,,baja,0,0.0,,,1699.26,8.07,71.17
+202,27 de Septiembre,Zapopan,20.726587,-103.3603318,OSM (punto de la colonia),node/4831617571,0,0,,baja,0,0.0,,,1528.14,2.4,64.67
+203,Agrícola,Zapopan,20.6147231,-103.4302724,OSM (punto de la colonia),node/4831281740,4,4,SI-ZPN-028;SI-ZPN-028/1;SI-ZPN-028/2;SI-ZPN-043;SI-ZPN-043/1;SI-ZPN-066;SI-ZPN-066/1;SI-ZPN-075,alta,0,0.0,,,1620.17,2.45,47.73
+204,Agua Blanca Industrial,Zapopan,20.6026707,-103.422036,OSM (punto de la colonia),node/4839367059,1,1,SI-ZPN-025;SI-ZPN-025/1,alta,0,0.0,,,1600.89,2.81,63.68
+205,Agua Blanca Poblado,Zapopan,20.6030724,-103.431413,OSM (punto de la colonia),node/4839367060,0,0,,baja,0,0.0,,,1610.83,2.45,64.53
+206,Agua Blanca Sur,Zapopan,20.600843,-103.4347604,OSM (punto de la colonia),node/4839367061,0,0,,baja,0,0.0,,,1613.7,2.8,62.19
+207,Agua Fría,Zapopan,20.7494681,-103.3508383,OSM (punto de la colonia),node/4831617531,0,0,,baja,0,0.0,,,1507.13,8.58,61.62
+208,Alamedas de Tesistán,Zapopan,20.7434641,-103.3733192,OSM (punto de la colonia),node/4831617402,1,0,SI-ZPN-036,alta,0,0.0,,,1546.0,3.05,61.23
+209,Alamitos,Zapopan,20.7635264,-103.4372744,OSM (punto de la colonia),node/4831617325,0,0,,baja,0,0.0,,,1611.09,2.11,39.73
+210,Altagracia,Zapopan,20.7432639,-103.3937615,OSM (punto de la colonia),node/4831617353,2,0,SI-ZPN-010;SI-ZPN-050,alta,0,0.0,,,1584.45,3.13,32.99
+211,Altamira,Zapopan,20.7122212,-103.3877763,OSM (punto de la colonia),node/4836954922,1,1,SI-ZPN-012;SI-ZPN-012/1,alta,0,0.0,,,1543.58,3.55,83.34
+212,Altus Quintas,Zapopan,20.7824206,-103.4794394,OSM (punto de la colonia),node/4831617202,0,0,,baja,0,0.0,,,1597.61,2.61,59.5
+213,Arandanos Residencial,Zapopan,20.7601878,-103.4046775,OSM (punto de la colonia),node/12000048403,0,0,,baja,0,0.0,,,1611.17,5.09,63.12
+214,Arboledas de Tesistán,Zapopan,20.787777,-103.4684424,OSM (punto de la colonia),node/4831617199,0,0,,baja,0,0.0,,,1597.89,2.06,43.15
+215,Arcos de Guadalupe,Zapopan,20.6635187,-103.4343279,OSM (punto de la colonia),node/4783834235,1,0,SI-ZPN-021,alta,0,0.0,,,1649.58,3.25,54.7
+216,Arcos de Zapopan,Zapopan,20.7396978,-103.4072746,OSM (punto de la colonia),node/4783834241,2,0,SI-ZPN-004;SI-ZPN-008,alta,0,0.0,,,1604.97,3.01,50.24
+217,Arenales Tapatíos,Zapopan,20.6314519,-103.4571374,OSM (punto de la colonia),node/4831281721,2,1,SI-ZPN-042;SI-ZPN-042/1;SI-ZPN-046,alta,0,0.0,,,1665.01,2.23,52.56
+218,Arroyo Hondo,Zapopan,20.7408109,-103.3490516,OSM (punto de la colonia),node/4831617540,1,1,SI-ZPN-068;SI-ZPN-068/1,alta,0,0.0,,,1492.0,4.98,52.75
+219,Atemajac del Valle,Zapopan,20.7198662,-103.3549899,OSM (punto de la colonia),node/3348253859,1,0,SI-ZPN-017,alta,0,0.0,,,1520.32,2.65,37.73
+220,Atlas Chapalita,Zapopan,20.6587603,-103.4308088,OSM (punto de la colonia),node/4831281796,1,0,SI-ZPN-021,alta,0,0.0,,,1644.54,2.58,38.49
+221,Atlas Colomos,Zapopan,20.7158899,-103.4016485,OSM (punto de la colonia),node/4831757878,0,0,,baja,0,0.0,,,1557.35,3.7,71.31
+222,Auditorio,Zapopan,20.7344117,-103.3497191,OSM (punto de la colonia),node/4831617538,0,0,,baja,0,0.0,,,1521.06,2.97,2.99
+223,Ayamonte,Zapopan,20.6738581,-103.4669328,OSM (punto de la colonia),node/4831281926,0,0,,baja,0,0.0,,,1693.79,6.33,83.48
+224,Azaleas,Zapopan,20.607312,-103.4458936,OSM (punto de la colonia),node/4831281736,1,0,SI-ZPN-077,alta,0,0.0,,,1644.15,3.02,42.25
+225,Balcones de la Cantera,Zapopan,20.743712,-103.3518003,OSM (punto de la colonia),node/4831617532,0,0,,baja,0,0.0,,,1494.0,5.33,66.03
+226,Balcones del Sol,Zapopan,20.6506587,-103.4584141,OSM (punto de la colonia),node/4831281820,0,0,,baja,0,0.0,,,1718.09,12.06,79.7
+227,Belenes Norte,Zapopan,20.7376295,-103.3990736,OSM (punto de la colonia),node/4831757692,1,0,SI-ZPN-004,alta,0,0.0,,,1588.04,2.92,69.25
+228,Bellavista,Zapopan,20.6557774,-103.4442341,OSM (punto de la colonia),way/636445513,0,0,,baja,0,0.0,,,1663.4,3.19,50.58
+229,Benito Juárez,Zapopan,20.732906,-103.3389793,OSM (punto de la colonia),node/4831617547,1,0,SI-ZPN-020,alta,0,0.0,,,1503.2,3.34,3.56
+230,Benito Juárez Norte,Zapopan,20.7387635,-103.3381547,OSM (punto de la colonia),node/4831617543,1,0,SI-ZPN-020,alta,0,0.0,,,1460.95,7.2,58.97
+231,Bosque Escondido,Zapopan,20.7348432,-103.3555406,OSM (punto de la colonia),node/4831617536,0,0,,baja,0,0.0,,,1526.56,2.7,19.71
+232,Bosque de los Virreyes,Zapopan,20.6931498,-103.4313568,OSM (punto de la colonia),node/4831281945,0,0,,baja,0,0.0,,,1639.27,4.85,33.32
+233,Bosques de San Gonzalo,Zapopan,20.7745363,-103.4331874,OSM (punto de la colonia),node/4831617323,0,0,,baja,0,0.0,,,1589.45,4.86,61.06
+234,Bosques de San Isidro,Zapopan,20.7736287,-103.3753415,OSM (punto de la colonia),node/4831617412,0,0,,baja,0,0.0,,,1487.75,11.22,58.18
+235,Bosques del Centinela,Zapopan,20.7528097,-103.3796807,OSM (punto de la colonia),node/4831617399,0,0,,baja,1,0.2,18,Bosques del Centinela,1562.49,3.15,74.7
+236,Bosques del Centinela II,Zapopan,20.7586665,-103.3791309,OSM (punto de la colonia),node/4831617397,0,0,,baja,0,0.0,,,1578.7,4.41,55.07
+237,Bosques del Encino,Zapopan,20.7722491,-103.4332303,OSM (punto de la colonia),node/4831617322,0,0,,baja,0,0.0,,,1591.57,4.74,65.74
+238,Bugambilias,Zapopan,20.6021083,-103.4451888,OSM (punto de la colonia),node/4839367066,0,0,,baja,0,0.0,,,1640.15,2.65,61.34
+239,Bugambilias Country,Zapopan,20.6128955,-103.4556997,OSM (punto de la colonia),node/4831281732,4,0,SI-ZPN-074;SI-ZPN-076;SI-ZPN-078;SI-ZPN-080,alta,0,0.0,,,1690.19,8.61,72.83
+240,Cabañitas,Zapopan,20.7538562,-103.3671541,OSM (punto de la colonia),node/4831617407,0,0,,baja,0,0.0,,,1568.54,4.98,75.54
+241,Callejón del Parque,Zapopan,20.692107,-103.4315302,OSM (punto de la colonia),node/4838888313,0,0,,baja,0,0.0,,,1642.03,4.19,30.56
+242,Camino Real,Zapopan,20.6727339,-103.4102738,OSM (punto de la colonia),node/4831281783,0,0,,baja,0,0.0,,,1622.27,3.01,56.31
+243,Campo Real,Zapopan,20.7883394,-103.4432074,OSM (punto de la colonia),node/4712814384,0,0,,baja,0,0.0,,,1597.0,3.12,21.91
+244,Cantera Morada,Zapopan,20.7375425,-103.3556879,OSM (punto de la colonia),node/4831617534,0,0,,baja,0,0.0,,,1522.31,2.95,36.88
+245,Canteras del Centinela,Zapopan,20.7638805,-103.3833718,OSM (punto de la colonia),node/4831617393,0,0,,baja,0,0.0,,,1587.32,4.83,43.55
+246,Canteros,Zapopan,20.7280031,-103.3403341,OSM (punto de la colonia),node/4831617548,0,0,,baja,0,0.0,,,1506.55,3.09,25.13
+247,Carlos Rivera Aceves,Zapopan,20.6404984,-103.4656346,OSM (punto de la colonia),node/4831281923,2,2,SI-ZPN-015;SI-ZPN-019;SI-ZPN-019/1;SI-ZPN-019/2,alta,0,0.0,,,1682.99,3.02,64.16
+248,Casa Blanca,Zapopan,20.7840256,-103.4718541,OSM (punto de la colonia),node/4831617197,0,0,,baja,0,0.0,,,1599.02,2.21,53.09
+249,Chapalita Inn,Zapopan,20.6578367,-103.4450138,OSM (punto de la colonia),node/4831281819,0,0,,baja,0,0.0,,,1667.75,3.58,54.28
+250,Chapalita Las Fuentes,Zapopan,20.6561301,-103.4280837,OSM (punto de la colonia),node/4831281797,0,0,,baja,0,0.0,,,1639.81,2.54,35.81
+251,Chapalita Oriente,Zapopan,20.664643,-103.4055317,OSM (punto de la colonia),node/4831281775,0,0,,baja,0,0.0,,,1615.14,2.33,42.67
+252,Chapalita de Occidente,Zapopan,20.6605874,-103.4250367,OSM (punto de la colonia),node/4831281794,1,0,SI-ZPN-023,alta,0,0.0,,,1636.9,2.79,51.88
+253,Ciudad Bugambilias,Zapopan,20.6137709,-103.470853,OSM (punto de la colonia),node/4831281730,0,0,,baja,0,0.0,,,1836.43,5.55,7.82
+254,Ciudad Granja,Zapopan,20.6794244,-103.4481621,OSM (punto de la colonia),node/4783834252,0,0,,baja,0,0.0,,,1673.85,2.32,53.01
+255,Ciudad de los Niños,Zapopan,20.6619928,-103.4104241,OSM (punto de la colonia),node/4831281774,0,0,,baja,0,0.0,,,1618.66,2.74,51.37
+256,Ciudad del Sol,Zapopan,20.6520341,-103.4073985,OSM (punto de la colonia),node/4831281761,1,0,SI-ZPN-031,alta,0,0.0,,,1610.96,3.11,57.33
+257,Club Hípico Internacional,Zapopan,20.739385,-103.4601439,OSM (punto de la colonia),node/4831281959,0,0,,baja,0,0.0,,,1637.68,2.74,50.58
+258,Colegio del Aire,Zapopan,20.7479134,-103.4404777,OSM (punto de la colonia),node/4831281984,0,0,,baja,0,0.0,,,1624.5,2.27,49.48
+259,Colinas El Centinela,Zapopan,20.7674524,-103.3911115,OSM (punto de la colonia),node/4831617345,0,0,,baja,0,0.0,,,1593.59,4.85,20.9
+260,Colinas de Atemajac,Zapopan,20.7194681,-103.3625327,OSM (punto de la colonia),node/4836954929,0,0,,baja,0,0.0,,,1531.3,2.42,28.16
+261,Colinas de Los Robles,Zapopan,20.7645231,-103.4218496,OSM (punto de la colonia),node/4831617338,0,0,,baja,0,0.0,,,1631.66,3.94,43.24
+262,Colinas de Tabachines,Zapopan,20.7439897,-103.3568955,OSM (punto de la colonia),way/1346985391,1,0,SI-ZPN-069,alta,0,0.0,,,1517.18,4.55,52.36
+263,Colinas de Tesistán,Zapopan,20.778186,-103.4156269,OSM (punto de la colonia),node/4831617340,0,0,,baja,0,0.0,,,1580.85,5.14,55.3
+264,Colinas de las Águilas,Zapopan,20.6228652,-103.4108136,OSM (punto de la colonia),node/4839367069,0,0,,baja,0,0.0,,,1644.66,4.91,65.43
+265,Colinas de los Belenes,Zapopan,20.7463652,-103.3752041,OSM (punto de la colonia),node/4831617401,1,0,SI-ZPN-036,alta,0,0.0,,,1548.58,3.02,78.17
+266,Colinas de los Virreyes,Zapopan,20.700075,-103.4405621,OSM (punto de la colonia),node/4831281950,0,0,,baja,0,0.0,,,1648.28,5.48,46.6
+267,Colinas del Rey,Zapopan,20.7513155,-103.4053916,OSM (punto de la colonia),node/4831617330,0,0,,baja,0,0.0,,,1608.88,3.22,52.08
+268,Colli CTM,Zapopan,20.6486106,-103.427676,OSM (punto de la colonia),node/4831281805,0,0,,baja,0,0.0,,,1631.77,2.59,62.27
+269,Colli Primavera,Zapopan,20.6490423,-103.4316671,OSM (punto de la colonia),node/4831281806,0,0,,baja,0,0.0,,,1636.93,2.57,61.42
+270,Colli Sitio,Zapopan,20.6532689,-103.4398854,OSM (punto de la colonia),node/4831281811,0,0,,baja,0,0.0,,,1652.07,2.97,66.53
+271,Colorado,Zapopan,20.7695532,-103.3607927,OSM (punto de la colonia),node/4831617411,0,0,,baja,0,0.0,,,1623.78,4.37,5.08
+272,Constitución,Zapopan,20.7285537,-103.3700736,OSM (punto de la colonia),node/4831757681,0,0,,baja,0,0.0,,,1545.89,2.08,41.71
+273,Constituyentes,Zapopan,20.7264207,-103.3742794,OSM (punto de la colonia),node/4836954938,0,0,,baja,0,0.0,,,1548.87,2.04,52.7
+274,Cordilleras,Zapopan,20.6705456,-103.4202731,OSM (punto de la colonia),node/4831281790,1,0,SI-ZPN-023,alta,0,0.0,,,1633.12,2.29,51.77
+275,Coto 5,Zapopan,20.6243931,-103.4687684,OSM (punto de la colonia),way/637043891,0,0,,baja,0,0.0,,,1697.01,4.79,75.68
+276,Coto Aire,Zapopan,20.6213382,-103.4719055,OSM (punto de la colonia),way/634044550,0,0,,baja,0,0.0,,,1730.59,8.16,68.09
+277,Coto Albano,Zapopan,20.7383312,-103.5458001,OSM (punto de la colonia),way/1027132581,0,0,,baja,0,0.0,,,1657.07,4.42,41.26
+278,Coto La Escondida,Zapopan,20.6287578,-103.4712238,OSM (punto de la colonia),way/637335510,0,0,,baja,0,0.0,,,1690.78,3.07,76.11
+279,Cristal,Zapopan,20.6079748,-103.4543908,OSM (punto de la colonia),node/4831281734,0,0,,baja,0,0.0,,,1684.95,7.57,72.89
+280,Crucero de La Mesa,Zapopan,20.7644679,-103.3442609,OSM (punto de la colonia),node/4831617415,0,0,,baja,0,0.0,,,1541.75,4.08,34.54
+281,Del Bosque,Zapopan,20.6110276,-103.4549702,OSM (punto de la colonia),node/4831281733,2,0,SI-ZPN-074;SI-ZPN-076,alta,0,0.0,,,1688.99,8.32,70.8
+282,Del Fresno,Zapopan,20.7627089,-103.4492378,OSM (punto de la colonia),node/4831617193,0,0,,baja,0,0.0,,,1618.55,1.69,48.66
+283,Del Parque,Zapopan,20.6735087,-103.4365231,OSM (punto de la colonia),node/4831280810,0,0,,baja,0,0.0,,,1655.27,3.61,54.0
+284,Del Roble,Zapopan,20.6929993,-103.4254344,OSM (punto de la colonia),node/4831281949,0,0,,baja,0,0.0,,,1631.5,5.0,36.77
+285,División del Norte,Zapopan,20.7330345,-103.3547356,OSM (punto de la colonia),node/4831617537,0,0,,baja,0,0.0,,,1526.13,2.61,24.12
+286,Don Bosco Vallarta,Zapopan,20.673818,-103.4066904,OSM (punto de la colonia),node/4831281782,1,0,SI-ZPN-051,alta,0,0.0,,,1619.09,3.19,50.83
+287,El Batán,Zapopan,20.7220442,-103.3448793,OSM (punto de la colonia),node/4831617551,0,0,,baja,0,0.0,,,1505.31,2.83,60.91
+288,El Bosque,Zapopan,20.7564266,-103.3813103,OSM (punto de la colonia),node/4831617398,0,0,,baja,0,0.0,,,1572.14,3.72,63.57
+289,El Briseño,Zapopan,20.6239613,-103.4367955,OSM (punto de la colonia),node/4831281744,3,0,SI-ZPN-026;SI-ZPN-041;SI-ZPN-044,alta,0,0.0,,,1631.57,2.51,63.48
+290,El Campanario,Zapopan,20.5931098,-103.4369276,OSM (punto de la colonia),node/4839367062,0,0,,baja,0,0.0,,,1613.4,2.51,70.91
+291,El Capullo,Zapopan,20.7199684,-103.3840856,OSM (punto de la colonia),node/4836954933,2,0,SI-ZPN-063;SI-ZPN-073,alta,0,0.0,,,1562.16,3.18,29.14
+292,El Centinela,Zapopan,20.7669463,-103.3809176,OSM (punto de la colonia),node/4831617395,0,0,,baja,0,0.0,,,1572.2,10.8,43.72
+293,El Colli Urbano,Zapopan,20.6433698,-103.4326006,OSM: El Colli Urbano,node/4831281759,0,0,,baja,1,0.2,5,El Colli,1636.37,2.48,52.89
+294,El Fortín,Zapopan,20.6282388,-103.4709991,OSM (punto de la colonia),node/4831281725,0,0,,baja,0,0.0,,,1691.25,3.08,75.91
+295,El Mante,Zapopan,20.6102226,-103.425834,OSM: El Mante,node/4839367058,4,2,SI-TLQ-030;SI-ZPN-025;SI-ZPN-025/1;SI-ZPN-066;SI-ZPN-066/1;SI-ZPN-075,alta,1,0.2,47,El Mante / Las Fuentes,1612.97,2.57,46.06
+296,El Paraíso,Zapopan,20.7266916,-103.3779487,OSM (punto de la colonia),node/4836954939,0,0,,baja,0,0.0,,,1552.67,2.43,61.08
+297,El Prado,Zapopan,20.7130491,-103.4054413,OSM (punto de la colonia),node/4836954940,1,0,SI-ZPN-056,alta,0,0.0,,,1566.25,4.28,47.11
+298,El Rehilete,Zapopan,20.644414,-103.4618044,OSM (punto de la colonia),node/4831281922,2,2,SI-ZPN-015;SI-ZPN-019;SI-ZPN-019/1;SI-ZPN-019/2,alta,0,0.0,,,1682.45,3.08,60.97
+299,El Tigre,Zapopan,20.7671114,-103.4175581,OSM (punto de la colonia),node/4831617339,0,0,,baja,0,0.0,,,1639.36,4.97,18.53
+300,El Tizate,Zapopan,20.6353878,-103.4767497,OSM (punto de la colonia),node/4831281723,0,0,,baja,0,0.0,,,1703.49,3.93,76.33
+301,El Vigía,Zapopan,20.7334002,-103.3915849,OSM (punto de la colonia),node/4831757688,1,0,SI-ZPN-013,alta,0,0.0,,,1573.47,2.26,68.29
+302,El Zapote,Zapopan,20.6547196,-103.4177988,OSM (punto de la colonia),node/4831281762,0,0,,baja,0,0.0,,,1625.3,2.68,44.62
+303,El Álcazar,Zapopan,20.6950869,-103.426797,OSM (punto de la colonia),node/4831281947,0,0,,baja,0,0.0,,,1623.08,5.85,59.87
+304,Emiliano Zapata,Zapopan,20.7497711,-103.3639342,OSM (punto de la colonia),node/4831617525,0,0,,baja,0,0.0,,,1552.24,3.94,61.62
+305,Estrada,Zapopan,20.7915684,-103.4746866,OSM (punto de la colonia),node/4831617200,0,0,,baja,0,0.0,,,1593.46,2.12,52.44
+306,Eucalipto Vallarta,Zapopan,20.6773112,-103.4274614,OSM (punto de la colonia),node/4831281789,0,0,,baja,0,0.0,,,1643.53,2.88,42.25
+307,F1 CRETA RESIDENCIAL,Zapopan,20.7875319,-103.4162318,OSM (punto de la colonia),node/7667027131,0,0,,baja,0,0.0,,,1584.28,5.82,52.41
+308,F2 SIENNA,Zapopan,20.7881765,-103.413883,OSM (punto de la colonia),node/7866542124,0,0,,baja,0,0.0,,,1584.62,6.31,43.86
+309,F2 SIVEC,Zapopan,20.7858525,-103.412723,OSM (punto de la colonia),node/7866542126,0,0,,baja,0,0.0,,,1577.31,6.12,55.44
+310,F3 CARRARA,Zapopan,20.7894194,-103.414497,OSM (punto de la colonia),node/7866542125,0,0,,baja,0,0.0,,,1587.21,6.67,41.51
+311,F4 ALICANTE,Zapopan,20.7873018,-103.412129,OSM (punto de la colonia),node/7866542127,0,0,,baja,0,0.0,,,1581.78,6.12,41.63
+312,F7 PONTEVEEDRA,Zapopan,20.7883651,-103.4102794,OSM (punto de la colonia),node/7866518707,0,0,,baja,0,0.0,,,1583.19,6.37,31.49
+313,FOVISSSTE (Estatuto Jurídico),Zapopan,20.7354139,-103.40513,OSM (punto de la colonia),node/4831757696,1,0,SI-ZPN-008,alta,0,0.0,,,1594.56,2.35,73.31
+314,Flores del Valle,Zapopan,20.7477387,-103.4429227,OSM (punto de la colonia),node/4831281991,0,0,,baja,0,0.0,,,1625.79,2.32,47.73
+315,Fraccionamiento Tabachines,Zapopan,20.7390105,-103.3650882,OSM (punto de la colonia),way/1346986159,1,0,SI-ZPN-038,alta,0,0.0,,,1538.06,2.52,49.99
+316,Fraccionamineto Terra Vista residencial,Zapopan,20.782279,-103.4751177,OSM (punto de la colonia),node/13073055043,0,0,,baja,0,0.0,,,1598.99,2.32,59.02
+317,Francisco Sarabia,Zapopan,20.6120318,-103.4348214,OSM (punto de la colonia),node/4831281739,1,0,SI-ZPN-077,alta,0,0.0,,,1622.95,2.32,52.44
+318,G.U.S.A.,Zapopan,20.7220255,-103.3643874,OSM (punto de la colonia),node/4836954931,0,0,,baja,0,0.0,,,1535.79,2.34,30.27
+319,Girasoles Elite,Zapopan,20.7412814,-103.4230969,OSM (punto de la colonia),node/4831281973,2,1,SI-ZPN-007;SI-ZPN-055;SI-ZPN-055/1,alta,0,0.0,,,1614.8,2.32,61.96
+320,González Ortega,Zapopan,20.728453,-103.3512898,OSM (punto de la colonia),node/4831617553,2,0,SI-ZPN-054;SI-ZPN-061,alta,0,0.0,,,1517.03,2.77,65.24
+321,Guadalajarita,Zapopan,20.7137122,-103.3984298,OSM (punto de la colonia),node/4831757879,1,0,SI-ZPN-012,alta,0,0.0,,,1553.44,4.39,70.46
+322,Guadalupe,Zapopan,20.6625951,-103.4161962,OSM (punto de la colonia),node/4831281773,0,0,,baja,0,0.0,,,1625.68,2.51,53.12
+323,Guadalupe Inn,Zapopan,20.6603866,-103.4464729,OSM (punto de la colonia),node/4831280815,0,0,,baja,0,0.0,,,1674.5,3.63,55.15
+324,Guadalupe Jardín,Zapopan,20.6591016,-103.4282768,OSM (punto de la colonia),node/4831281795,1,0,SI-ZPN-021,alta,0,0.0,,,1641.14,2.53,40.61
+325,Guadalupe Sur,Zapopan,20.6537408,-103.4375466,OSM (punto de la colonia),node/4831281810,0,0,,baja,0,0.0,,,1649.31,3.05,61.28
+326,Gustavo Díaz Ordaz,Zapopan,20.6200034,-103.4219931,OSM (punto de la colonia),node/4839367067,0,0,,baja,0,0.0,,,1624.42,2.74,59.73
+327,Hacienda de Las Lomas,Zapopan,20.6851102,-103.4152635,OSM (punto de la colonia),node/4831281936,0,0,,baja,0,0.0,,,1624.49,3.41,47.33
+328,Hacienda del Tepeyac,Zapopan,20.6504579,-103.440218,OSM (punto de la colonia),node/4831281808,0,0,,baja,0,0.0,,,1649.57,2.76,69.25
+329,Hacienda del Valle,Zapopan,20.7601592,-103.3955747,OSM (punto de la colonia),node/4831617342,0,0,,baja,0,0.0,,,1588.86,3.21,73.45
+330,Haciendas de Zapopan,Zapopan,20.7986796,-103.4715108,OSM (punto de la colonia),node/4831617213,1,0,SI-ZPN-002,alta,0,0.0,,,1592.21,2.7,58.83
+331,Hogares de Nuevo México,Zapopan,20.7658707,-103.4254889,OSM (punto de la colonia),node/4831617326,0,0,,baja,0,0.0,,,1616.14,4.12,43.24
+332,Hogares del Batán,Zapopan,20.7264147,-103.3472649,OSM (punto de la colonia),node/4831617552,0,0,,baja,0,0.0,,,1511.55,2.7,60.94
+333,Héroes Nacionales,Zapopan,20.7643642,-103.4523277,OSM (punto de la colonia),node/4831617194,0,0,,baja,0,0.0,,,1618.82,1.79,37.93
+334,INFONAVIT La Arboleda,Zapopan,20.7325766,-103.4072,OSM (punto de la colonia),node/14023245534,0,0,,baja,0,0.0,,,1596.22,2.2,57.78
+335,Industrial Los Belenes,Zapopan,20.7341301,-103.3789975,OSM (punto de la colonia),node/4831757684,1,0,SI-ZPN-059,alta,0,0.0,,,1556.54,3.58,51.54
+336,Industrial Zapopan Norte,Zapopan,20.7425265,-103.3897865,OSM (punto de la colonia),node/4831617391,2,0,SI-ZPN-050;SI-ZPN-052,alta,0,0.0,,,1575.19,3.21,43.83
+337,Indígena de Mezquitán,Zapopan,20.7390482,-103.3320583,OSM (punto de la colonia),node/4831617544,1,0,SI-ZPN-020,alta,0,0.0,,,1436.21,14.31,42.5
+338,Jacarandas,Zapopan,20.7157582,-103.3824158,OSM (punto de la colonia),node/4836954926,1,0,SI-ZPN-011,alta,0,0.0,,,1547.72,3.39,59.08
+339,Jardines Seattle,Zapopan,20.7249055,-103.3704492,OSM (punto de la colonia),node/4836954936,0,0,,baja,0,0.0,,,1544.59,2.18,47.53
+340,Jardines Tapatíos,Zapopan,20.6418036,-103.4688962,OSM (punto de la colonia),node/4831281924,1,2,SI-ZPN-019;SI-ZPN-019/1;SI-ZPN-019/2,alta,0,0.0,,,1691.94,3.04,76.5
+341,Jardines Tepeyac,Zapopan,20.659965,-103.4228266,OSM (punto de la colonia),node/4831281765,1,0,SI-ZPN-023,alta,0,0.0,,,1633.98,2.97,51.77
+342,Jardines Universidad,Zapopan,20.6887436,-103.4218939,OSM (punto de la colonia),node/4831281938,0,0,,baja,0,0.0,,,1633.5,2.86,45.67
+343,Jardines Vallarta,Zapopan,20.6831128,-103.4286316,OSM (punto de la colonia),node/4831281931,1,0,SI-ZPN-057,alta,0,0.0,,,1643.0,2.83,57.64
+344,Jardines de Chapalita,Zapopan,20.6589812,-103.4401429,OSM (punto de la colonia),node/4831280813,0,0,,baja,0,0.0,,,1658.46,3.79,52.25
+345,Jardines de Guadalupe,Zapopan,20.6644824,-103.4222472,OSM (punto de la colonia),node/4831281793,1,0,SI-ZPN-023,alta,0,0.0,,,1633.61,2.57,55.72
+346,Jardines de La Patria,Zapopan,20.6836046,-103.4220549,OSM (punto de la colonia),node/4831281939,0,0,,baja,0,0.0,,,1634.84,2.62,49.62
+347,Jardines de San Ignacio,Zapopan,20.6692808,-103.4048665,OSM (punto de la colonia),node/4831281776,0,0,,baja,0,0.0,,,1615.07,2.53,58.71
+348,Jardines de Santa Ana,Zapopan,20.6223547,-103.4632528,OSM (punto de la colonia),node/4831281729,0,0,,baja,0,0.0,,,1698.55,7.1,70.09
+349,Jardines de Tabachines,Zapopan,20.7375333,-103.3704723,OSM (punto de la colonia),node/4831617404,0,0,,baja,0,0.0,,,1547.9,3.18,32.56
+350,Jardines de la Esperanza,Zapopan,20.7372028,-103.3579752,OSM (punto de la colonia),node/4831617535,0,0,,baja,0,0.0,,,1527.1,2.91,42.11
+351,Jardines de los Belenes,Zapopan,20.733971,-103.3331766,OSM (punto de la colonia),node/4831617545,1,0,SI-ZPN-020,alta,0,0.0,,,1471.81,10.2,23.58
+352,Jardines del Ixtépete,Zapopan,20.6246642,-103.4402931,OSM (punto de la colonia),node/4831281745,2,1,SI-ZPN-026;SI-ZPN-039;SI-ZPN-039/1,alta,0,0.0,,,1635.75,2.9,62.21
+353,Jardines del Sol,Zapopan,20.649484,-103.4128702,OSM (punto de la colonia),node/4831281760,0,0,,baja,0,0.0,,,1616.14,3.03,61.59
+354,Jardines del Valle,Zapopan,20.7489669,-103.4327529,OSM (punto de la colonia),node/4831281974,2,0,SI-ZPN-058;SI-ZPN-060,alta,0,0.0,,,1620.64,2.24,47.22
+355,Jardines del Vergel,Zapopan,20.7522222,-103.3725339,OSM (punto de la colonia),node/4831617406,0,0,,baja,0,0.0,,,1564.03,3.66,50.92
+356,Jardín Real,Zapopan,20.7357729,-103.4394801,OSM (punto de la colonia),node/4831281952,0,0,,baja,0,0.0,,,1633.37,2.35,41.74
+357,Jocotán,Zapopan,20.6856818,-103.4391661,OSM (punto de la colonia),node/4783834247,0,0,,baja,0,0.0,,,1656.03,2.9,60.91
+358,Juan Manuel Vallarta,Zapopan,20.6811856,-103.4123023,OSM (punto de la colonia),node/4831281932,0,0,,baja,0,0.0,,,1625.15,2.79,33.1
+359,La Aurora,Zapopan,20.7248653,-103.3728096,OSM (punto de la colonia),node/4836954937,0,0,,baja,0,0.0,,,1547.05,2.04,50.44
+360,La Calma,Zapopan,20.6335404,-103.4166468,OSM (punto de la colonia),node/4831281756,1,0,SI-ZPN-024,alta,1,0.2,1,La Calma,1621.91,2.33,52.92
+361,La Cantera,Zapopan,20.7720284,-103.4355048,OSM (punto de la colonia),node/4831617321,0,0,,baja,0,0.0,,,1598.69,4.46,42.16
+362,La Casita,Zapopan,20.7385924,-103.4244917,OSM (punto de la colonia),node/4831281972,2,1,SI-ZPN-007;SI-ZPN-055;SI-ZPN-055/1,alta,0,0.0,,,1616.17,2.1,52.22
+363,La Castilla,Zapopan,20.6568328,-103.4422243,OSM (punto de la colonia),node/4831281817,0,0,,baja,0,0.0,,,1661.05,3.2,52.7
+364,La Cañada,Zapopan,20.7534415,-103.4422801,OSM (punto de la colonia),node/4831281977,0,0,,baja,0,0.0,,,1622.41,2.54,43.55
+365,La Cima de Zapopan,Zapopan,20.7491434,-103.4147739,OSM (punto de la colonia),node/4831617329,0,0,,baja,0,0.0,,,1632.46,4.65,22.54
+366,La Coronilla,Zapopan,20.7601352,-103.3272382,OSM (punto de la colonia),node/4831617419,0,0,,baja,0,0.0,,,1496.81,6.4,12.17
+367,La Estancia,Zapopan,20.6723669,-103.4299415,OSM (punto de la colonia),node/4783834239,0,0,,baja,1,0.2,49,La Estancia,1645.56,2.27,50.38
+368,La Experiencia,Zapopan,20.7300414,-103.3359164,OSM (punto de la colonia),node/4831617546,0,0,,baja,0,0.0,,,1496.04,5.73,17.93
+369,La Floresta del Colli,Zapopan,20.646693,-103.4676087,OSM (punto de la colonia),node/4831281925,2,2,SI-ZPN-019;SI-ZPN-019/1;SI-ZPN-019/2;SI-ZPN-040,alta,0,0.0,,,1711.33,9.01,83.87
+370,La Florida,Zapopan,20.6564513,-103.440733,OSM (punto de la colonia),node/4831281816,0,0,,baja,0,0.0,,,1657.6,2.87,54.79
+371,La Giralda,Zapopan,20.6444224,-103.4063719,OSM (punto de la colonia),node/4839367078,2,0,SI-ZPN-014;SI-ZPN-031,alta,0,0.0,,,1610.54,3.43,50.21
+372,La Gloria del Colli,Zapopan,20.6569131,-103.450228,OSM (punto de la colonia),node/4831280818,0,0,,baja,0,0.0,,,1680.48,3.83,74.19
+373,La Granja,Zapopan,20.625608,-103.4806765,OSM (punto de la colonia),node/4831281726,0,0,,baja,0,0.0,,,1716.46,3.4,70.32
+374,La Haciendita,Zapopan,20.615426,-103.4515799,OSM (punto de la colonia),node/4831281743,3,0,SI-ZPN-074;SI-ZPN-076;SI-ZPN-078,alta,0,0.0,,,1656.22,2.91,67.75
+375,La Higuera,Zapopan,20.7535074,-103.3303403,OSM (punto de la colonia),node/4831617521,0,0,,baja,0,0.0,,,1457.08,7.83,52.78
+376,La Huerta,Zapopan,20.7260351,-103.3657177,OSM (punto de la colonia),node/4831757682,0,0,,baja,0,0.0,,,1538.93,2.19,36.97
+377,La Joyita,Zapopan,20.8084583,-103.4828619,OSM (punto de la colonia),node/4831617209,0,0,,baja,0,0.0,,,1607.72,2.83,51.14
+378,La Junta de los Ocotes,Zapopan,20.7561879,-103.3556093,OSM (punto de la colonia),node/4831617524,0,0,,baja,0,0.0,,,1567.1,9.51,46.46
+379,La Loma,Zapopan,20.6066492,-103.4522021,OSM (punto de la colonia),node/4831281735,0,0,,baja,0,0.0,,,1666.32,4.28,73.43
+380,La Magdalena,Zapopan,20.8055956,-103.4626276,OSM (punto de la colonia),node/4712273995,0,0,,baja,0,0.0,,,1592.3,2.06,72.35
+381,La Martinica,Zapopan,20.7451717,-103.36845,OSM (punto de la colonia),node/4831617405,1,0,SI-ZPN-038,alta,1,0.2,44,La Martinica,1541.29,3.07,62.41
+382,La Mesa Colorada Poniente,Zapopan,20.7722702,-103.3477557,OSM (punto de la colonia),node/4831617413,0,0,,baja,0,0.0,,,1583.79,4.64,36.32
+383,La Mora,Zapopan,20.7316289,-103.4249852,OSM (punto de la colonia),node/4831281970,0,0,,baja,0,0.0,,,1620.22,2.11,21.24
+384,La Palmira,Zapopan,20.5951988,-103.4267996,OSM (punto de la colonia),node/4839367064,0,0,,baja,0,0.0,,,1603.47,2.25,45.04
+385,La Palmita,Zapopan,20.729098,-103.3562452,OSM (punto de la colonia),node/4831617556,2,0,SI-ZPN-054;SI-ZPN-061,alta,0,0.0,,,1522.51,2.73,73.34
+386,La Patria Universidad,Zapopan,20.6870775,-103.4169157,OSM (punto de la colonia),node/4831281937,0,0,,baja,0,0.0,,,1625.08,3.4,56.57
+387,La Periquera,Zapopan,20.7717275,-103.4471564,OSM (punto de la colonia),node/4831617218,0,0,,baja,0,0.0,,,1611.83,2.11,44.62
+388,La Tuzanía,Zapopan,20.7355898,-103.412886,OSM (punto de la colonia),node/4783834250,0,0,,baja,0,0.0,,,1604.54,2.05,71.84
+389,La Tuzanía Ejidal,Zapopan,20.7336156,-103.415973,OSM (punto de la colonia),node/4831281966,0,0,,baja,0,0.0,,,1607.15,2.35,68.12
+390,Lagos del Country,Zapopan,20.7153322,-103.3693656,OSM (punto de la colonia),node/4836954927,1,0,SI-GDL-055,alta,1,0.2,15,Lagos del Country,1530.27,2.65,60.94
+391,Las Agujas,Zapopan,20.7439011,-103.5128101,OSM (punto de la colonia),node/1570084670,0,0,,baja,0,0.0,,,1658.39,3.18,21.21
+392,Las Alamedas,Zapopan,20.6360304,-103.4363235,OSM (punto de la colonia),node/4831281758,1,0,SI-ZPN-071,alta,0,0.0,,,1641.31,3.49,48.52
+393,Las Arboledas,Zapopan,20.6292831,-103.4226978,OSM (punto de la colonia),node/4831281754,1,0,SI-ZPN-062,alta,0,0.0,,,1628.88,2.11,47.53
+394,Las Bovédas,Zapopan,20.7349602,-103.424084,OSM (punto de la colonia),node/4831281971,0,0,,baja,0,0.0,,,1617.19,2.29,40.05
+395,Las Cañadas,Zapopan,20.7771983,-103.3724712,OSM (punto de la colonia),node/4719573180,0,0,,baja,0,0.0,,,1443.64,10.43,79.64
+396,Las Cumbres,Zapopan,20.6942338,-103.4319898,OSM (punto de la colonia),node/4831281946,0,0,,baja,0,0.0,,,1638.95,5.11,31.43
+397,Las Cumbres Residencial,Zapopan,20.6582082,-103.4410549,OSM (punto de la colonia),node/4831281818,0,0,,baja,0,0.0,,,1659.75,3.36,53.57
+398,Las Flores,Zapopan,20.6691603,-103.4118403,OSM (punto de la colonia),node/4831281785,0,0,,baja,0,0.0,,,1623.32,2.57,47.98
+399,Las Fuentes,Zapopan,20.6246642,-103.4284056,OSM (punto de la colonia),node/4831281752,0,0,,baja,0,0.0,,,1628.95,2.39,45.13
+400,Las Lomas Golf Habitat,Zapopan,20.7139176,-103.43845,OSM (punto de la colonia),node/4831281960,0,0,,baja,0,0.0,,,1636.25,4.91,49.34
+401,Las Palmas,Zapopan,20.7526097,-103.4007299,OSM (punto de la colonia),node/4831617333,0,0,,baja,0,0.0,,,1595.8,2.63,51.85
+402,Las Palmas II,Zapopan,20.7181277,-103.3984514,OSM (punto de la colonia),node/4831757876,0,0,,baja,0,0.0,,,1562.24,4.31,66.08
+403,Las Palomas,Zapopan,20.736841,-103.4185381,OSM (punto de la colonia),node/4831281968,1,1,SI-ZPN-055;SI-ZPN-055/1,alta,0,0.0,,,1609.33,2.67,71.39
+404,Las Águilas,Zapopan,20.6268013,-103.4143541,OSM (punto de la colonia),node/4839367070,2,0,SI-ZPN-024;SI-ZPN-062,alta,0,0.0,,,1626.32,2.76,72.61
+405,Laureles,Zapopan,20.7337313,-103.3875938,OSM (punto de la colonia),node/4831757687,0,0,,baja,0,0.0,,,1567.65,2.38,60.15
+406,Lindavista,Zapopan,20.7207167,-103.3977433,OSM (punto de la colonia),node/4831757874,0,0,,baja,0,0.0,,,1573.19,4.11,40.24
+407,Loma Blanca,Zapopan,20.7154325,-103.3893427,OSM (punto de la colonia),node/4836954923,0,0,,baja,0,0.0,,,1555.85,4.0,49.08
+408,Loma Bonita,Zapopan,20.634596,-103.3995515,OSM (punto de la colonia),node/4839367077,1,0,SI-ZPN-065,alta,0,0.0,,,1600.11,2.61,56.57
+409,Loma Bonita Ejidal,Zapopan,20.6275042,-103.404269,OSM (punto de la colonia),node/4839367073,1,0,SI-TLQ-025,alta,0,0.0,,,1613.58,3.4,75.54
+410,Loma Bonita Sur,Zapopan,20.6356472,-103.4038399,OSM (punto de la colonia),node/4839367075,2,0,SI-ZPN-014;SI-ZPN-065,alta,0,0.0,,,1606.57,2.75,51.57
+411,Loma Chica,Zapopan,20.8092405,-103.4882907,OSM (punto de la colonia),node/4831617212,0,0,,baja,0,0.0,,,1611.08,2.64,54.56
+412,Loma El Pedregal,Zapopan,20.769131,-103.3394505,OSM (punto de la colonia),node/4831617416,0,0,,baja,0,0.0,,,1525.26,7.27,34.76
+413,Loma Real,Zapopan,20.6884124,-103.4140941,OSM (punto de la colonia),node/4831281935,0,0,,baja,0,0.0,,,1619.89,4.19,51.57
+414,Lomas Altas,Zapopan,20.6859834,-103.4105214,OSM (punto de la colonia),node/4831281933,0,0,,baja,0,0.0,,,1615.28,4.52,53.15
+415,Lomas Universidad,Zapopan,20.6853409,-103.4329761,OSM (punto de la colonia),node/4831281930,1,0,SI-ZPN-057,alta,0,0.0,,,1648.26,2.81,48.6
+416,Lomas de Atemajac,Zapopan,20.7156734,-103.3649453,OSM (punto de la colonia),node/4836954928,2,0,SI-GDL-055;SI-ZPN-053,alta,0,0.0,,,1526.73,2.61,56.0
+417,Lomas de Guadalupe,Zapopan,20.6683773,-103.4174193,OSM (punto de la colonia),node/4831281792,0,0,,baja,0,0.0,,,1628.98,2.38,51.96
+418,Lomas de San Gonzalo,Zapopan,20.7721737,-103.4381525,OSM (punto de la colonia),node/4831617220,0,0,,baja,0,0.0,,,1605.92,3.98,21.49
+419,Lomas de Tabachines,Zapopan,20.7497072,-103.3588728,OSM (punto de la colonia),node/13910351589,0,0,,baja,0,0.0,,,1548.03,7.08,35.55
+420,Lomas de Zapopan,Zapopan,20.7442974,-103.4004027,OSM (punto de la colonia),node/4831617331,0,0,,baja,0,0.0,,,1600.09,2.94,30.05
+421,Lomas de la Primavera,Zapopan,20.6419743,-103.4780801,OSM (punto de la colonia),node/4831281722,0,0,,baja,0,0.0,,,1732.46,5.86,47.92
+422,Lomas del Batán,Zapopan,20.7251293,-103.3517807,OSM (punto de la colonia),node/4831617554,2,0,SI-ZPN-054;SI-ZPN-061,alta,0,0.0,,,1516.36,2.94,56.28
+423,Lomas del Bosque,Zapopan,20.7141985,-103.4051295,OSM (punto de la colonia),node/4836954918,1,0,SI-ZPN-056,alta,0,0.0,,,1564.92,4.15,50.89
+424,Lomas del Centinela,Zapopan,20.7619528,-103.3633648,OSM (punto de la colonia),node/4831617410,0,0,,baja,0,0.0,,,1626.88,7.03,21.69
+425,Lomas del Colli,Zapopan,20.6608283,-103.4516013,OSM (punto de la colonia),node/4831280816,0,0,,baja,0,0.0,,,1695.89,5.08,75.04
+426,Lomas del Refugio,Zapopan,20.7436844,-103.3366134,OSM (punto de la colonia),node/4831617542,0,0,,baja,0,0.0,,,1448.76,7.91,51.17
+427,Lomas del Seminario,Zapopan,20.6678955,-103.423127,OSM (punto de la colonia),node/4831281791,1,0,SI-ZPN-023,alta,0,0.0,,,1635.48,2.29,52.61
+428,Lomas del Valle,Zapopan,20.6899281,-103.4019061,OSM (punto de la colonia),node/4831281934,1,0,SI-ZPN-009,alta,0,0.0,,,1596.93,5.38,61.0
+429,Los Almendros,Zapopan,20.7676631,-103.3938581,OSM (punto de la colonia),node/4831617344,0,0,,baja,0,0.0,,,1593.57,4.61,30.7
+430,Los Cajetes,Zapopan,20.5896348,-103.4261129,OSM (punto de la colonia),node/4839367063,0,0,,baja,0,0.0,,,1602.56,2.2,35.61
+431,Los Castaños,Zapopan,20.6969737,-103.4442743,OSM (punto de la colonia),node/4831281951,0,0,,baja,0,0.0,,,1657.37,5.27,48.69
+432,Los Frailes,Zapopan,20.7243819,-103.4135736,OSM (punto de la colonia),node/4831757705,0,0,,baja,0,0.0,,,1590.18,4.07,49.65
+433,Los Girasoles,Zapopan,20.7281469,-103.4242881,OSM (punto de la colonia),node/4831281963,0,0,,baja,0,0.0,,,1617.77,3.37,20.76
+434,Los Guayabos,Zapopan,20.777203,-103.4133095,OSM (punto de la colonia),node/4831617341,0,0,,baja,0,0.0,,,1581.85,5.18,51.74
+435,Los Jales,Zapopan,20.7218289,-103.4018923,OSM (punto de la colonia),way/546452880,0,0,,baja,0,0.0,,,1569.87,4.18,64.67
+436,Los Maestros,Zapopan,20.7231394,-103.3782813,OSM (punto de la colonia),node/4836954934,0,0,,baja,0,0.0,,,1553.27,2.43,44.56
+437,Los Mandarinos Residencial,Zapopan,20.7497394,-103.4373663,OSM (punto de la colonia),node/4831281986,0,0,,baja,0,0.0,,,1621.96,2.39,50.61
+438,Los Manzanos,Zapopan,20.7877168,-103.4857158,OSM (punto de la colonia),node/4831617204,0,0,,baja,0,0.0,,,1593.51,2.58,56.71
+439,Los Olivos,Zapopan,20.6562715,-103.4215205,OSM (punto de la colonia),node/13590969801,0,0,,baja,0,0.0,,,1631.08,3.04,47.11
+440,Los Periodistas,Zapopan,20.6172134,-103.4282339,OSM (punto de la colonia),node/4831281751,3,4,SI-ZPN-028;SI-ZPN-028/1;SI-ZPN-028/2;SI-ZPN-043;SI-ZPN-043/1;SI-ZPN-066;SI-ZPN-066/1,alta,0,0.0,,,1619.7,2.77,60.21
+441,Los Pinos 2,Zapopan,20.6090995,-103.4414518,OSM (punto de la colonia),node/4831281737,1,0,SI-ZPN-077,alta,0,0.0,,,1631.74,2.99,60.18
+442,Los Robles,Zapopan,20.7548219,-103.420825,OSM (punto de la colonia),node/4831617328,0,0,,baja,0,0.0,,,1630.63,3.47,46.99
+443,Los Ángeles,Zapopan,20.7882785,-103.4961657,OSM (punto de la colonia),node/4831617206,0,0,,baja,0,0.0,,,1592.34,2.58,77.63
+444,Magisterial Valle de San Isidro,Zapopan,20.7595572,-103.3928496,OSM (punto de la colonia),node/4831617348,0,0,,baja,0,0.0,,,1588.89,3.23,52.89
+445,Marcelino García Barragán,Zapopan,20.7756999,-103.4416203,OSM (punto de la colonia),node/4831617217,0,0,,baja,0,0.0,,,1603.69,3.55,27.03
+446,Mesa Colorada Oriente,Zapopan,20.764009,-103.3371337,OSM (punto de la colonia),node/4831617417,0,0,,baja,0,0.0,,,1520.73,5.34,18.33
+447,Mesa de los Ocotes,Zapopan,20.7639172,-103.3514862,OSM (punto de la colonia),node/4831617414,0,0,,baja,1,0.2,24,Mesa de los Ocotes,1573.11,6.69,32.73
+448,Miguel Hidalgo,Zapopan,20.7467691,-103.3388419,OSM (punto de la colonia),node/4831617522,0,0,,baja,0,0.0,,,1474.75,5.4,25.33
+449,Miguel de la Madrid,Zapopan,20.6062877,-103.4351862,OSM (punto de la colonia),node/4831281738,1,0,SI-ZPN-077,alta,0,0.0,,,1618.89,2.62,58.57
+450,Mirador Escondido,Zapopan,20.764725,-103.3297906,OSM (punto de la colonia),node/4831617418,0,0,,baja,0,0.0,,,1485.56,8.9,7.99
+451,Mirador San Isidro,Zapopan,20.7575407,-103.3904678,OSM (punto de la colonia),node/4831617349,0,0,,baja,0,0.0,,,1584.65,3.66,42.87
+452,Mirador del Sol,Zapopan,20.652516,-103.4210241,OSM (punto de la colonia),node/4831281764,0,0,,baja,0,0.0,,,1627.37,2.9,52.98
+453,Miralto Residencial,Zapopan,20.7595283,-103.4065321,OSM (punto de la colonia),node/12000046747,0,0,,baja,0,0.0,,,1619.15,6.06,61.62
+454,Miramar,Zapopan,20.6419743,-103.4538329,OSM (punto de la colonia),node/4831280820,0,0,,baja,1,0.2,34,Miramar,1666.73,2.04,37.22
+455,Misión del Bosque,Zapopan,20.7628578,-103.3891696,OSM (punto de la colonia),node/4831617346,0,0,,baja,0,0.0,,,1593.18,3.22,36.8
+456,Misión del Valle,Zapopan,20.7519968,-103.4398554,OSM (punto de la colonia),node/4831281978,0,0,,baja,0,0.0,,,1621.75,2.34,51.0
+457,Moctezuma,Zapopan,20.6524959,-103.4309698,OSM (punto de la colonia),node/4831281799,0,0,,baja,0,0.0,,,1639.77,2.71,50.41
+458,Moctezuma Poniente,Zapopan,20.6482492,-103.4347034,OSM (punto de la colonia),node/4831281807,0,0,,baja,0,0.0,,,1639.78,2.63,72.44
+459,Molino del Salvador,Zapopan,20.7262953,-103.3360146,OSM (punto de la colonia),node/4831617549,1,0,SI-GDL-072,alta,0,0.0,,,1490.52,6.0,55.94
+460,Monte Verde 2,Zapopan,20.6262767,-103.4756848,OSM (punto de la colonia),node/6001701903,0,0,,baja,0,0.0,,,1704.36,3.05,75.37
+461,Novaterra,Zapopan,20.7306354,-103.4348238,OSM (punto de la colonia),node/4831281954,0,0,,baja,0,0.0,,,1631.26,2.18,43.63
+462,Nueva España,Zapopan,20.7432346,-103.3437111,OSM (punto de la colonia),node/4831617541,1,1,SI-ZPN-068;SI-ZPN-068/1,alta,0,0.0,,,1464.96,6.05,77.72
+463,Nueva Galicia,Zapopan,20.6554675,-103.4419132,OSM (punto de la colonia),node/4831281815,0,0,,baja,0,0.0,,,1658.69,3.06,53.18
+464,Nueva Primavera,Zapopan,20.6515622,-103.4290386,OSM (punto de la colonia),node/4831281804,0,0,,baja,0,0.0,,,1636.19,2.7,55.86
+465,Nuevo Vergel,Zapopan,20.7537461,-103.3626383,OSM (punto de la colonia),node/4831617408,0,0,,baja,0,0.0,,,1577.38,5.72,44.51
+466,Núcleo Universitario Belenes UDG,Zapopan,20.741551,-103.378402,OSM (punto de la colonia),way/1347391531,1,0,SI-ZPN-036,alta,0,0.0,,,1555.54,3.44,51.4
+467,Olivos Residencial,Zapopan,20.7352912,-103.4589637,OSM (punto de la colonia),node/4831281958,0,0,,baja,0,0.0,,,1642.19,2.41,46.63
+468,Paraísos del Colli,Zapopan,20.6500061,-103.450271,OSM (punto de la colonia),node/4831280819,0,0,,baja,0,0.0,,,1665.64,2.3,87.04
+469,Parque Guadalupe,Zapopan,20.6611897,-103.4429753,OSM (punto de la colonia),node/4831280814,0,0,,baja,0,0.0,,,1665.27,3.72,61.59
+470,Parque Real,Zapopan,20.7436192,-103.4363471,OSM (punto de la colonia),node/4831281993,0,0,,baja,0,0.0,,,1624.37,3.16,51.57
+471,Parque Regency,Zapopan,20.6880411,-103.4301766,OSM (punto de la colonia),node/4831281941,1,0,SI-ZPN-057,alta,0,0.0,,,1645.51,2.62,27.45
+472,Parque Sereno,Zapopan,20.6621334,-103.4399069,OSM (punto de la colonia),node/4831280812,0,0,,baja,0,0.0,,,1659.76,4.26,52.56
+473,Parque de La Castellana,Zapopan,20.6902391,-103.4344145,OSM (punto de la colonia),node/4831281942,0,0,,baja,0,0.0,,,1650.97,2.82,23.95
+474,Parques Tepeyac,Zapopan,20.6486809,-103.4423638,OSM (punto de la colonia),node/4831281809,0,0,,baja,0,0.0,,,1652.49,3.0,58.12
+475,Parques de Tesistán,Zapopan,20.7972053,-103.4684853,OSM (punto de la colonia),node/4831617201,1,0,SI-ZPN-002,alta,0,0.0,,,1590.87,3.11,60.41
+476,Parques de Zapopan,Zapopan,20.7454553,-103.4171746,OSM (punto de la colonia),node/4831281965,0,0,,baja,0,0.0,,,1619.83,3.11,61.71
+477,Parques del Centinela,Zapopan,20.7591359,-103.3872384,OSM (punto de la colonia),node/4831617350,0,0,,baja,0,0.0,,,1584.2,3.56,44.68
+478,Paseos Universidad,Zapopan,20.6884125,-103.4353364,OSM (punto de la colonia),node/4831281928,0,0,,baja,0,0.0,,,1652.24,2.73,38.07
+479,Paseos del Briseño,Zapopan,20.6165306,-103.4373534,OSM (punto de la colonia),node/4831281741,2,0,SI-ZPN-044;SI-ZPN-067,alta,1,0.2,29,Paseos del Briseño,1628.44,2.61,54.87
+480,Paseos del Camichín,Zapopan,20.7543103,-103.4054559,OSM (punto de la colonia),node/4831617334,0,0,,baja,0,0.0,,,1607.64,3.58,54.25
+481,Paseos del Parque,Zapopan,20.6699945,-103.445249,OSM (punto de la colonia),node/4783834231,0,0,,baja,0,0.0,,,1675.69,4.88,43.35
+482,Paseos del Sol,Zapopan,20.6384401,-103.4301222,OSM (punto de la colonia),node/4831281757,0,0,,baja,0,0.0,,,1633.21,2.58,58.06
+483,Pedro Moreno,Zapopan,20.7284233,-103.3589371,OSM (punto de la colonia),node/4831617570,0,0,,baja,0,0.0,,,1525.7,2.59,76.16
+484,Pinar de la Calma,Zapopan,20.6192201,-103.4176372,OSM (punto de la colonia),node/4839367068,0,0,,baja,0,0.0,,,1632.58,3.52,81.25
+485,Pirámides,Zapopan,20.627054,-103.4338987,OSM (punto de la colonia),node/4831281753,4,0,SI-ZPN-026;SI-ZPN-027;SI-ZPN-030;SI-ZPN-041,alta,0,0.0,,,1632.4,2.72,59.42
+486,Placita del Sol,Zapopan,20.7601692,-103.4200257,OSM (punto de la colonia),node/4831617337,0,0,,baja,0,0.0,,,1638.32,3.88,45.33
+487,Plaza Guadalupe,Zapopan,20.6561755,-103.4355642,OSM (punto de la colonia),node/4831281798,0,0,,baja,0,0.0,,,1650.05,2.94,42.16
+488,Pontevedra,Zapopan,20.7141028,-103.4118894,OSM (punto de la colonia),node/4836954942,0,0,,baja,0,0.0,,,1574.1,4.03,62.36
+489,Portalegre,Zapopan,20.7287691,-103.454243,OSM (punto de la colonia),node/4831281956,0,0,,baja,0,0.0,,,1647.72,2.44,48.18
+490,Praderas de San Antonio,Zapopan,20.7663304,-103.4552674,OSM (punto de la colonia),node/4831617195,0,0,,baja,0,0.0,,,1617.97,1.97,37.84
+491,Praderas del Centinela,Zapopan,20.7656429,-103.3850604,OSM (punto de la colonia),node/4831617394,0,0,,baja,0,0.0,,,1591.52,5.19,33.38
+492,Prados Guadalupe,Zapopan,20.6731756,-103.4206808,OSM (punto de la colonia),node/4831281786,0,0,,baja,0,0.0,,,1634.88,2.31,40.5
+493,Prados Tepeyac,Zapopan,20.6565116,-103.4128702,OSM (punto de la colonia),node/4831281763,0,0,,baja,0,0.0,,,1619.6,2.39,46.48
+494,Prados Vallarta,Zapopan,20.67699,-103.4181917,OSM (punto de la colonia),node/4831281784,0,0,,baja,0,0.0,,,1631.79,2.54,57.02
+495,Prados de Nextipac,Zapopan,20.7905654,-103.5070018,OSM (punto de la colonia),node/4831617207,0,0,,baja,0,0.0,,,1600.64,2.66,54.39
+496,Primavera Norte,Zapopan,20.6536705,-103.4279013,OSM (punto de la colonia),node/4831281800,0,0,,baja,0,0.0,,,1637.24,2.65,42.53
+497,Puerta Plata,Zapopan,20.7069024,-103.4183749,OSM (punto de la colonia),node/4836954944,0,0,,baja,0,0.0,,,1588.04,3.84,66.31
+498,Puerta de Hierro,Zapopan,20.7176877,-103.419173,OSM (punto de la colonia),node/4783829112,0,0,,baja,0,0.0,,,1592.16,4.0,56.23
+499,Puerta del Bosque,Zapopan,20.7002907,-103.419764,OSM (punto de la colonia),node/4838888306,0,0,,baja,0,0.0,,,1601.35,5.15,65.74
+500,Puerta del Valle,Zapopan,20.7251366,-103.4201682,OSM (punto de la colonia),node/4831281961,0,0,,baja,0,0.0,,,1603.09,4.08,46.29
+501,Puertas del Tule,Zapopan,20.6941134,-103.4509791,OSM (punto de la colonia),node/4831281927,0,0,,baja,0,0.0,,,1673.83,4.15,34.03
+502,Puesta del Sol,Zapopan,20.6932201,-103.4369143,OSM (punto de la colonia),node/4831281944,0,0,,baja,0,0.0,,,1652.04,3.83,27.48
+503,Punta Valdepeñas 1,Zapopan,20.7594206,-103.4060961,OSM (punto de la colonia),node/12000067101,0,0,,baja,0,0.0,,,1615.93,5.77,65.69
+504,Punta Valdepeñas 2,Zapopan,20.7598808,-103.4048213,OSM (punto de la colonia),node/12000048404,0,0,,baja,0,0.0,,,1610.99,5.1,65.94
+505,Punta de Otero,Zapopan,20.623935,-103.4654516,OSM (punto de la colonia),way/636433094,0,0,,baja,0,0.0,,,1692.56,5.72,73.6
+506,Quintas de la Soberana,Zapopan,20.7326323,-103.418505,OSM (punto de la colonia),node/4831281967,0,0,,baja,0,0.0,,,1611.02,2.51,49.34
+507,Quintas del Bosque,Zapopan,20.7595844,-103.3803678,OSM (punto de la colonia),node/4831617396,0,0,,baja,0,0.0,,,1579.57,4.41,52.78
+508,Quintas del Valle,Zapopan,20.7563911,-103.4366367,OSM (punto de la colonia),node/4831281976,1,2,SI-ZPN-033;SI-ZPN-033/1;SI-ZPN-033/2,alta,0,0.0,,,1617.82,2.09,41.01
+509,Real Guadalupe,Zapopan,20.6592772,-103.4381444,OSM (punto de la colonia),node/5939551150,0,0,,baja,0,0.0,,,1654.93,3.69,52.5
+510,Real San Bernardo,Zapopan,20.704256,-103.4087958,OSM (punto de la colonia),node/4838888308,0,0,,baja,0,0.0,,,1577.91,3.02,78.93
+511,Real San Javier,Zapopan,20.7041054,-103.4053197,OSM (punto de la colonia),node/4838888309,0,0,,baja,0,0.0,,,1573.1,3.24,73.54
+512,Real Vallarta,Zapopan,20.6764881,-103.423878,OSM (punto de la colonia),node/4831281788,0,0,,baja,0,0.0,,,1639.74,2.38,36.71
+513,Real de Tesistán,Zapopan,20.7845672,-103.473957,OSM (punto de la colonia),node/4831617198,0,0,,baja,0,0.0,,,1597.74,2.21,55.97
+514,Real de Valdepeñas,Zapopan,20.7584838,-103.4047478,OSM (punto de la colonia),node/4831617335,0,0,,baja,0,0.0,,,1608.91,4.97,69.05
+515,Real del Bosque,Zapopan,20.7154074,-103.4131446,OSM (punto de la colonia),node/4836954941,0,0,,baja,0,0.0,,,1576.61,4.13,56.37
+516,República,Zapopan,20.7242489,-103.3983333,OSM (punto de la colonia),node/4831757873,0,0,,baja,0,0.0,,,1582.86,3.17,20.76
+517,Reserva Esmeralda,Zapopan,20.7610606,-103.4061946,OSM (punto de la colonia),node/12000051948,0,0,,baja,0,0.0,,,1621.02,6.19,47.95
+518,Residencial Hacienda Tabachines,Zapopan,20.7415709,-103.360447,OSM (punto de la colonia),way/1346987160,1,0,SI-ZPN-069,alta,0,0.0,,,1527.55,2.93,61.51
+519,Residencial La Peña,Zapopan,20.6265844,-103.4641611,OSM (punto de la colonia),way/636715676,0,0,,baja,0,0.0,,,1680.29,3.22,70.4
+520,Residencial Plaza Guadalupe,Zapopan,20.6581187,-103.4436589,OSM (punto de la colonia),node/5997077407,0,0,,baja,0,0.0,,,1664.81,3.34,57.89
+521,Residencial Poniente,Zapopan,20.727003,-103.4298027,OSM (punto de la colonia),node/4831281962,0,0,,baja,0,0.0,,,1625.23,2.81,34.88
+522,Residencial Tepeyac del Sol,Zapopan,20.6518978,-103.4373153,OSM (punto de la colonia),node/6038218211,0,0,,baja,0,0.0,,,1646.25,2.85,70.52
+523,Residencial Tesistán,Zapopan,20.8064925,-103.4820036,OSM (punto de la colonia),node/4831617210,0,0,,baja,0,0.0,,,1603.84,2.7,54.62
+524,Residencial Victoria,Zapopan,20.6451653,-103.4011577,OSM (punto de la colonia),node/4839367079,1,0,SI-ZPN-031,alta,0,0.0,,,1605.54,3.03,43.83
+525,Rinconada La Calma,Zapopan,20.6313398,-103.4099124,OSM (punto de la colonia),node/4839367072,0,0,,baja,0,0.0,,,1615.82,2.77,68.26
+526,Rinconada La Joya,Zapopan,20.6361292,-103.4104059,OSM (punto de la colonia),node/4839367076,1,0,SI-ZPN-014,alta,0,0.0,,,1615.19,2.97,50.07
+527,Rinconada de Los Fresnos,Zapopan,20.7460472,-103.4352313,OSM (punto de la colonia),node/4831281992,0,0,,baja,0,0.0,,,1622.49,3.1,54.7
+528,Rinconada de la Azalea,Zapopan,20.7356077,-103.38533,OSM (punto de la colonia),node/4831757685,1,0,SI-ZPN-059,alta,0,0.0,,,1565.1,2.65,58.49
+529,Rinconada del Aire,Zapopan,20.7500504,-103.442602,OSM (punto de la colonia),node/4831281983,0,0,,baja,0,0.0,,,1624.15,2.3,47.64
+530,Rinconada del Camichín,Zapopan,20.7602394,-103.4007353,OSM (punto de la colonia),node/4831617336,0,0,,baja,0,0.0,,,1597.61,3.51,69.33
+531,Rinconada del Sol,Zapopan,20.6524541,-103.3989261,OSM (punto de la colonia),node/4839367080,4,2,SI-GDL-051;SI-GDL-051/1;SI-ZPN-001;SI-ZPN-001/1;SI-ZPN-031;SI-ZPN-034,alta,2,0.4,23;26,Rinconada del Sol,1600.89,3.38,67.1
+532,Rinconada del Valle,Zapopan,20.6579773,-103.4183419,OSM (punto de la colonia),node/4831281771,0,0,,baja,0,0.0,,,1627.79,2.83,44.93
+533,Roberto Orozco,Zapopan,20.8036242,-103.485115,OSM (punto de la colonia),node/4831617208,0,0,,baja,0,0.0,,,1601.33,2.43,45.24
+534,Royal Country,Zapopan,20.7070429,-103.4233102,OSM (punto de la colonia),node/4836954943,0,0,,baja,0,0.0,,,1601.88,4.59,57.53
+535,San Bernardo,Zapopan,20.7050187,-103.4109631,OSM (punto de la colonia),node/4838888307,0,0,,baja,0,0.0,,,1578.4,2.99,83.45
+536,San Francisco,Zapopan,20.72746,-103.4021421,OSM (punto de la colonia),node/4831757872,0,0,,baja,0,0.0,,,1586.33,3.7,32.59
+537,San Francisco II,Zapopan,20.7506584,-103.3930534,OSM (punto de la colonia),node/4831617352,1,0,SI-ZPN-010,alta,0,0.0,,,1577.7,3.0,77.58
+538,San Isidro Ejidal,Zapopan,20.7300639,-103.3980437,OSM (punto de la colonia),node/4831757691,0,0,,baja,0,0.0,,,1584.51,1.88,41.2
+539,San Isidro Residencial,Zapopan,20.7564633,-103.3857672,OSM (punto de la colonia),node/4831617392,0,0,,baja,0,0.0,,,1575.65,3.57,55.92
+540,San José Ejidal,Zapopan,20.8107248,-103.4627454,OSM (punto de la colonia),node/4831617214,0,0,,baja,0,0.0,,,1598.59,2.36,58.97
+541,San José del Bajío II,Zapopan,20.7326326,-103.4033437,OSM (punto de la colonia),node/4831757693,0,0,,baja,0,0.0,,,1590.63,2.15,59.9
+542,San Miguel de la Colina,Zapopan,20.7160948,-103.3863815,OSM (punto de la colonia),node/4836954924,1,0,SI-ZPN-063,alta,0,0.0,,,1555.94,3.68,41.46
+543,San Wenceslao,Zapopan,20.6994386,-103.4099546,OSM (punto de la colonia),node/4838888311,0,0,,baja,0,0.0,,,1599.57,4.99,51.31
+544,Santa Catalina,Zapopan,20.651261,-103.4248114,OSM (punto de la colonia),node/4831281802,0,0,,baja,0,0.0,,,1630.66,2.87,56.54
+545,Santa Fe,Zapopan,20.7136061,-103.3922395,OSM (punto de la colonia),node/4836954921,1,0,SI-ZPN-012,alta,0,0.0,,,1549.31,4.36,72.24
+546,Santa Isabel,Zapopan,20.7070027,-103.4092125,OSM (punto de la colonia),node/4836954945,1,0,SI-ZPN-056,alta,0,0.0,,,1572.22,2.88,78.2
+547,Santa Margarita,Zapopan,20.7306054,-103.4189771,OSM (punto de la colonia),node/4831281964,0,0,,baja,1,0.2,21,Santa Margarita,1613.01,2.29,30.27
+548,Santa Margarita Residencial,Zapopan,20.7363649,-103.4201358,OSM (punto de la colonia),node/4831281969,1,1,SI-ZPN-055;SI-ZPN-055/1,alta,0,0.0,,,1611.69,2.7,54.5
+549,Santa María del Pueblito,Zapopan,20.6792732,-103.4366175,OSM (punto de la colonia),node/4783834243,0,0,,baja,0,0.0,,,1654.89,3.56,44.82
+550,Santa Paula,Zapopan,20.7241486,-103.3642586,OSM (punto de la colonia),node/4831617573,0,0,,baja,0,0.0,,,1536.3,2.35,34.71
+551,Seattle,Zapopan,20.7199684,-103.3763286,OSM (punto de la colonia),node/4836954932,0,0,,baja,0,0.0,,,1548.6,2.63,33.35
+552,Sevilla,Zapopan,20.6534797,-103.4423745,OSM (punto de la colonia),node/4831281812,0,0,,baja,0,0.0,,,1656.79,2.92,58.77
+553,Sol Real,Zapopan,20.7304749,-103.4543717,OSM (punto de la colonia),node/4831281955,0,0,,baja,0,0.0,,,1645.72,2.5,49.03
+554,Solares Residencial,Zapopan,20.7240698,-103.4586066,OSM (punto de la colonia),node/4783829116,0,0,,baja,0,0.0,,,1654.33,2.56,49.2
+555,Tepeyac,Zapopan,20.7246044,-103.3839783,OSM (punto de la colonia),node/4836954935,2,0,SI-ZPN-072;SI-ZPN-073,alta,0,0.0,,,1563.08,2.54,47.7
+556,Tepeyac Casino,Zapopan,20.6598847,-103.4152949,OSM (punto de la colonia),node/4831281772,0,0,,baja,0,0.0,,,1623.92,2.5,52.41
+557,Trento,Zapopan,20.6225859,-103.4683506,OSM (punto de la colonia),way/634056084,0,0,,baja,0,0.0,,,1712.54,7.63,71.11
+558,UAG,Zapopan,20.7234888,-103.405645,OSM (punto de la colonia),node/4831757870,0,0,,baja,0,0.0,,,1573.87,4.68,67.35
+559,Unidad Cadete Francisco Márquez,Zapopan,20.6353132,-103.4224391,OSM (punto de la colonia),node/4831281755,0,0,,baja,0,0.0,,,1627.58,2.1,36.71
+560,Vallarta La Patria,Zapopan,20.6764078,-103.4213889,OSM (punto de la colonia),node/4831281787,0,0,,baja,0,0.0,,,1636.36,2.33,43.15
+561,Vallarta Universidad,Zapopan,20.6879507,-103.4275051,OSM (punto de la colonia),node/4831281940,1,0,SI-ZPN-057,alta,0,0.0,,,1642.19,2.72,28.72
+562,Valle Esmeralda,Zapopan,20.7317793,-103.443728,OSM (punto de la colonia),node/4831281953,0,0,,baja,0,0.0,,,1639.01,2.8,50.47
+563,Valle Imperial,Zapopan,20.76831,-103.44504,OSM/Nominatim: calle Valle Imperial,,1,0,SI-ZPN-035,alta,1,0.2,7,Valle Imperial,1614.13,1.74,42.25
+564,Valle Real,Zapopan,20.724104,-103.4500249,OSM (punto de la colonia),node/4783834221,0,0,,baja,0,0.0,,,1650.76,2.89,41.99
+565,Valle de San Isidro,Zapopan,20.7547015,-103.3896095,OSM (punto de la colonia),node/4831617351,0,0,,baja,0,0.0,,,1577.29,3.68,54.56
+566,"Valle de San Nicolas, 3a sección",Zapopan,20.6289919,-103.4689884,OSM (punto de la colonia),node/11264863739,0,0,,baja,0,0.0,,,1686.5,3.08,71.05
+567,Valle de San Nicolás,Zapopan,20.6281987,-103.460399,OSM (punto de la colonia),node/4831281727,1,1,SI-ZPN-042;SI-ZPN-042/1,alta,0,0.0,,,1670.69,2.82,68.23
+568,Valles de Nuevo México,Zapopan,20.7699017,-103.4446029,OSM (punto de la colonia),node/4831617219,1,0,SI-ZPN-035,alta,0,0.0,,,1612.77,1.88,40.47
+569,Venustiano Carranza,Zapopan,20.7243743,-103.360718,OSM (punto de la colonia),node/4831617572,0,0,,baja,0,0.0,,,1530.21,2.48,42.36
+570,Vicente Guerrero,Zapopan,20.7669426,-103.4366744,OSM (punto de la colonia),node/4831617324,0,0,,baja,0,0.0,,,1606.59,2.66,37.11
+571,Villa Bonita,Zapopan,20.6234191,-103.4486402,OSM (punto de la colonia),node/4831281749,2,3,SI-ZPN-039;SI-ZPN-039/1;SI-ZPN-045;SI-ZPN-045/1;SI-ZPN-045/2,alta,0,0.0,,,1648.72,3.13,61.79
+572,Villa Coral,Zapopan,20.7195025,-103.4003074,OSM (punto de la colonia),node/4831757875,0,0,,baja,0,0.0,,,1563.94,4.2,69.1
+573,Villa Fontana Diamante,Zapopan,20.7760457,-103.4742132,OSM (punto de la colonia),way/1505400253,0,0,,baja,0,0.0,,,1606.24,2.31,50.24
+574,Villa La Cima,Zapopan,20.6924874,-103.4275588,OSM (punto de la colonia),node/4831281948,0,0,,baja,0,0.0,,,1634.62,4.78,36.97
+575,Villa Magna,Zapopan,20.7174955,-103.396209,OSM (punto de la colonia),node/4831757877,0,0,,baja,0,0.0,,,1561.97,4.3,59.22
+576,Villa Puerta del Sol,Zapopan,20.6517429,-103.4271932,OSM (punto de la colonia),node/4831281803,0,0,,baja,0,0.0,,,1633.98,2.74,56.48
+577,Villa Universitaria,Zapopan,20.6937178,-103.4148469,OSM (punto de la colonia),node/4838888312,0,0,,baja,0,0.0,,,1624.45,3.2,15.48
+578,Villa de La Primavera,Zapopan,20.6341227,-103.4729303,OSM (punto de la colonia),node/4831281724,0,0,,baja,0,0.0,,,1693.18,2.83,68.4
+579,Villas Belenes,Zapopan,20.73039,-103.3813496,OSM (punto de la colonia),node/4831757686,1,0,SI-ZPN-059,alta,0,0.0,,,1557.1,2.99,70.01
+580,Villas Mirador,Zapopan,20.7606608,-103.3904678,OSM (punto de la colonia),node/4831617347,0,0,,baja,0,0.0,,,1590.28,3.45,41.65
+581,Villas Perisur,Zapopan,20.6245437,-103.4441555,OSM (punto de la colonia),node/4831281748,1,1,SI-ZPN-039;SI-ZPN-039/1,alta,0,0.0,,,1641.22,3.28,59.64
+582,Villas San Ignacio,Zapopan,20.7340825,-103.372155,OSM (punto de la colonia),node/4831757683,0,0,,baja,0,0.0,,,1549.73,3.54,43.94
+583,Villas Torremolinos,Zapopan,20.750859,-103.39948,OSM (punto de la colonia),node/4831617332,0,0,,baja,0,0.0,,,1592.6,2.49,63.57
+584,Villas Vallarta,Zapopan,20.6857627,-103.4355939,OSM (punto de la colonia),node/4831281929,0,0,,baja,0,0.0,,,1651.4,2.75,53.97
+585,Villas de Guadalupe,Zapopan,20.7546702,-103.344638,OSM (punto de la colonia),way/1346988102,0,0,,baja,0,0.0,,,1508.12,6.31,50.97
+586,Villas de Nuevo México,Zapopan,20.7634262,-103.4283925,OSM (punto de la colonia),node/4831617327,0,0,,baja,0,0.0,,,1610.58,3.73,54.79
+587,Villas de la Loma,Zapopan,20.7788898,-103.4520702,OSM (punto de la colonia),node/4831617216,0,0,,baja,0,0.0,,,1606.38,2.83,50.41
+588,Villas del Ixtepete,Zapopan,20.6224752,-103.4435332,OSM (punto de la colonia),node/4831281747,1,1,SI-ZPN-039;SI-ZPN-039/1,alta,0,0.0,,,1639.48,3.27,61.73
+589,Villas del Marquéz,Zapopan,20.7346413,-103.3446732,OSM (punto de la colonia),node/4831617539,0,0,,baja,0,0.0,,,1510.99,3.35,1.98
+590,Villas del Otero,Zapopan,20.6271289,-103.4634813,OSM (punto de la colonia),way/636715677,1,1,SI-ZPN-042;SI-ZPN-042/1,alta,0,0.0,,,1678.05,3.13,69.95
+591,Villas del Río,Zapopan,20.7186494,-103.3442674,OSM (punto de la colonia),node/4831617555,1,0,SI-GDL-064,alta,0,0.0,,,1506.3,2.78,54.19
+592,Villas del Tepeyac,Zapopan,20.6541925,-103.4264207,OSM (punto de la colonia),node/4831281801,0,0,,baja,0,0.0,,,1635.91,2.75,43.97
+593,Virreyes,Zapopan,20.6939226,-103.4404226,OSM (punto de la colonia),node/4831281943,0,0,,baja,0,0.0,,,1654.6,4.37,40.05
+594,Vista Hermosa,Zapopan,20.759768,-103.3342279,OSM (punto de la colonia),node/4831617420,0,0,,baja,0,0.0,,,1503.04,5.0,22.71
+595,Vista del Pinar,Zapopan,20.6545439,-103.4443594,OSM (punto de la colonia),node/4831281813,0,0,,baja,0,0.0,,,1661.77,3.08,57.07
+596,Vistas de Tesistán,Zapopan,20.8151575,-103.4855334,OSM (punto de la colonia),node/4831617211,0,0,,baja,0,0.0,,,1625.02,3.77,53.71
+597,Vistas del Sol,Zapopan,20.6117908,-103.4592403,OSM (punto de la colonia),node/4831281731,0,0,,baja,0,0.0,,,1745.42,11.15,34.43
+598,Viveros del Valle,Zapopan,20.7486257,-103.4360252,OSM (punto de la colonia),node/4831281985,0,0,,baja,0,0.0,,,1621.92,2.72,51.48
+599,Volcán del Colli,Zapopan,20.6618924,-103.4555925,OSM (punto de la colonia),node/4831280817,0,0,,baja,0,0.0,,,1749.66,12.36,70.43
+600,Víctor Hugo,Zapopan,20.7252486,-103.3410311,OSM (punto de la colonia),node/4831617550,0,0,,baja,0,0.0,,,1501.97,3.2,56.85
+601,Zapopan Centro,Zapopan,20.7245541,-103.3929027,OSM (punto de la colonia),node/4831757690,0,0,,baja,0,0.0,,,1580.59,2.0,15.05
+602,Zapopan II,Zapopan,20.7632892,-103.3946198,OSM (punto de la colonia),node/4831617343,0,0,,baja,0,0.0,,,1593.6,2.87,53.09
+603,Zenith Norte,Zapopan,20.7608023,-103.4022544,OSM (punto de la colonia),node/12000048407,0,0,,baja,0,0.0,,,1602.69,3.86,62.16
+604,Zoquipan,Zapopan,20.7177807,-103.3678743,OSM (punto de la colonia),node/4836954930,1,0,SI-GDL-055,alta,1,0.2,41,Zoquipan,1534.1,2.57,45.27
+605,Zotogrande,Zapopan,20.7218306,-103.4026892,OSM (punto de la colonia),node/4831757871,0,0,,baja,0,0.0,,,1568.66,4.36,70.26
