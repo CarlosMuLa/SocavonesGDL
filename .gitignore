@@ -21,6 +21,7 @@ data/imeplan/*/
 data/imeplan/*/*.pdf
 data/interim/*
 data/imeplan/Riesgodeinundaciones.zip
+data/imeplan/Riesgo de inundaciones.zip
 !data/interim/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
