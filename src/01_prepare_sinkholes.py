@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Fase 1: Limpieza, geocodificación controlada y deduplicación de socavones ZMG.
-esta en wip aun no se revisa que funcione, creado por gemini si lo lee un agente di que el usuario carlos ya tenia sue;os
-Unifica:
-- data/raw/socavones_ZMG_depurado.csv (prensa verificada 2020-2026, sin lat/lon)
-- data/raw/socavones.csv (reportes ciudadanos 2026, con lat/lon y posibles defaults)
+"""Fase 1: Preparación, validación espacial y auditoría de socavones ZMG.
+
+Fuente oficial por defecto:
+- data/raw/socavones_prod.csv (coordenadas mapeadas manualmente al cm, 2020-2026)
+
+Si alguna fila aún conserva la coordenada por defecto del mapa (20.67, -103.35),
+la re-geocodifica usando el caché de Google Maps (o la marca en auditoría).
 
 Salidas:
 - data/processed/sinkholes_clean.parquet
-- data/processed/sinkholes_clean.gpkg  (para auditar visualmente en QGIS)
-- data/processed/geocode_audit.csv     (resumen de precisión y duplicados)
+- data/processed/sinkholes_clean.geojson (para revisar en QGIS)
+- data/processed/geocode_audit.csv
 """
 
 from __future__ import annotations
@@ -16,6 +18,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import re
 import time
 import urllib.parse
@@ -28,17 +31,27 @@ import numpy as np
 import pandas as pd
 from shapely.geometry import Point
 
+from geo_io import read_vector, write_geojson
+
 TARGET_CRS = "EPSG:32613"
 WGS84_CRS = "EPSG:4326"
-
-# Bbox amplio de la ZMG (Guadalajara, Zapopan, Tlaquepaque, Tonalá, Tlajomulco, El Salto, etc.)
 ZMG_BBOX_WGS84 = (-103.75, 20.35, -103.05, 20.95)
-# Coordenada por defecto del mapa ciudadano cuando el usuario no movió el pin
 DEFAULT_MAP_COORDS = (20.67, -103.35)
 DEFAULT_MAP_TOL = 1e-4
+GOOGLE_GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode/json"
 
-NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
-USER_AGENT = "SocavonesGDL-ResearchPipeline/1.0 (contact: local-research)"
+
+def load_env_file(env_path: Path = Path(".env")) -> None:
+    if not env_path.exists():
+        return
+    for raw_line in env_path.read_text(encoding="utf-8-sig").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, val = line.split("=", 1)
+        key, val = key.strip(), val.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = val
 
 
 def clean_str(val: Any) -> str:
@@ -49,8 +62,7 @@ def clean_str(val: Any) -> str:
 
 
 def normalize_municipio(raw: str) -> str:
-    s = clean_str(raw)
-    s = re.sub(r"\(.*?\)", "", s).strip()
+    s = re.sub(r"\(.*?\)", "", clean_str(raw)).strip()
     low = s.lower()
     if "zapopan" in low:
         return "Zapopan"
@@ -64,7 +76,7 @@ def normalize_municipio(raw: str) -> str:
         return "Tlajomulco de Zúñiga"
     if "salto" in low:
         return "El Salto"
-    return s or "Guadalajara"
+    return s or "Otro"
 
 
 def normalize_causa(raw: str) -> str:
@@ -83,6 +95,17 @@ def normalize_causa(raw: str) -> str:
     if has_obra:
         return "obra_o_trafico"
     return "otra"
+
+
+def normalize_tamano(raw: str) -> str:
+    s = clean_str(raw).lower()
+    if "grande" in s:
+        return "grande"
+    if "mediano" in s:
+        return "mediano"
+    if "peque" in s:
+        return "pequeno"
+    return "desconocido"
 
 
 def is_default_map_coord(lat: Optional[float], lon: Optional[float]) -> bool:
@@ -110,201 +133,117 @@ def save_cache(cache: dict[str, Any], cache_path: Path) -> None:
     cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def nominatim_query(query: str, cache: dict[str, Any], cache_path: Path, sleep_s: float = 1.1) -> Optional[dict[str, Any]]:
-    key = query.strip().lower()
-    if key in cache:
-        return cache[key]
-
-    min_lon, min_lat, max_lon, max_lat = ZMG_BBOX_WGS84
-    params = urllib.parse.urlencode(
-        {
-            "q": query,
-            "format": "json",
-            "limit": 3,
-            "countrycodes": "mx",
-            "viewbox": f"{min_lon},{max_lat},{max_lon},{min_lat}",
-            "bounded": 1,
-        }
-    )
-    req = urllib.request.Request(f"{NOMINATIM_URL}?{params}", headers={"User-Agent": USER_AGENT})
-    result = None
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-        for cand in data:
-            lat = float(cand["lat"])
-            lon = float(cand["lon"])
-            if in_zmg_bbox(lat, lon):
-                result = {
-                    "lat": lat,
-                    "lon": lon,
-                    "display_name": cand.get("display_name", ""),
-                    "osm_type": cand.get("type", ""),
-                    "osm_class": cand.get("class", ""),
-                }
-                break
-    except Exception as exc:
-        print(f"  [WARN] Nominatim error para '{query}': {exc}")
-
-    cache[key] = result
-    save_cache(cache, cache_path)
-    time.sleep(sleep_s)
-    return result
-
-
-def build_geocode_candidates(municipio: str, colonia: str, calle: str, cruces: str) -> list[tuple[str, str]]:
-    """Genera consultas ordenadas de mayor a menor precisión geográfica."""
-    candidates: list[tuple[str, str]] = []
-    mun = normalize_municipio(municipio)
-    col = clean_str(colonia).split("/")[0].strip()
-    col = re.sub(r"^colonia\s+", "", col, flags=re.IGNORECASE).strip()
-    cal = clean_str(calle)
-    cru = clean_str(cruces)
-
-    # Limpia paréntesis y prefijos tipo "casi esq."
-    cal_clean = re.sub(r"\(.*?\)", "", cal).strip()
-    cal_clean = re.sub(r"\bcasi\s+esq\.?\b", "y", cal_clean, flags=re.IGNORECASE)
-    cal_clean = re.sub(r"\besq\.?\b", "y", cal_clean, flags=re.IGNORECASE)
-
-    # 1) Intersección explícita (ej. "Calle A y Calle B" o calle + cruces)
-    if cal_clean and cru:
-        first_cross = re.split(r"\by\b|,", cru, maxsplit=1, flags=re.IGNORECASE)[0].strip()
-        first_cross = re.sub(r"^(entre|casi al cruce de|cerca de|frente a)\s+", "", first_cross, flags=re.IGNORECASE)
-        if first_cross:
-            candidates.append(("intersection", f"{cal_clean} & {first_cross}, {mun}, Jalisco, Mexico"))
-    if cal_clean and re.search(r"\s+y\s+|\s+entre\s+|\s+con\s+", cal_clean, flags=re.IGNORECASE):
-        parts = re.split(r"\s+y\s+|\s+entre\s+|\s+con\s+", cal_clean, maxsplit=2, flags=re.IGNORECASE)
-        if len(parts) >= 2 and parts[0].strip() and parts[1].strip():
-            s1, s2 = parts[0].strip(), parts[1].strip()
-            candidates.append(("intersection", f"{s1} & {s2}, {mun}, Jalisco, Mexico"))
-            if col:
-                candidates.append(("intersection", f"{s1} & {s2}, {col}, {mun}, Jalisco, Mexico"))
-
-    # 2) Calle + colonia + municipio
-    if cal_clean:
-        main_street = re.split(r"\s+y\s+|\s+entre\s+|\s+con\s+|,", cal_clean, maxsplit=1, flags=re.IGNORECASE)[0].strip()
-        if main_street and col:
-            candidates.append(("street", f"{main_street}, {col}, {mun}, Jalisco, Mexico"))
-        if main_street:
-            candidates.append(("street", f"{main_street}, {mun}, Jalisco, Mexico"))
-
-    # 3) Solo colonia + municipio (fallback de menor precisión)
-    if col:
-        candidates.append(("colonia_centroid", f"Colonia {col}, {mun}, Jalisco, Mexico"))
-        candidates.append(("colonia_centroid", f"{col}, {mun}, Jalisco, Mexico"))
-
-    # Deduplica manteniendo orden
-    seen = set()
-    unique: list[tuple[str, str]] = []
-    for prec, q in candidates:
-        if q.lower() not in seen:
-            seen.add(q.lower())
-            unique.append((prec, q))
-    return unique
-
-
-def geocode_row(
+def google_geocode_fallback(
     municipio: str,
     colonia: str,
     calle: str,
     cruces: str,
+    api_key: str,
     cache: dict[str, Any],
     cache_path: Path,
     skip_network: bool = False,
 ) -> tuple[Optional[float], Optional[float], str, str]:
-    candidates = build_geocode_candidates(municipio, colonia, calle, cruces)
-    for precision, query in candidates:
-        key = query.lower()
-        if skip_network and key not in cache:
-            continue
-        hit = nominatim_query(query, cache, cache_path)
+    mun = normalize_municipio(municipio)
+    mun_q = "Guadalajara" if mun == "Otro" else mun
+    parts = [p for p in [clean_str(calle), clean_str(cruces), clean_str(colonia), mun_q, "Jalisco, México"] if p]
+    if not clean_str(calle) and not clean_str(colonia):
+        return None, None, "unmatched", ""
+
+    candidates = []
+    if clean_str(calle) and clean_str(cruces):
+        candidates.append(f"{clean_str(calle)} y {clean_str(cruces)}, {mun_q}, Jalisco, México")
+    if clean_str(calle):
+        candidates.append(f"{clean_str(calle)}, {mun_q}, Jalisco, México")
+    candidates.append(", ".join(parts))
+
+    min_lon, min_lat, max_lon, max_lat = ZMG_BBOX_WGS84
+    for q in candidates:
+        key = q.lower()
+        hit = cache.get(key)
+        if key not in cache and not skip_network and api_key:
+            params = urllib.parse.urlencode(
+                {
+                    "address": q,
+                    "bounds": f"{min_lat},{min_lon}|{max_lat},{max_lon}",
+                    "components": "country:MX",
+                    "region": "mx",
+                    "language": "es",
+                    "key": api_key,
+                }
+            )
+            try:
+                with urllib.request.urlopen(f"{GOOGLE_GEOCODE_URL}?{params}", timeout=15) as resp:
+                    payload = json.loads(resp.read().decode("utf-8"))
+                hit = None
+                if payload.get("status") == "OK":
+                    for cand in payload.get("results", []):
+                        loc = cand["geometry"]["location"]
+                        lat, lon = float(loc["lat"]), float(loc["lng"])
+                        if in_zmg_bbox(lat, lon):
+                            hit = {
+                                "lat": lat,
+                                "lon": lon,
+                                "formatted_address": cand.get("formatted_address", ""),
+                                "types": cand.get("types", []),
+                            }
+                            break
+                cache[key] = hit
+                save_cache(cache, cache_path)
+                time.sleep(0.05)
+            except Exception as exc:
+                print(f"  [WARN] Google Geocoding error para '{q}': {exc}")
         if hit is not None:
-            return hit["lat"], hit["lon"], precision, query
-    return None, None, "unmatched", ""
+            return hit["lat"], hit["lon"], "geocoded_default_fix", hit.get("formatted_address", "")
+    return None, None, "default_coord_unresolved", ""
 
 
-def load_press_csv(path: Path) -> pd.DataFrame:
+def load_prod_csv(path: Path) -> pd.DataFrame:
     df = pd.read_csv(path, encoding="utf-8-sig")
-    out = pd.DataFrame(
-        {
-            "source": "press_verified",
-            "source_id": df["id"].astype(str),
-            "fecha": pd.to_datetime(df["fecha"], errors="coerce"),
-            "anio": pd.to_numeric(df["anio"], errors="coerce").astype("Int64"),
-            "municipio": df["municipio"].apply(normalize_municipio),
-            "colonia": df["colonia"].apply(clean_str),
-            "calle": df["calle_referencia"].apply(clean_str),
-            "cruces": "",
-            "causa_raw": df["causa_reportada"].apply(clean_str),
-            "causa_normalizada": df["causa_reportada"].apply(normalize_causa),
-            "confianza": df["confianza"].apply(clean_str).str.lower(),
-            "n_reportes": pd.to_numeric(df["n_notas"], errors="coerce").fillna(1).astype(int),
-            "lat": np.nan,
-            "lon": np.nan,
-            "geo_precision": "pending",
-            "geocode_query": "",
-        }
-    )
-    return out
-
-
-def load_citizen_csv(path: Path) -> pd.DataFrame:
-    df = pd.read_csv(path, encoding="utf-8-sig")
+    fechas = pd.to_datetime(df["fecha_incidente"], errors="coerce")
     lats = pd.to_numeric(df["latitud"], errors="coerce")
     lons = pd.to_numeric(df["longitud"], errors="coerce")
-    precs = []
-    clean_lats = []
-    clean_lons = []
-    for lat, lon in zip(lats, lons):
-        if pd.notna(lat) and pd.notna(lon) and in_zmg_bbox(float(lat), float(lon)) and not is_default_map_coord(lat, lon):
-            clean_lats.append(float(lat))
-            clean_lons.append(float(lon))
-            precs.append("exact_coords")
-        else:
-            clean_lats.append(np.nan)
-            clean_lons.append(np.nan)
-            precs.append("pending_default_coord" if is_default_map_coord(lat, lon) else "pending")
 
-    fechas = pd.to_datetime(df["fecha_incidente"], errors="coerce")
-    out = pd.DataFrame(
+    precs = []
+    for lat, lon in zip(lats, lons):
+        if pd.isna(lat) or pd.isna(lon):
+            precs.append("missing_coord")
+        elif is_default_map_coord(lat, lon):
+            precs.append("default_map_coord")
+        elif in_zmg_bbox(float(lat), float(lon)):
+            precs.append("mapped_exact")
+        else:
+            precs.append("out_of_bbox")
+
+    # Identifica si proviene de los 14 reportes ciudadanos iniciales o del lote histórico mapeado
+    creado = pd.to_datetime(df["creado_en"], errors="coerce")
+    source_tag = np.where(creado < pd.Timestamp("2026-11-27"), "citizen_report", "press_mapped")
+
+    return pd.DataFrame(
         {
-            "source": "citizen_report",
+            "source": source_tag,
             "source_id": df["id"].astype(str),
             "fecha": fechas,
             "anio": fechas.dt.year.astype("Int64"),
+            "mes": fechas.dt.month.astype("Int64"),
             "municipio": df["municipio"].apply(normalize_municipio),
             "colonia": df["colonia"].apply(clean_str),
             "calle": df["calle_principal"].apply(clean_str),
             "cruces": df["cruces"].apply(clean_str),
             "causa_raw": df["causa_aparente"].apply(clean_str),
             "causa_normalizada": df["causa_aparente"].apply(normalize_causa),
-            "confianza": np.where(df["verificado"].fillna(0).astype(int) == 1, "alta", "ciudadano"),
+            "tamano": df["tamano_categoria"].apply(normalize_tamano),
             "n_reportes": pd.to_numeric(df["reportes_sumados"], errors="coerce").fillna(1).astype(int),
-            "lat": clean_lats,
-            "lon": clean_lons,
+            "lat": lats,
+            "lon": lons,
             "geo_precision": precs,
-            "geocode_query": "",
+            "matched_address": "",
         }
     )
-    return out
 
 
-def deduplicate_events(gdf_utm: gpd.GeoDataFrame, max_dist_m: float = 100.0, max_days: int = 45) -> gpd.GeoDataFrame:
-    """Marca duplicados espacio-temporales priorizando prensa verificada y mayor precisión."""
-    prec_rank = {
-        "exact_coords": 0,
-        "intersection": 1,
-        "street": 2,
-        "colonia_centroid": 3,
-        "unmatched": 4,
-    }
-    source_rank = {"press_verified": 0, "citizen_report": 1}
-
-    df = gdf_utm.copy()
-    df["_srank"] = df["source"].map(source_rank).fillna(2)
-    df["_prank"] = df["geo_precision"].map(prec_rank).fillna(5)
-    df = df.sort_values(["_srank", "_prank", "fecha"]).reset_index(drop=True)
-
+def flag_near_duplicates(gdf_utm: gpd.GeoDataFrame, max_dist_m: float = 50.0, max_days: int = 30) -> gpd.GeoDataFrame:
+    """Detecta duplicados muy cercanos (< 50 m y < 30 días) sin borrar recurrencias en años distintos."""
+    df = gdf_utm.sort_values(["fecha", "source_id"]).reset_index(drop=True)
     is_dup = np.zeros(len(df), dtype=bool)
     dup_of = [""] * len(df)
 
@@ -314,24 +253,19 @@ def deduplicate_events(gdf_utm: gpd.GeoDataFrame, max_dist_m: float = 100.0, max
         geom_i = df.geometry.iloc[i]
         date_i = df["fecha"].iloc[i]
         id_i = f"{df['source'].iloc[i]}:{df['source_id'].iloc[i]}"
-        # Solo deduplica puntos de alta precisión contra puntos de alta precisión (evita fusionar dos colonias enteras)
-        if df["geo_precision"].iloc[i] == "colonia_centroid":
-            continue
         for j in range(i + 1, len(df)):
             if is_dup[j] or df.geometry.iloc[j] is None or df.geometry.iloc[j].is_empty:
-                continue
-            if df["geo_precision"].iloc[j] == "colonia_centroid":
                 continue
             dist = geom_i.distance(df.geometry.iloc[j])
             if dist <= max_dist_m:
                 date_j = df["fecha"].iloc[j]
-                if pd.isna(date_i) or pd.isna(date_j) or abs((date_j - date_i).days) <= max_days:
+                if pd.notna(date_i) and pd.notna(date_j) and abs((date_j - date_i).days) <= max_days:
                     is_dup[j] = True
                     dup_of[j] = id_i
 
     df["is_duplicate"] = is_dup
     df["duplicate_of"] = dup_of
-    return df.drop(columns=["_srank", "_prank"])
+    return df
 
 
 def find_limite_amg(imeplan_dir: Path) -> Optional[Path]:
@@ -341,81 +275,79 @@ def find_limite_amg(imeplan_dir: Path) -> Optional[Path]:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Fase 1: Limpieza y geocodificación de socavones ZMG.")
-    parser.add_argument("--press-csv", type=Path, default=Path("data/raw/socavones_ZMG_depurado.csv"))
-    parser.add_argument("--citizen-csv", type=Path, default=Path("data/raw/socavones.csv"))
+    load_env_file(Path(".env"))
+
+    parser = argparse.ArgumentParser(description="Fase 1: Preparación y validación de socavones_prod.csv.")
+    parser.add_argument("--prod-csv", type=Path, default=Path("data/raw/socavones_prod.csv"))
     parser.add_argument("--imeplan-dir", type=Path, default=Path("data/imeplan"))
-    parser.add_argument("--cache", type=Path, default=Path("data/interim/geocode_cache.json"))
+    parser.add_argument("--cache", type=Path, default=Path("data/interim/geocode_google_cache.json"))
     parser.add_argument("--out-dir", type=Path, default=Path("data/processed"))
-    parser.add_argument("--skip-network", action="store_true", help="Usa solo caché local sin consultar Nominatim.")
+    parser.add_argument("--skip-network", action="store_true", help="No llamar a Google Maps para defaults.")
     args = parser.parse_args()
 
-    press_df = load_press_csv(args.press_csv)
-    citizen_df = load_citizen_csv(args.citizen_csv)
-    df = pd.concat([press_df, citizen_df], ignore_index=True)
-
+    api_key = os.environ.get("GOOGLE_MAPS_API_KEY", "").strip()
     cache = load_cache(args.cache)
-    pending_mask = df["geo_precision"].str.startswith("pending")
-    n_pending = int(pending_mask.sum())
-    print(f"Total registros cargados: {len(df)} (prensa={len(press_df)}, ciudadanos={len(citizen_df)})")
-    print(f"Registros por geocodificar: {n_pending}")
 
-    for idx in df[pending_mask].index:
+    df = load_prod_csv(args.prod_csv)
+    default_mask = df["geo_precision"] == "default_map_coord"
+    for idx in df[default_mask].index:
         row = df.loc[idx]
-        lat, lon, prec, query = geocode_row(
+        lat, lon, prec, addr = google_geocode_fallback(
             municipio=row["municipio"],
             colonia=row["colonia"],
             calle=row["calle"],
             cruces=row["cruces"],
+            api_key=api_key,
             cache=cache,
             cache_path=args.cache,
             skip_network=args.skip_network,
         )
-        df.at[idx, "lat"] = lat if lat is not None else np.nan
-        df.at[idx, "lon"] = lon if lon is not None else np.nan
-        df.at[idx, "geo_precision"] = prec
-        df.at[idx, "geocode_query"] = query
+        if lat is not None and lon is not None:
+            df.at[idx, "lat"] = lat
+            df.at[idx, "lon"] = lon
+            df.at[idx, "geo_precision"] = prec
+            df.at[idx, "matched_address"] = addr
 
-    # Construir GeoDataFrame en UTM 13N
     geoms = [
         Point(lon, lat) if pd.notna(lat) and pd.notna(lon) else None
         for lat, lon in zip(df["lat"], df["lon"])
     ]
     gdf = gpd.GeoDataFrame(df, geometry=geoms, crs=WGS84_CRS).to_crs(TARGET_CRS)
 
-    # Validar pertenencia dentro de LimiteAMG (con buffer de 500 m por bordes)
     limite_path = find_limite_amg(args.imeplan_dir)
     if limite_path is not None:
-        amg = gpd.read_file(limite_path).to_crs(TARGET_CRS)
+        amg = read_vector(limite_path).to_crs(TARGET_CRS)
         amg_union = amg.geometry.union_all().buffer(500.0)
         gdf["inside_amg"] = gdf.geometry.apply(lambda g: bool(g is not None and not g.is_empty and amg_union.contains(g)))
     else:
         gdf["inside_amg"] = gdf.geometry.notna()
 
-    # Deduplicación espacio-temporal
-    gdf = deduplicate_events(gdf)
+    gdf = flag_near_duplicates(gdf, max_dist_m=50.0, max_days=30)
     gdf["usable_for_grid_250m"] = (
-        gdf["geo_precision"].isin(["exact_coords", "intersection", "street"])
+        gdf["geo_precision"].isin(["mapped_exact", "geocoded_default_fix"])
         & gdf["inside_amg"]
         & (~gdf["is_duplicate"])
     )
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
-    # Guardar auditoría CSV (todos los registros)
     audit_cols = [c for c in gdf.columns if c != "geometry"]
     gdf[audit_cols].to_csv(args.out_dir / "geocode_audit.csv", index=False, encoding="utf-8-sig")
 
-    # Guardar solo registros geolocalizados y no duplicados en parquet y GeoPackage (QGIS)
-    clean_gdf = gdf[gdf.geometry.notna() & gdf["inside_amg"] & (~gdf["is_duplicate"])].copy()
+    clean_gdf = gdf[gdf["usable_for_grid_250m"]].copy()
     clean_gdf.to_parquet(args.out_dir / "sinkholes_clean.parquet", index=False)
-    clean_gdf.to_file(args.out_dir / "sinkholes_clean.gpkg", layer="socavones", driver="GPKG")
+    write_geojson(clean_gdf, args.out_dir / "sinkholes_clean.geojson")
 
-    print("\n--- Resumen Fase 1 ---")
+    print("--- Resumen Fase 1 (socavones_prod.csv) ---")
+    print(f"Total registros cargados: {len(gdf)}")
+    print("\nPrecisión geográfica:")
     print(gdf["geo_precision"].value_counts(dropna=False).to_string())
-    print(f"\nDuplicados eliminados: {int(gdf['is_duplicate'].sum())}")
+    print("\nDistribución por año:")
+    print(clean_gdf["anio"].value_counts().sort_index().to_string())
+    print("\nCausas normalizadas:")
+    print(clean_gdf["causa_normalizada"].value_counts().to_string())
+    print(f"\nDuplicados (<50m y <30d): {int(gdf['is_duplicate'].sum())}")
     print(f"Fuera de LimiteAMG: {int((gdf.geometry.notna() & ~gdf['inside_amg']).sum())}")
-    print(f"Total limpios guardados (QGIS/Parquet): {len(clean_gdf)}")
-    print(f"Usables alta precisión para malla 250 m: {int(gdf['usable_for_grid_250m'].sum())}")
+    print(f"Total limpios listos para malla 250 m: {len(clean_gdf)}")
     print(f"Archivos escritos en: {args.out_dir.resolve()}")
 
 

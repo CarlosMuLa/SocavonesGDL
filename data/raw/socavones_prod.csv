@@ -1,0 +1,130 @@
+id,fecha_incidente,municipio,colonia,calle_principal,cruces,latitud,longitud,causa_aparente,tamano_categoria,estado,fuente,reportes_sumados,verificado,creado_en
+1,2026-11-16,Guadalajara,El Parián,Calle Enrique Díaz de León Norte,,20.710128,-103.360558,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-16 20:02:33
+2,2026-11-24,Guadalajara,Jardines del Country,Calle La Perpetua,Cerca del Oxxo,20.709385,-103.360497,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-24 20:50:04
+3,2026-11-24,Guadalajara,Jardines de la Victoria,lateral lazaro cardenas,lazaro cardenas y lateral mariano otero,20.65893,-103.383554,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,3,0,2026-11-24 21:53:47
+4,2026-11-24,Guadalajara,Santa Tere,Calle General Coronado,Calle Garibaldi y Calle Joaquín Angulo,20.681567,-103.364764,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-24 22:05:52
+5,2026-08-24,Guadalajara,Mezquitán Country,Calle Nicolás Romero,Av. de los Maestros y Miraflores,20.693122,-103.361912,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-24 22:12:14
+6,2026-11-10,Guadalajara,Mezquitán Country,Avenida Plan de San Luis,Av. de los Maestros y Miraflores,20.697031,-103.360613,Obra / Desconocida,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-24 22:13:21
+7,2026-11-10,Zapopan,Paseos del Sol,Calle Antonio Flores,Av. Felipe Zetter y Juan de Dios de la torre,20.635985,-103.432822,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-24 22:30:01
+8,2026-08-28,Guadalajara,,Privada del Parque,Artes y Ciencias,20.654315,-103.301028,Obra / Desconocida,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-24 22:34:21
+9,2026-11-24,Guadalajara,Colonia Belisario Domínguez,Avenida fraternidad,Calzada independencia,20.70626,-103.31507,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-24 22:36:58
+10,2026-11-24,San Pedro Tlaquepaque,,,Entre av agrícola y barda que  límita al rio,20.600375,-103.415779,Fuga de agua potable,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-24 23:57:33
+11,2026-11-25,Guadalajara,Miraflores,Calle Joaquín Aguirre Berlanga,Entre paseo de los filósofos y fray junipero serra,20.701077,-103.341933,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-25 01:57:41
+12,2026-11-25,Zapopan,Hogares del Batán,Prolongación Avenida Fray Antonio Alcalde,Saucito y Pedro Ramirez,20.725912,-103.345288,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-25 04:40:28
+13,2026-11-25,Guadalajara,,Calle Silverio García,Casi al cruce de avenida  revolución,20.67,-103.35,Obra / Desconocida,,Reportado / Activo,Reporte ciudadano,3,0,2026-11-25 05:38:05
+14,2026-11-25,Guadalajara,,Calle Nueva Galicia,,20.67,-103.35,Obra / Desconocida,,Reportado / Activo,Reporte ciudadano,1,0,2026-11-25 20:41:46
+15,2020-07-06,Zapopan,Rinconada La Joya,Lateral de López Mateos Sur,frente a ventiladores.com,20.638527,-103.411346,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 03:58:22
+16,2020-08-14,Guadalajara,Fábrica de Atemajac,Calzada del Federalismo Norte,,20.713331,-103.354871,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:12:11
+17,2021-07-02,Guadalajara,La Perla,Calzada Independencia Norte,zona del mercado San Juan de Dios,20.675976,-103.341555,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:28:06
+18,2021-07-23,Guadalajara,Mezquitán Country,Calle Tepic,,20.696202,-103.356891,Lluvia / Inundación,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:31:25
+19,2021-08-17,Otro,Miramar,Calle Volcán Ajusco,,20.643822308799074,-103.42786767861557,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:36:57
+20,2021-08-23,Otro,Huentitán El Bajo,Calle Volcán Mayón,Mujer termino en la barranca,20.739421002925265,-103.32156241067683,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:40:53
+21,2021-09-06,Otro,Alamitos,Lateral Juan Gil Preciado,Lateral a desnivel,20.767974974233567,-103.44404116469627,Lluvia / Inundación,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:45:42
+22,2021-09-20,Guadalajara,Villaseñor,Calle Andrés Terán,,20.687029,-103.368045,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:49:27
+23,2021-09-20,Guadalajara,Villaseñor,Calle Andrés Terán,,20.689217,-103.367945,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:50:52
+24,2021-05-25,Guadalajara,Ibarra y Molodom,Francisco J. Mújica,,20.707183,-103.346615,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:53:50
+25,2022-06-07,Zapopan,Tepeyac,Avenida Laureles,Construccion,20.727782352193078,-103.38645468295127,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:58:47
+26,2022-07-18,Otro,Balcones y Prados de Huentitán,Calle Volcán Krakatoa,,20.73661155380059,-103.31505164617231,Lluvia / Inundación,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:01:59
+27,2022-07-18,Guadalajara,UH Independencia,Calle Cordillera Blanca,,20.702358862904287,-103.33203080790669,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:02:56
+28,2022-07-20,Guadalajara,Independencia,Calle Sierra Leona,,20.702023655175427,-103.33156377714275,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:04:48
+29,2022-07-20,Guadalajara,,Calle Esteban Alatorre,,20.67228141090011,-103.28894523189778,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:07:22
+30,2022-07-20,Tonalá,Zalatitan Centro,Calle Corregidora,,20.656156,-103.258308,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:08:22
+31,2022-07-20,Otro,,Calle Porfirio Díaz,,20.605237,-103.287483,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:09:16
+32,2022-10-26,Guadalajara,Becerra,Calle Milán,,20.694773,-103.381685,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:11:41
+33,2023-01-13,Guadalajara,Mexicaltzingo,Avenida 16 de Septiembre,Frente a sears,20.666718,-103.348357,Obra / Desconocida,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:14:17
+34,2023-07-03,Zapopan,Canteras del Centinela,Boulevard Bosques de San Isidro,,20.753179918062788,-103.38429914756642,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:16:14
+35,2023-07-03,Tonalá,,Avenida Riva Palacio,,20.66270967745228,-103.24737407175365,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:20:52
+36,2023-07-10,Guadalajara,Mezquitán Country,Calle Tepic,,20.696252755081517,-103.35667560244096,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:23:51
+37,2023-07-10,Guadalajara,San Patricio,Calle Monte Everest,,20.717116207312174,-103.31823926011295,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:28:27
+38,2023-08-20,Guadalajara,Inmuebles Turquesa,Avenida Mariano Otero,,20.650505178806853,-103.39915913190495,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:32:20
+39,2023-09-06,Guadalajara,Chapalita,Calle San Rafaél,,20.665378,-103.398021,Fuga de agua potable,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:35:12
+40,2023-09-01,Guadalajara,Santa Tere,Calle Gabriel Ramos Millán,,20.679560307753924,-103.36732460244143,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:39:18
+41,2023-08-01,Guadalajara,Oblatos,Pedro Celestino Negrete,,20.678591736480985,-103.31972511148354,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:40:44
+42,2023-08-01,Otro,Francisco Sarabia,Camino a Santa Ana Tepetitlán,,20.612562,-103.429197,Obra / Desconocida,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:42:28
+43,2024-06-12,Guadalajara,División del Norte,Calle Teruel,escuela 208,20.715942410157684,-103.33965896746732,Obra / Desconocida,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:44:59
+44,2024-07-02,Guadalajara,Ladrón de Guevara,Avenida de las Américas,,20.680602489702945,-103.3736733656538,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:46:27
+45,2024-07-02,Otro,Lomas de San Agustín,Pino,,20.541715,-103.466808,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:49:41
+46,2024-07-02,Guadalajara,,Calle Pablo Valdez,,20.673893591684067,-103.29219868898177,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:51:08
+47,2024-06-25,Guadalajara,,Calle Miguel Ramos Arizpe,,20.663542394506106,-103.30874851856127,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 05:52:54
+48,2024-06-27,Otro,Miramar,Calle Puerto Tampico,,20.640345673304104,-103.45040878263251,Obra / Desconocida,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:00:27
+49,2024-06-27,Otro,,Avenida Adolf B. Horn Jr.,,20.51406920394231,-103.34193406795342,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:02:47
+50,2024-07-25,Guadalajara,,Calle Juan de Dios Robledo,,20.670201206007278,-103.31456322011822,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:04:07
+51,2024-07-25,Guadalajara,Mezquitán,Calle José María Vigil,,20.68998487750621,-103.35322998144716,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:04:57
+52,2024-07-25,Guadalajara,Mezquitán Country,Avenida Plan de San Luis,,20.697073,-103.361812,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:06:08
+53,2024-07-25,Zapopan,Rinconada del Sol,Avenida Adolfo López Mateos Sur,,20.65168,-103.402488,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:06:49
+54,2024-07-29,Guadalajara,Miraflores,Calle José Juan Tablada,,20.696922,-103.346628,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:10:10
+55,2024-07-29,Zapopan,Eucalipto Vallarta,Calle Millet,,20.672727184023945,-103.42897783127766,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:11:16
+56,2024-07-29,Guadalajara,Barrio de Mezquitán,Ciclovia Manuel Ávila Camacho,,20.712302515288243,-103.37494316686106,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:12:03
+57,2024-07-29,Guadalajara,,Calle Durazno,,20.659517997996357,-103.3712650447695,Fuga o colapso de drenaje,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:13:39
+58,2024-07-29,Otro,Miramar,Privada Francisco Márquez Primera Sección,,20.63107999890344,-103.44352411417121,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:15:25
+59,2024-07-29,Otro,Gustavo Díaz Ordaz,Avenida López Mateos Sur,,20.616598,-103.425615,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:16:14
+60,2024-08-30,Otro,Arboledas de Tesistán,Carretera a Tesistán,,20.788544243362697,-103.47274606054015,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:17:50
+61,2024-08-30,Otro,Gustavo Díaz Ordaz,Calzada Las Fuentes,,20.62154761552841,-103.42411288294903,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:22:21
+62,2024-10-30,San Pedro Tlaquepaque,,Calle Capulín,,20.618613438594206,-103.30416483127833,Obra / Desconocida,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:23:29
+63,2025-05-07,Zapopan,Villa Universitaria,Avenida de la Patria,,20.70146239069153,-103.41551537666655,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:25:32
+64,2025-06-12,San Pedro Tlaquepaque,,Anillo Periférico Sur Manuel Gómez Morín,,20.587615,-103.383273,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:27:09
+65,2025-09-13,Guadalajara,Oblatos,,Juan R. Zavala casi al cruce con Esteban Alatorre,20.679948424986435,-103.32026249678837,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:29:07
+66,2025-06-21,Otro,Miramar,Anillo Periférico Poniente Manuel Gómez Morín,camellon macro,20.64287087690647,-103.44101686593582,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:30:44
+67,2025-06-29,Guadalajara,Centro Barranquitas,Calle Humboldt,,20.682198641331826,-103.3433624582612,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:31:46
+68,2025-07-04,Otro,,Avenida Malecón,,20.689368,-103.270504,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:32:59
+69,2025-07-04,Zapopan,Vallarta La Patria,Calle a las Cumbres,casa 207,20.673256754937782,-103.41748390244162,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:35:31
+70,2025-07-02,San Pedro Tlaquepaque,,Calle Frailes,Diu,20.598027041081522,-103.31973546196603,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:37:08
+71,2024-06-02,San Pedro Tlaquepaque,,Calle Frailes,,20.598027041081522,-103.31973546196603,Lluvia / Inundación,,Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:37:21
+72,2024-06-02,Otro,,Anillo Periférico Manuel Gómez Morín,,20.69508908857806,-103.27282303622127,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:39:10
+73,2025-06-02,Otro,,Anillo Periférico Manuel Gómez Morín,,20.69508908857806,-103.27282303622127,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:39:54
+74,2025-06-08,Guadalajara,,Calle Pánfilo Pérez,,20.665094095191854,-103.3083152740865,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:40:41
+75,2025-06-08,San Pedro Tlaquepaque,,Calle Cristóbal Colón,,20.598435082060192,-103.3505535177857,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:41:28
+76,2025-06-08,Guadalajara,Capilla de Jesús,Calle Garibaldi,,20.681079,-103.356347,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:42:36
+77,2025-07-16,Otro,Las Pintas,Avenida de la Solidaridad Iberoamericana,,20.549351,-103.302147,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:43:51
+78,2025-07-16,Zapopan,La Calma,Lateral de López Mateos Sur,,20.634667,-103.413951,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:46:09
+79,2025-07-16,Guadalajara,Jardines del Sur 1a Sección,Avenida Isla Raza,unidad deportiva,20.633942146265355,-103.38843375826202,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:47:10
+80,2025-07-22,Guadalajara,,Calle Pichón,,20.656017,-103.35553,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:49:19
+81,2023-06-22,Guadalajara,,Calle Pichón,,20.656017,-103.35553,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:49:30
+82,2020-06-22,Guadalajara,,Calle Pichón,,20.656017,-103.35553,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:49:42
+83,2025-09-01,Otro,Alamitos,Calle Quinta Oriente,,20.765563,-103.441266,Obra / Desconocida,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:51:35
+84,2025-09-08,Otro,Lomas de San Agustín,Antiguo Camino Real a Colima,,20.533768,-103.474832,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:53:11
+85,2022-09-08,Otro,Lomas de San Agustín,Antiguo Camino Real a Colima,,20.533768,-103.474832,Fuga o colapso de drenaje,,Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:53:21
+86,2025-09-08,Otro,Fraccionamiento San José Residencial,Avenida Adolf B. Horn Jr.,,20.547175,-103.352633,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:56:08
+87,2025-09-08,Otro,Valles de Nuevo México,Boulevard Valle Imperial,,20.768191181862786,-103.4442222341133,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 06:57:44
+88,2025-09-08,Zapopan,Jacarandas,Ciclovia Manuel Ávila Camacho,,20.718033221718837,-103.38381967355033,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:05:34
+89,2026-01-26,Otro,Miramar,Avenida de la Amistad,,20.624197451251952,-103.44318461341551,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:09:17
+90,2026-02-19,Zapopan,La Giralda,Lateral de López Mateos Sur,,20.647777,-103.405204,Obra / Desconocida,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:11:37
+91,2026-02-19,Guadalajara,,Calle Gustavo Baz,,20.674782390264202,-103.28307234326014,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:15:13
+92,2026-03-15,San Pedro Tlaquepaque,,Calle Rayón,,20.638484,-103.296379,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:17:19
+93,2026-04-20,Zapopan,Magisterial Valle de San Isidro,Calle Cardenal,,20.75979543247877,-103.39360777725678,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:18:42
+94,2026-07-31,Guadalajara,,Calle Encino,,20.65285429233403,-103.36921575820591,Fuga de agua potable,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:20:26
+95,2026-06-09,Guadalajara,Las Nueve Esquinas,Calzada Independencia Sur,,20.66534072836525,-103.34722221773195,Fuga de agua potable,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:21:11
+96,2026-06-09,Otro,,Calle Ocampo,,20.706873,-103.446505,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:22:35
+97,2026-06-13,San Pedro Tlaquepaque,,Calle Mango,,20.615003,-103.306558,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:24:36
+98,2026-06-16,Tonalá,,Calle del Cajón,,20.631080296572307,-103.2398705158787,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:26:06
+99,2026-06-14,Zapopan,Rinconada La Joya,Lateral de López Mateos Sur,,20.638652,-103.411303,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:28:01
+100,2026-06-14,San Pedro Tlaquepaque,,Avenida Ahuehuetes,,20.625155064689817,-103.39947173166456,Fuga o colapso de drenaje,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:30:16
+101,2026-07-07,Guadalajara,Barrio de Mezquitán,Calzada Federalismo,,20.696227387461356,-103.35495315794991,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:31:35
+102,2026-07-01,Guadalajara,Arcos Vallarta,Circunvalación Agustín Yáñez,,20.666930241813944,-103.37640261587813,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:32:56
+103,2026-07-06,Guadalajara,Guadalajara Centro,Avenida 8 de Julio,,20.675924899469667,-103.3523550023861,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:34:15
+104,2026-07-06,Guadalajara,Capilla de Jesús,Calle Frías,,20.677075,-103.360373,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:38:34
+105,2026-07-13,Otro,Alamitos,Carretera a Tesistán,,20.758963168600058,-103.43197554656653,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:39:46
+106,2026-07-18,Zapopan,Industrial Zapopan Norte,Boulevard Bosques de San Isidro,,20.744545,-103.386414,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:41:35
+107,2026-07-22,Zapopan,G.U.S.A.,Calle Fernando Larios,,20.721184938084335,-103.36389065446767,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:43:05
+108,2026-07-22,Guadalajara,,Calle Rita Pérez de Moreno,,20.674175196769795,-103.31625508792133,Obra / Desconocida,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:44:01
+109,2026-07-30,Guadalajara,Circunvalación Oblatos,Calle Francisco González Bocanegra,,20.688100869296576,-103.30303741587745,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:45:08
+110,2026-07-30,Guadalajara,Jardines del Bosque,Calle Parque de las Estrellas,,20.661498007345827,-103.38889373122339,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:45:59
+111,2026-08-19,San Pedro Tlaquepaque,,Prolongación Gobernador Luis C. Curiel,,20.587499462127393,-103.35184177169924,Obra / Desconocida,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:47:02
+112,2026-08-19,Otro,Las Arboledas,Avenida Nicolás Copérnico,,20.628511454200403,-103.41918080424172,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:48:35
+113,2026-08-28,Tonalá,,Calle Loma Bella,,20.6244011755404,-103.26211082937057,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:49:53
+114,2026-08-29,Guadalajara,Jardines del Country,Calle Enrique Díaz de León Norte,,20.70984835237043,-103.36058030226204,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:51:01
+115,2026-09-02,Guadalajara,,Calle Ciprés,,20.655554725063052,-103.32943075635222,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:52:20
+116,2026-09-07,Guadalajara,San Miguel de Mezquitán,Avenida Enrique Díaz de León Norte,,20.697963444501926,-103.35809466005921,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:54:11
+117,2026-09-07,Tonalá,,Ciclovía Malecón,,20.680547768538432,-103.26698649354624,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:55:55
+118,2026-09-09,Otro,Lomas de San Gonzalo,Avenida Copalita,,20.76563735892928,-103.43951782936779,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:58:01
+119,2026-09-11,Zapopan,Rinconada La Joya,Calle Navío,,20.633467768434855,-103.41119711778593,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:59:15
+120,2026-09-11,Guadalajara,Providencia 4a Sección,Avenida Terranova,,20.694693173507417,-103.38636570429351,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 07:59:58
+121,2026-09-14,Guadalajara,,Calle Querido Moheno,,20.65086566796142,-103.31206127545761,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 08:01:05
+122,2026-09-15,San Pedro Tlaquepaque,,Calle Tamiahua,,20.619428021116217,-103.29826444662177,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 08:02:00
+123,2026-09-16,Zapopan,Constitución,Calle General Juan Domínguez,,20.731097593404503,-103.36828528894871,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 08:02:48
+124,2026-09-16,Zapopan,Jacarandas,Ciclovia Manuel Ávila Camacho,,20.718141886586217,-103.3837022870967,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 08:04:11
+125,2026-10-02,San Pedro Tlaquepaque,,Avenida de la Patria,,20.629372185294738,-103.40439455231756,Lluvia / Inundación,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 08:07:00
+126,2026-10-13,Guadalajara,Independencia Sur,Calle Siete Colinas,,20.696157137614158,-103.33205361593305,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 08:07:59
+127,2026-10-13,Zapopan,Residencial Poniente,Calle José María Castillo Portugal,,20.72765737530739,-103.42796353127645,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 08:08:49
+128,2026-10-17,Guadalajara,,Calle Fontaneros,,20.647656012965705,-103.30955170244181,Fuga o colapso de drenaje,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 08:09:27
+129,2026-10-17,Guadalajara,Oblatos,Esteban Loera,,20.683948238668698,-103.32099367360524,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 08:10:11
