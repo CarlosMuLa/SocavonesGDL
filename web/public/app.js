@@ -1,27 +1,110 @@
-/* SocavonesGDL — Mapa interactivo Leaflet + Galería de hallazgos */
+/* SocavonesGDL — Visor geográfico estilo SIGmetro/IMEPLAN + Galería */
 
 const AMG_CENTER = [20.668, -103.355];
 const AMG_ZOOM = 12;
 
+// Mapas base 100% libres sin API key
+const baseOSM = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  maxZoom: 19,
+});
+
+const baseSat = L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  {
+    attribution: "Tiles &copy; Esri &mdash; Maxar, Earthstar Geographics",
+    maxZoom: 19,
+  }
+);
+
 const map = L.map("riskMap", {
   center: AMG_CENTER,
   zoom: AMG_ZOOM,
+  layers: [baseOSM],
   preferCanvas: true,
 });
 
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; CARTO',
-  maxZoom: 19,
-}).addTo(map);
+// Panes ordenados para que overlays queden debajo de celdas/puntos clicables
+map.createPane("rasterOverlays");
+map.getPane("rasterOverlays").style.zIndex = 350;
 
 const layerMuyAlto = L.layerGroup().addTo(map);
 const layerAlto = L.layerGroup().addTo(map);
 const layerSinkholes = L.layerGroup().addTo(map);
 
+const OVERLAY_SPECS = {
+  delta_ndvi: {
+    title: "Pérdida de vegetación (ΔNDVI 2020–26)",
+    file: "./layers/delta_ndvi.png",
+    legend: [
+      ["#fdba74", "Moderada (-0.08)"],
+      ["#ea580c", "Fuerte (-0.15)"],
+      ["#991b1b", "Severa (-0.25)"],
+    ],
+  },
+  delta_ndbi: {
+    title: "Nuevo pavimento / obra (ΔNDBI 2020–26)",
+    file: "./layers/delta_ndbi.png",
+    legend: [
+      ["#fbbf24", "Leve (+0.03)"],
+      ["#dc2626", "Obra / pavimento (+0.08)"],
+      ["#7e22ce", "Impermeabilización alta"],
+    ],
+  },
+  mndwi_wet: {
+    title: "Humedad lluvias 2026 (MNDWI)",
+    file: "./layers/mndwi_wet.png",
+    legend: [
+      ["#38bdf8", "Humedad superficial"],
+      ["#0284c7", "Acumulación alta"],
+      ["#1e3a8a", "Cuerpo de agua"],
+    ],
+  },
+  tpi_depressions: {
+    title: "Depresiones y arroyos (TPI 500 m)",
+    file: "./layers/tpi_depressions.png",
+    legend: [
+      ["#2dd4bf", "Bajo leve (-2 m)"],
+      ["#0d9488", "Cauce / arroyo (-5 m)"],
+      ["#115e59", "Depresión profunda (-10 m)"],
+    ],
+  },
+  imeplan_presion_drenaje: {
+    title: "Presión sobre el drenaje (IMEPLAN)",
+    file: "./layers/imeplan_presion_drenaje.png",
+    legend: [
+      ["#fef08a", "Baja"],
+      ["#f97316", "Media"],
+      ["#991b1b", "Alta"],
+    ],
+  },
+  imeplan_inundaciones: {
+    title: "Riesgo de inundaciones (IMEPLAN)",
+    file: "./layers/imeplan_inundaciones.png",
+    legend: [
+      ["#7dd3fc", "Medio"],
+      ["#2563eb", "Alto"],
+      ["#312e81", "Muy alto"],
+    ],
+  },
+  imeplan_cus: {
+    title: "Densificación / Incremento CUS (IMEPLAN)",
+    file: "./layers/imeplan_cus.png",
+    legend: [
+      ["#e879f9", "Moderado"],
+      ["#a21caf", "Alto"],
+      ["#581c87", "Muy alto"],
+    ],
+  },
+};
+
+const activeOverlays = {};
+let overlayBounds = null;
 let allSinkholeFeatures = [];
 
 const statusEl = document.getElementById("mapStatus");
 const countEl = document.getElementById("countSocavones");
+const legendEl = document.getElementById("dynamicLegend");
 
 function escapeHtml(str) {
   return String(str ?? "")
@@ -84,6 +167,31 @@ function sinkholePopupHtml(p) {
   `;
 }
 
+function updateLegend() {
+  const blocks = [];
+  const muyAltoOn = document.getElementById("toggleMuyAlto").checked;
+  const altoOn = document.getElementById("toggleAlto").checked;
+  if (muyAltoOn || altoOn) {
+    const items = [];
+    if (muyAltoOn) items.push(`<span class="legend-chip"><span class="swatch swatch-muy-alto"></span>Muy Alto (95–100)</span>`);
+    if (altoOn) items.push(`<span class="legend-chip"><span class="swatch swatch-alto"></span>Alto (85–95)</span>`);
+    blocks.push(`<div><div class="legend-block-title">Riesgo predictivo</div><div class="legend-swatches">${items.join("")}</div></div>`);
+  }
+
+  for (const [key, layer] of Object.entries(activeOverlays)) {
+    if (!map.hasLayer(layer)) continue;
+    const spec = OVERLAY_SPECS[key];
+    const chips = spec.legend
+      .map(([color, lbl]) => `<span class="legend-chip"><span class="swatch" style="background:${color}"></span>${lbl}</span>`)
+      .join("");
+    blocks.push(`<div><div class="legend-block-title">${spec.title}</div><div class="legend-swatches">${chips}</div></div>`);
+  }
+
+  legendEl.innerHTML = blocks.length
+    ? blocks.join("")
+    : `<span>Activa cualquier capa arriba para ver su simbología.</span>`;
+}
+
 function renderSinkholes() {
   layerSinkholes.clearLayers();
   const yearFilter = document.getElementById("filterYear").value;
@@ -104,7 +212,7 @@ function renderSinkholes() {
       fillColor: is2026 ? "#0284c7" : "#1e3a8a",
       color: "#ffffff",
       weight: 1.5,
-      fillOpacity: 0.92,
+      fillOpacity: 0.94,
     });
     marker.bindPopup(sinkholePopupHtml(p));
     marker.addTo(layerSinkholes);
@@ -115,11 +223,18 @@ function renderSinkholes() {
 
 async function initMapData() {
   try {
-    const [riskResp, sinkResp] = await Promise.all([
+    const [riskResp, sinkResp, metaResp] = await Promise.all([
       fetch("./data/risk_cells.geojson"),
       fetch("./data/sinkholes.geojson"),
+      fetch("./layers/layers_meta.json"),
     ]);
-    const [riskData, sinkData] = await Promise.all([riskResp.json(), sinkResp.json()]);
+    const [riskData, sinkData, layersMeta] = await Promise.all([
+      riskResp.json(),
+      sinkResp.json(),
+      metaResp.json(),
+    ]);
+
+    overlayBounds = layersMeta.bounds;
 
     for (const feat of riskData.features) {
       const p = feat.properties || {};
@@ -129,7 +244,7 @@ async function initMapData() {
           color: isVeryHigh ? "#7f1d1d" : "#c2410c",
           weight: 0.4,
           fillColor: isVeryHigh ? "#991b1b" : "#ea580c",
-          fillOpacity: isVeryHigh ? 0.62 : 0.42,
+          fillOpacity: isVeryHigh ? 0.58 : 0.38,
         },
       });
       layer.bindPopup(cellPopupHtml(p));
@@ -138,7 +253,8 @@ async function initMapData() {
 
     allSinkholeFeatures = sinkData.features || [];
     renderSinkholes();
-    statusEl.textContent = `${riskData.features.length.toLocaleString("es-MX")} zonas de riesgo cargadas`;
+    updateLegend();
+    statusEl.textContent = `${riskData.features.length.toLocaleString("es-MX")} zonas + 7 capas listas`;
     setTimeout(() => {
       statusEl.style.opacity = "0";
       statusEl.style.transition = "opacity 0.5s";
@@ -149,11 +265,29 @@ async function initMapData() {
   }
 }
 
+// Cambio de mapa base (OSM / Satélite Esri)
+document.querySelectorAll(".bm-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".bm-btn").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    if (btn.dataset.bm === "sat") {
+      map.removeLayer(baseOSM);
+      baseSat.addTo(map);
+    } else {
+      map.removeLayer(baseSat);
+      baseOSM.addTo(map);
+    }
+  });
+});
+
+// Toggles de riesgo y socavones
 document.getElementById("toggleMuyAlto").addEventListener("change", (e) => {
   e.target.checked ? map.addLayer(layerMuyAlto) : map.removeLayer(layerMuyAlto);
+  updateLegend();
 });
 document.getElementById("toggleAlto").addEventListener("change", (e) => {
   e.target.checked ? map.addLayer(layerAlto) : map.removeLayer(layerAlto);
+  updateLegend();
 });
 document.getElementById("toggleSocavones").addEventListener("change", (e) => {
   e.target.checked ? map.addLayer(layerSinkholes) : map.removeLayer(layerSinkholes);
@@ -162,6 +296,44 @@ document.getElementById("filterYear").addEventListener("change", renderSinkholes
 document.getElementById("filterCause").addEventListener("change", renderSinkholes);
 document.getElementById("btnResetMap").addEventListener("click", () => {
   map.setView(AMG_CENTER, AMG_ZOOM);
+});
+
+// Toggles y sliders de opacidad de capas satelitales + IMEPLAN
+document.querySelectorAll(".overlay-toggle").forEach((chk) => {
+  chk.addEventListener("change", (e) => {
+    const key = e.target.dataset.layer;
+    const itemEl = e.target.closest(".overlay-item");
+    const opWrap = itemEl.querySelector(".opacity-wrap");
+    const slider = itemEl.querySelector(".opacity-slider");
+    const spec = OVERLAY_SPECS[key];
+
+    if (!overlayBounds || !spec) return;
+
+    if (e.target.checked) {
+      if (!activeOverlays[key]) {
+        activeOverlays[key] = L.imageOverlay(spec.file, overlayBounds, {
+          opacity: parseFloat(slider.value),
+          pane: "rasterOverlays",
+          interactive: false,
+        });
+      }
+      activeOverlays[key].addTo(map);
+      opWrap.hidden = false;
+    } else {
+      if (activeOverlays[key]) map.removeLayer(activeOverlays[key]);
+      opWrap.hidden = true;
+    }
+    updateLegend();
+  });
+});
+
+document.querySelectorAll(".opacity-slider").forEach((sl) => {
+  sl.addEventListener("input", (e) => {
+    const key = e.target.dataset.layer;
+    if (activeOverlays[key]) {
+      activeOverlays[key].setOpacity(parseFloat(e.target.value));
+    }
+  });
 });
 
 // Pestañas de gráficas + Lightbox

@@ -67,42 +67,172 @@
       </div>
     </section>
 
-    <!-- MAPA INTERACTIVO -->
+    <!-- MAPA INTERACTIVO ESTILO IMEPLAN -->
     <section id="mapa" class="section section-alt">
-      <div class="container">
+      <div class="container container-wide">
         <div class="section-head">
-          <h2>Mapa interactivo de riesgo (malla de 250 m × 250 m)</h2>
-          <p>Haz clic en cualquier cuadro rojo/naranja para ver su <strong>índice de riesgo (0–100)</strong> y los <strong>3 factores principales</strong> que lo explican, o en cualquier punto azul para consultar el socavón real registrado.</p>
+          <h2>Visor geográfico interactivo (estilo SIGmetro / IMEPLAN)</h2>
+          <p>Activa y combina capas de <strong>cambio de uso de suelo (satélite 20 m)</strong>, <strong>capas oficiales de IMEPLAN</strong>, el <strong>mapa predictivo de riesgo</strong> y los <strong>129 socavones reales</strong>. Haz clic en cualquier celda o punto para ver su explicación.</p>
         </div>
 
-        <div class="map-toolbar">
-          <div class="toolbar-group">
-            <label class="toggle"><input type="checkbox" id="toggleMuyAlto" checked /> <span class="swatch swatch-muy-alto"></span> Riesgo Muy Alto (Top 5%)</label>
-            <label class="toggle"><input type="checkbox" id="toggleAlto" checked /> <span class="swatch swatch-alto"></span> Riesgo Alto (Top 5–15%)</label>
-            <label class="toggle"><input type="checkbox" id="toggleSocavones" checked /> <span class="swatch swatch-point"></span> Socavones reales (<span id="countSocavones">129</span>)</label>
-          </div>
-          <div class="toolbar-group">
-            <select id="filterYear" aria-label="Filtrar por periodo">
-              <option value="all">Todos los años (2020–2026)</option>
-              <option value="2020_2025">Solo 2020–2025 (entrenamiento)</option>
-              <option value="2026">Solo 2026 (prueba futura)</option>
-            </select>
-            <select id="filterCause" aria-label="Filtrar por causa">
-              <option value="all">Todas las causas</option>
-              <option value="drenaje_fuga">Fuga / colapso de drenaje</option>
-              <option value="lluvia_inundacion">Lluvia / inundación</option>
-              <option value="obra_o_trafico">Obra / tráfico / otra</option>
-            </select>
-            <button id="btnResetMap" class="btn-small" type="button">Centrar AMG</button>
+        <div class="gis-shell">
+          <!-- Panel lateral de capas estilo IMEPLAN -->
+          <aside class="gis-sidebar">
+            <div class="gis-sidebar-header">
+              <strong>Capas del mapa</strong>
+              <button id="btnResetMap" class="btn-small" type="button">Centrar AMG</button>
+            </div>
+
+            <!-- Selector de mapa base sin API key -->
+            <div class="gis-group">
+              <div class="gis-group-title">Mapa base</div>
+              <div class="basemap-switch">
+                <button type="button" class="bm-btn active" data-bm="osm">Calles (OSM)</button>
+                <button type="button" class="bm-btn" data-bm="sat">Satélite</button>
+              </div>
+            </div>
+
+            <!-- Grupo 1: Predicción y eventos -->
+            <div class="gis-group">
+              <div class="gis-group-title">Predicción y eventos</div>
+              <label class="layer-row">
+                <input type="checkbox" id="toggleMuyAlto" checked />
+                <span class="swatch swatch-muy-alto"></span>
+                <span>Riesgo Muy Alto (Top 5%)</span>
+              </label>
+              <label class="layer-row">
+                <input type="checkbox" id="toggleAlto" checked />
+                <span class="swatch swatch-alto"></span>
+                <span>Riesgo Alto (Top 5–15%)</span>
+              </label>
+              <label class="layer-row">
+                <input type="checkbox" id="toggleSocavones" checked />
+                <span class="swatch swatch-point"></span>
+                <span>Socavones reales (<strong id="countSocavones">129</strong>)</span>
+              </label>
+              <div class="sub-filters">
+                <select id="filterYear" aria-label="Filtrar por periodo">
+                  <option value="all">Todos los años (2020–2026)</option>
+                  <option value="2020_2025">Solo 2020–2025 (train)</option>
+                  <option value="2026">Solo 2026 (prueba)</option>
+                </select>
+                <select id="filterCause" aria-label="Filtrar por causa">
+                  <option value="all">Todas las causas</option>
+                  <option value="drenaje_fuga">Fuga / colapso drenaje</option>
+                  <option value="lluvia_inundacion">Lluvia / inundación</option>
+                  <option value="obra_o_trafico">Obra / tráfico / otra</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Grupo 2: Satélite 20 m -->
+            <div class="gis-group">
+              <div class="gis-group-title">Satélite 20 m (Uso de suelo y agua)</div>
+              <div class="overlay-item" data-layer="delta_ndvi">
+                <label class="layer-row">
+                  <input type="checkbox" class="overlay-toggle" data-layer="delta_ndvi" />
+                  <span class="swatch" style="background:#ea580c"></span>
+                  <span>Pérdida de vegetación (ΔNDVI 2020–26)</span>
+                </label>
+                <div class="opacity-wrap" hidden>
+                  <span>Opacidad</span>
+                  <input type="range" class="opacity-slider" data-layer="delta_ndvi" min="0.15" max="1" step="0.05" value="0.75" />
+                </div>
+              </div>
+
+              <div class="overlay-item" data-layer="delta_ndbi">
+                <label class="layer-row">
+                  <input type="checkbox" class="overlay-toggle" data-layer="delta_ndbi" />
+                  <span class="swatch" style="background:#dc2626"></span>
+                  <span>Nuevo pavimento / obra (ΔNDBI 2020–26)</span>
+                </label>
+                <div class="opacity-wrap" hidden>
+                  <span>Opacidad</span>
+                  <input type="range" class="opacity-slider" data-layer="delta_ndbi" min="0.15" max="1" step="0.05" value="0.75" />
+                </div>
+              </div>
+
+              <div class="overlay-item" data-layer="mndwi_wet">
+                <label class="layer-row">
+                  <input type="checkbox" class="overlay-toggle" data-layer="mndwi_wet" />
+                  <span class="swatch" style="background:#0284c7"></span>
+                  <span>Humedad lluvias 2026 (MNDWI)</span>
+                </label>
+                <div class="opacity-wrap" hidden>
+                  <span>Opacidad</span>
+                  <input type="range" class="opacity-slider" data-layer="mndwi_wet" min="0.15" max="1" step="0.05" value="0.75" />
+                </div>
+              </div>
+
+              <div class="overlay-item" data-layer="tpi_depressions">
+                <label class="layer-row">
+                  <input type="checkbox" class="overlay-toggle" data-layer="tpi_depressions" />
+                  <span class="swatch" style="background:#0d9488"></span>
+                  <span>Depresiones y arroyos (TPI 500 m)</span>
+                </label>
+                <div class="opacity-wrap" hidden>
+                  <span>Opacidad</span>
+                  <input type="range" class="opacity-slider" data-layer="tpi_depressions" min="0.15" max="1" step="0.05" value="0.75" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Grupo 3: Capas oficiales IMEPLAN -->
+            <div class="gis-group">
+              <div class="gis-group-title">Capas oficiales IMEPLAN</div>
+              <div class="overlay-item" data-layer="imeplan_presion_drenaje">
+                <label class="layer-row">
+                  <input type="checkbox" class="overlay-toggle" data-layer="imeplan_presion_drenaje" />
+                  <span class="swatch" style="background:#f97316"></span>
+                  <span>Presión sobre el drenaje AMG</span>
+                </label>
+                <div class="opacity-wrap" hidden>
+                  <span>Opacidad</span>
+                  <input type="range" class="opacity-slider" data-layer="imeplan_presion_drenaje" min="0.15" max="1" step="0.05" value="0.70" />
+                </div>
+              </div>
+
+              <div class="overlay-item" data-layer="imeplan_inundaciones">
+                <label class="layer-row">
+                  <input type="checkbox" class="overlay-toggle" data-layer="imeplan_inundaciones" />
+                  <span class="swatch" style="background:#2563eb"></span>
+                  <span>Riesgo de inundaciones AMG</span>
+                </label>
+                <div class="opacity-wrap" hidden>
+                  <span>Opacidad</span>
+                  <input type="range" class="opacity-slider" data-layer="imeplan_inundaciones" min="0.15" max="1" step="0.05" value="0.70" />
+                </div>
+              </div>
+
+              <div class="overlay-item" data-layer="imeplan_cus">
+                <label class="layer-row">
+                  <input type="checkbox" class="overlay-toggle" data-layer="imeplan_cus" />
+                  <span class="swatch" style="background:#a21caf"></span>
+                  <span>Densificación / Incremento CUS</span>
+                </label>
+                <div class="opacity-wrap" hidden>
+                  <span>Opacidad</span>
+                  <input type="range" class="opacity-slider" data-layer="imeplan_cus" min="0.15" max="1" step="0.05" value="0.70" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Simbología dinámica -->
+            <div class="gis-group">
+              <div class="gis-group-title">Simbología activa</div>
+              <div id="dynamicLegend" class="legend-list"></div>
+            </div>
+          </aside>
+
+          <!-- Lienzo del mapa -->
+          <div class="map-wrapper">
+            <div id="riskMap"></div>
+            <div id="mapStatus" class="map-status">Cargando capas del AMG…</div>
           </div>
         </div>
 
-        <div class="map-wrapper">
-          <div id="riskMap"></div>
-          <div id="mapStatus" class="map-status">Cargando 1,984 zonas de riesgo y 129 socavones…</div>
-        </div>
         <p class="map-footnote">
-          Se muestran las <strong>1,984 celdas urbanas</strong> de riesgo Alto y Muy Alto (de un total de 13,689 celdas de 250 m en el dominio urbano del AMG) para mantener una navegación fluida.
+          Tip: apaga temporalmente las capas de riesgo y prende <strong>Pérdida de vegetación (ΔNDVI)</strong>, <strong>Presión sobre el drenaje</strong> o <strong>Riesgo de inundaciones</strong> sobre <strong>Satélite</strong> para inspeccionar cómo se alinean con los socavones reales.
         </p>
       </div>
     </section>
