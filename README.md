@@ -2,6 +2,8 @@
 
 **Mapa y modelo predictivo de riesgo de socavones en el Área Metropolitana de Guadalajara (AMG).**
 
+🌐 **Explora el mapa interactivo y los resultados en vivo:** https://socavones-gdl.carlos-muniz.workers.dev
+
 ---
 
 ## ¿De qué trata este proyecto?

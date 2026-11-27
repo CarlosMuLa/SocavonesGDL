@@ -1,0 +1,9 @@
+{
+  "name": "socavones-gdl",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mapa interactivo y plataforma explicativa del modelo predictivo de socavones en el AMG.",
+  "devDependencies": {
+    "cf": "^1.0.0-rc.6"
+  }
+}

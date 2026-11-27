@@ -1,0 +1,21 @@
+{
+  "bounds": [
+    [
+      20.476824,
+      -103.523396
+    ],
+    [
+      20.823128,
+      -103.19595
+    ]
+  ],
+  "layers": [
+    "delta_ndvi.png",
+    "delta_ndbi.png",
+    "mndwi_wet.png",
+    "tpi_depressions.png",
+    "imeplan_presion_drenaje.png",
+    "imeplan_inundaciones.png",
+    "imeplan_cus.png"
+  ]
+}

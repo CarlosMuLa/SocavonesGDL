@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocavonesGDL — Mapa Predictivo de Riesgo en el AMG</title>
+  <meta name="description" content="Modelo predictivo e interactivo de riesgo de socavones en el Área Metropolitana de Guadalajara usando imágenes satelitales, datos de IMEPLAN y registros ciudadanos y de prensa (2020–2026)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#inicio" class="brand">
+        <span class="brand-dot"></span>
+        <span>Socavones<strong>GDL</strong></span>
+      </a>
+      <nav class="nav">
+        <a href="#mapa">Mapa en vivo</a>
+        <a href="#causas">Las 3 causas</a>
+        <a href="#proceso">Cómo funciona</a>
+        <a href="#hallazgos">Gráficas</a>
+        <a href="#validacion">Validación</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge">Área Metropolitana de Guadalajara · 2020–2026</div>
+        <h1>De reaccionar cuando se abre la calle a <span class="accent">predecir dónde puede ocurrir un socavón</span></h1>
+        <p class="hero-sub">
+          Combinamos <strong>129 socavones mapeados al centímetro</strong>, imágenes satelitales multi-temporales (Sentinel-2 y Copernicus DEM) y <strong>8 capas oficiales de IMEPLAN</strong> en una malla urbana de 250 m × 250 m para identificar las zonas prioritarias de riesgo en Guadalajara, Zapopan, Tlaquepaque, Tonalá y Tlajomulco.
+        </p>
+        <div class="hero-actions">
+          <a href="#mapa" class="btn btn-primary">Explorar mapa de riesgo</a>
+          <a href="#validacion" class="btn btn-secondary">Ver precisión del modelo</a>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-value">129</div>
+            <div class="kpi-label">Socavones validados (2020–2026)</div>
+            <div class="kpi-note">Prensa histórica + reportes ciudadanos mapeados al cm</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value">84.5%</div>
+            <div class="kpi-label">Ocurrieron en temporada de lluvias</div>
+            <div class="kpi-note">109 de 129 entre junio y octubre (pico en julio)</div>
+          </div>
+          <div class="kpi-card highlight">
+            <div class="kpi-value">75.5%</div>
+            <div class="kpi-label">De socavones 2026 predichos en el Top-20%</div>
+            <div class="kpi-note">Entrenado solo con 2020–2025, sin ver datos de 2026</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value">0.871</div>
+            <div class="kpi-label">ROC-AUC temporal (0.817 espacial)</div>
+            <div class="kpi-note">Evaluado sin fuga espacial (bloques de 4 km)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA INTERACTIVO -->
+    <section id="mapa" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Mapa interactivo de riesgo (malla de 250 m × 250 m)</h2>
+          <p>Haz clic en cualquier cuadro rojo/naranja para ver su <strong>índice de riesgo (0–100)</strong> y los <strong>3 factores principales</strong> que lo explican, o en cualquier punto azul para consultar el socavón real registrado.</p>
+        </div>
+
+        <div class="map-toolbar">
+          <div class="toolbar-group">
+            <label class="toggle"><input type="checkbox" id="toggleMuyAlto" checked /> <span class="swatch swatch-muy-alto"></span> Riesgo Muy Alto (Top 5%)</label>
+            <label class="toggle"><input type="checkbox" id="toggleAlto" checked /> <span class="swatch swatch-alto"></span> Riesgo Alto (Top 5–15%)</label>
+            <label class="toggle"><input type="checkbox" id="toggleSocavones" checked /> <span class="swatch swatch-point"></span> Socavones reales (<span id="countSocavones">129</span>)</label>
+          </div>
+          <div class="toolbar-group">
+            <select id="filterYear" aria-label="Filtrar por periodo">
+              <option value="all">Todos los años (2020–2026)</option>
+              <option value="2020_2025">Solo 2020–2025 (entrenamiento)</option>
+              <option value="2026">Solo 2026 (prueba futura)</option>
+            </select>
+            <select id="filterCause" aria-label="Filtrar por causa">
+              <option value="all">Todas las causas</option>
+              <option value="drenaje_fuga">Fuga / colapso de drenaje</option>
+              <option value="lluvia_inundacion">Lluvia / inundación</option>
+              <option value="obra_o_trafico">Obra / tráfico / otra</option>
+            </select>
+            <button id="btnResetMap" class="btn-small" type="button">Centrar AMG</button>
+          </div>
+        </div>
+
+        <div class="map-wrapper">
+          <div id="riskMap"></div>
+          <div id="mapStatus" class="map-status">Cargando 1,984 zonas de riesgo y 129 socavones…</div>
+        </div>
+        <p class="map-footnote">
+          Se muestran las <strong>1,984 celdas urbanas</strong> de riesgo Alto y Muy Alto (de un total de 13,689 celdas de 250 m en el dominio urbano del AMG) para mantener una navegación fluida.
+        </p>
+      </div>
+    </section>
+
+    <!-- LAS 3 CAUSAS -->
+    <section id="causas" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Las 3 causas que investigamos — y cuánto pesa cada una</h2>
+          <p>Usamos explicabilidad <strong>TreeSHAP</strong> para medir qué tanto aporta cada pilar al riesgo predicho por el modelo en las 13,689 celdas urbanas del AMG.</p>
+        </div>
+
+        <div class="pillars-grid">
+          <article class="pillar-card">
+            <div class="pillar-top">
+              <span class="pillar-tag tag-uso">Pilar 1</span>
+              <span class="pillar-pct">62.8%</span>
+            </div>
+            <h3>Cambio de uso de suelo y densificación</h3>
+            <div class="bar-track"><div class="bar-fill fill-uso" style="width: 62.8%"></div></div>
+            <p>
+              Al sustituir suelo permeable por pavimento y construir más niveles sobre colonias antiguas, el agua deja de filtrarse naturalmente y sobrecarga tuberías pensadas para menos población.
+            </p>
+            <ul class="source-list">
+              <li><strong>Satélite Sentinel-2 (2020 vs 2026):</strong> pérdida de vegetación (ΔNDVI) y nueva superficie construida/pavimentada (ΔNDBI).</li>
+              <li><strong>IMEPLAN:</strong> Incremento al CUS / CUSMAX (<em>#3 global en importancia</em>), Densidad de población 2020 (<em>#4 global</em>), Dinámica poblacional 2010–2020 (colonias antiguas consolidadas), Licencias de urbanización hasta dic 2025, Transferencia de derechos (RTD) y Espacios verdes.</li>
+            </ul>
+          </article>
+
+          <article class="pillar-card">
+            <div class="pillar-top">
+              <span class="pillar-tag tag-agua">Pilar 2</span>
+              <span class="pillar-pct">30.6%</span>
+            </div>
+            <h3>Inundaciones y topografía del terreno</h3>
+            <div class="bar-track"><div class="bar-fill fill-agua" style="width: 30.6%"></div></div>
+            <p>
+              El <strong>84.5% de los socavones</strong> apareció durante las lluvias (jun–oct). El agua acumulada en bajos topográficos y cauces históricos erosiona con rapidez el subsuelo volcánico suelto de Guadalajara.
+            </p>
+            <ul class="source-list">
+              <li><strong>IMEPLAN:</strong> Mapa oficial de Riesgo de Inundaciones (5 niveles, de <em>Muy bajo</em> a <em>Muy alto</em>).</li>
+              <li><strong>Copernicus GLO-30 DEM:</strong> elevación, pendiente del terreno (<em>#5 global</em>) e índice de depresiones locales TPI a 500 m (<em>#8 global</em>).</li>
+              <li><strong>Sentinel-2 Lluvias 2026:</strong> índice de humedad y agua superficial MNDWI (<em>#9 global</em>).</li>
+            </ul>
+          </article>
+
+          <article class="pillar-card">
+            <div class="pillar-top">
+              <span class="pillar-tag tag-drenaje">Pilar 3</span>
+              <span class="pillar-pct">6.6%</span>
+            </div>
+            <h3>Presión y deterioro del drenaje</h3>
+            <div class="bar-track"><div class="bar-fill fill-drenaje" style="width: 18%"></div></div>
+            <p>
+              Casi la mitad de los reportes citan <strong>fugas o colapsos de drenaje y agua potable</strong>. Aunque este pilar solo aporta 3 variables frente a 19 de uso de suelo, <strong>Presión de drenaje AMG entró al puesto #6 individual más influyente de todo el modelo</strong>.
+            </p>
+            <ul class="source-list">
+              <li><strong>IMEPLAN:</strong> Presión sobre el funcionamiento del drenaje en el AMG (<em>Baja, Media, Alta</em> — cubre todo el territorio incluyendo la zona SIAPA).</li>
+              <li><strong>Control anti-sesgo:</strong> excluimos intencionalmente la red municipal periférica porque no incluye la zona SIAPA de GDL/Zapopan y habría introducido un atajo geográfico falso.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO SE CONSTRUYÓ -->
+    <section id="proceso" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Cómo se construyó el proyecto (Arquitectura Híbrida AWS + Local)</h2>
+          <p>Diseñamos un flujo reproducible y económico: AWS solo se encendió unos minutos para procesar imágenes satelitales cerca de su fuente en <code>us-west-2</code>, y todo el modelado corrió en CPU local a costo $0.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h3>Limpieza y mapeo al cm</h3>
+            <p>Unificamos registros históricos de prensa (2020–2026) y reportes ciudadanos en <strong>129 socavones</strong> con coordenadas verificadas dentro del polígono oficial <code>LimiteAMG</code>, cero duplicados y causas estandarizadas.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h3>Satélites en AWS (EC2 → S3)</h3>
+            <p>Una instancia EC2 desplegada con <strong>Terraform</strong> generó 10 GeoTIFFs libres de nubes (20 m, <code>EPSG:32613</code>) comparando jun–oct 2020 vs. jun–oct 2026, con autodetección de calibración radiométrica para Sentinel-2C.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h3>Malla urbana de 250 m</h3>
+            <p>Cruzamos los 10 GeoTIFFs, las 8 capas oficiales de IMEPLAN y los 129 socavones sobre <strong>13,689 celdas urbanas</strong> (descartando bosque/barranca vacía para no inflar métricas), agrupadas en 82 bloques espaciales de 4 km.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h3>Modelado y validación estricta</h3>
+            <p>Comparamos Regresión Logística L2, Random Forest y LightGBM regularizados, evaluados por <strong>bloques espaciales</strong> y por <strong>tiempo (2020–2025 → 2026)</strong>, produciendo mapas para QGIS y esta web.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRÁFICAS INTERACTIVAS -->
+    <section id="hallazgos" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Hallazgos exploratorios y explicabilidad del modelo</h2>
+          <p>Cambia de pestaña para explorar los patrones de los 129 socavones y los factores que más pesan en el algoritmo. Haz clic en cualquier imagen para ampliarla.</p>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-img="./img/shap_summary.png" data-caption="Top 15 variables más influyentes según TreeSHAP y aporte relativo de los 3 pilares causales.">Importancia (TreeSHAP)</button>
+          <button class="tab" data-img="./img/03_socavones_por_temporada.png" data-caption="Estacionalidad: 84.5% de los socavones (109 de 129) ocurrieron en temporada de lluvias (jun–oct), con pico en julio.">Por temporada</button>
+          <button class="tab" data-img="./img/01_socavones_por_anio.png" data-caption="Evolución anual 2020–2026: fuerte incremento registrado en 2024–2026 (55 socavones en 2026).">Por año</button>
+          <button class="tab" data-img="./img/04_tipo_y_tamano_socavon.png" data-caption="Tipo y tamaño: fugas/colapsos de drenaje (35.7%) y lluvia/inundación (34.9%) lideran; 44 socavones superaron los 3 metros.">Tipo y tamaño</button>
+          <button class="tab" data-img="./img/02_socavones_por_zona.png" data-caption="Distribución por municipio y colonias con mayor concentración de eventos registrados.">Por zona</button>
+          <button class="tab" data-img="./img/risk_map_preview.png" data-caption="Vista general del índice predictivo 0–100 sobre las 13,689 celdas urbanas con los socavones reales encima.">Mapa global 250 m</button>
+        </div>
+
+        <div class="chart-stage">
+          <img id="activeChartImg" src="./img/shap_summary.png" alt="Gráfica de resultados SocavonesGDL" />
+          <p id="activeChartCaption" class="chart-caption">Top 15 variables más influyentes según TreeSHAP y aporte relativo de los 3 pilares causales.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALIDACIÓN -->
+    <section id="validacion" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>¿Qué tan bien predice realmente? (Validación sin trampa)</h2>
+          <p>En mapas, dividir los datos al azar engaña porque dos calles vecinas son casi idénticas. Por eso sometimos los modelos a <strong>dos pruebas estrictas</strong>:</p>
+        </div>
+
+        <div class="tables-grid">
+          <div class="table-card">
+            <h3>1. Validación Espacial (bloques de 4 km nunca vistos)</h3>
+            <p class="table-desc">El modelo predice zonas enteras de 4 × 4 km que jamás vio durante el entrenamiento (5 folds).</p>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Modelo</th>
+                    <th>ROC-AUC</th>
+                    <th>PR-AUC</th>
+                    <th>Top-10%</th>
+                    <th>Top-20%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>LogReg_L2</code></td>
+                    <td>0.806</td>
+                    <td>0.0273</td>
+                    <td>43.5%</td>
+                    <td><strong>66.1%</strong></td>
+                  </tr>
+                  <tr class="row-best">
+                    <td><code>RandomForest_Reg</code></td>
+                    <td><strong>0.817</strong></td>
+                    <td>0.0293</td>
+                    <td><strong>44.3%</strong></td>
+                    <td>61.7%</td>
+                  </tr>
+                  <tr>
+                    <td><code>LightGBM_Reg</code></td>
+                    <td>0.784</td>
+                    <td>0.0252</td>
+                    <td>29.6%</td>
+                    <td>58.3%</td>
+                  </tr>
+                  <tr>
+                    <td><code>Ensemble_Rank</code></td>
+                    <td>0.813</td>
+                    <td><strong>0.0300</strong></td>
+                    <td>42.6%</td>
+                    <td>63.5%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <h3>2. Validación Temporal (entrenado 2020–2025 → predice 2026)</h3>
+            <p class="table-desc">Sin usar ninguna variable de 2026, medimos cuántos de los 53 socavones de 2026 cayeron en las zonas de mayor riesgo.</p>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Modelo</th>
+                    <th>ROC-AUC 2026</th>
+                    <th>Top-10%</th>
+                    <th>Top-20%</th>
+                    <th>Nuevas Top-20%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>LogReg_L2</code></td>
+                    <td>0.832</td>
+                    <td>47.2%</td>
+                    <td>67.9%</td>
+                    <td>69.4%</td>
+                  </tr>
+                  <tr class="row-best">
+                    <td><code>RandomForest_Reg</code></td>
+                    <td><strong>0.871</strong></td>
+                    <td><strong>50.9%</strong></td>
+                    <td><strong>75.5%</strong></td>
+                    <td><strong>73.5%</strong></td>
+                  </tr>
+                  <tr>
+                    <td><code>LightGBM_Reg</code></td>
+                    <td>0.837</td>
+                    <td><strong>50.9%</strong></td>
+                    <td>71.7%</td>
+                    <td>69.4%</td>
+                  </tr>
+                  <tr>
+                    <td><code>Ensemble_Rank</code></td>
+                    <td>0.858</td>
+                    <td>49.1%</td>
+                    <td>73.6%</td>
+                    <td>71.4%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>En palabras simples:</strong> si inspeccionaras el <strong>10%</strong> de la ciudad al azar, encontrarías solo 10% de los socavones del año siguiente. Con nuestro modelo entrenado hasta 2025, revisar ese mismo <strong>10% de zonas prioritarias</strong> habría cubierto el <strong>50.9% de los socavones de 2026</strong> (5× más eficiente), y el <strong>Top-20%</strong> cubrió el <strong>75.5%</strong> — incluso el <strong>73.5%</strong> en calles donde nunca antes había ocurrido un socavón.
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANSPARENCIA Y LIMITACIONES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Transparencia y limitaciones honestas</h2>
+        </div>
+        <div class="notes-grid">
+          <div class="note-box">
+            <h4>Priorización, no bola de cristal</h4>
+            <p>El mapa estima <strong>riesgo relativo espacial</strong> para inspección preventiva (ej. con georradar o mantenimiento de colectores). Una zona fuera del Top-15% no significa "riesgo cero", especialmente si surge una obra puntual o una fuga repentina.</p>
+          </div>
+          <div class="note-box">
+            <h4>Sesgo de cobertura en prensa y reportes</h4>
+            <p>Los registros históricos reflejan mejor avenidas principales y colonias con mayor cobertura mediática o participación ciudadana. Sumar más reportes verificados y planos oficiales de antigüedad de red de SIAPA mejorará todavía más las siguientes versiones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>SocavonesGDL</strong> · Análisis geoespacial y aprendizaje automático sobre el Área Metropolitana de Guadalajara.
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/CarlosMuLa/SocavonesGDL" target="_blank" rel="noopener">Repositorio en GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox para ampliar gráficas -->
+  <div id="lightbox" class="lightbox" hidden>
+    <button id="lightboxClose" class="lightbox-close" aria-label="Cerrar">&times;</button>
+    <img id="lightboxImg" src="" alt="Vista ampliada" />
+    <p id="lightboxCaption"></p>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="./app.js"></script>
+</body>
+</html>

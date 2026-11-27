@@ -50,6 +50,9 @@ outputs/*
 crash.log
 *.tfvars
 
+# Node / frontend dependencies
+node_modules/
+
 # OS & editor files
 .DS_Store
 Thumbs.db
