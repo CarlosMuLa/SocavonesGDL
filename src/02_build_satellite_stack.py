@@ -187,7 +187,12 @@ def build_sentinel_composite_low_ram(
                 )
                 valid = mask & np.isfinite(raw) & (raw > 0)
                 if np.any(valid):
-                    refl = np.clip(raw[valid] * scale + offset, 0.0, 1.0)
+                    vals = raw[valid]
+                    # Autodetección anti-bug STAC: solo aplicar offset -0.1 si los DN realmente incluyen +1000
+                    eff_offset = offset
+                    if eff_offset < 0 and float(np.percentile(vals, 5)) < 950.0:
+                        eff_offset = 0.0
+                    refl = np.clip(vals * scale + eff_offset, 0.0, 1.0)
                     stack[i][valid] = refl
             composites[bname] = np.nanmedian(stack, axis=0).astype("float32")
             del stack
