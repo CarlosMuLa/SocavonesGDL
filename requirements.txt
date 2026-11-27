@@ -1,19 +1,33 @@
-# Python 3.9-compatible dependencies for AWS EC2 Amazon Linux 2023 (~/geo_env).
-# Note: rasterio (bundled GDAL), pystac-client, and numpy are preinstalled in ~/geo_env.
-# Install with: pip install --upgrade-strategy only-if-needed -r requirements.txt
-numpy>=1.23,<2.1
-pystac-client>=0.7,<0.9
-rasterio>=1.3,<1.5
-pandas>=2.0,<2.3
-geopandas>=0.14,<1.1
-shapely>=2.0,<2.1
-pyproj>=3.5,<3.7
-scipy>=1.11,<1.14
-statsmodels>=0.14,<0.15
-scikit-learn>=1.3,<1.6
-pyarrow>=14.0,<18.0
+# Dependencias del pipeline híbrido SocavonesGDL (PC local + AWS EC2)
+# Instalar con: pip install -r requirements.txt
+
+# Núcleo numérico y tabular
+numpy>=1.23
+pandas>=2.0
+pyarrow>=14.0
+scipy>=1.11
 pyyaml>=6.0
 tqdm>=4.66
-matplotlib
-opencv-python
-jupyter
+
+# Geoespacial (vectorial y ráster)
+geopandas>=0.14
+shapely>=2.0
+pyproj>=3.5
+pyshp>=2.3
+tifffile>=2024.1
+pillow>=10.0
+
+# Satélite y AWS (Fase 2 en EC2 -> S3)
+pystac-client>=0.7
+rasterio>=1.3
+boto3>=1.34
+
+# Machine Learning y estadística (Fase 4)
+scikit-learn>=1.3
+lightgbm>=4.0
+statsmodels>=0.14
+
+# Visualización, notebooks y procesamiento de imágenes (EDA + CEM 4.0)
+matplotlib>=3.8
+opencv-python>=4.8
+jupyter>=1.0

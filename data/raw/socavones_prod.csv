@@ -11,8 +11,8 @@ id,fecha_incidente,municipio,colonia,calle_principal,cruces,latitud,longitud,cau
 10,2026-11-24,San Pedro Tlaquepaque,,,Entre av agrícola y barda que  límita al rio,20.600375,-103.415779,Fuga de agua potable,Pequeño (< 1 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-24 23:57:33
 11,2026-11-25,Guadalajara,Miraflores,Calle Joaquín Aguirre Berlanga,Entre paseo de los filósofos y fray junipero serra,20.701077,-103.341933,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,2,0,2026-11-25 01:57:41
 12,2026-11-25,Zapopan,Hogares del Batán,Prolongación Avenida Fray Antonio Alcalde,Saucito y Pedro Ramirez,20.725912,-103.345288,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-25 04:40:28
-13,2026-11-25,Guadalajara,,Calle Silverio García,Casi al cruce de avenida  revolución,20.67,-103.35,Obra / Desconocida,,Reportado / Activo,Reporte ciudadano,3,0,2026-11-25 05:38:05
-14,2026-11-25,Guadalajara,,Calle Nueva Galicia,,20.67,-103.35,Obra / Desconocida,,Reportado / Activo,Reporte ciudadano,1,0,2026-11-25 20:41:46
+13,2026-11-25,Guadalajara,,Calle Silverio García,Casi al cruce de avenida  revolución,20.666691,-103.328213,Obra / Desconocida,,Reportado / Activo,Reporte ciudadano,3,0,2026-11-25 05:38:05
+14,2026-11-25,Guadalajara,,Calle Nueva Galicia,,20.669489,-103.349517,Obra / Desconocida,,Reportado / Activo,Reporte ciudadano,1,0,2026-11-25 20:41:46
 15,2020-07-06,Zapopan,Rinconada La Joya,Lateral de López Mateos Sur,frente a ventiladores.com,20.638527,-103.411346,Lluvia / Inundación,Grande (> 3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 03:58:22
 16,2020-08-14,Guadalajara,Fábrica de Atemajac,Calzada del Federalismo Norte,,20.713331,-103.354871,Fuga de agua potable,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:12:11
 17,2021-07-02,Guadalajara,La Perla,Calzada Independencia Norte,zona del mercado San Juan de Dios,20.675976,-103.341555,Fuga o colapso de drenaje,Mediano (1–3 m),Reportado / Activo,Reporte ciudadano,1,0,2026-11-27 04:28:06
