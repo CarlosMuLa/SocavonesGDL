@@ -32,7 +32,7 @@ A partir de nuestra investigación sobre casos históricos en la ZMG, el proyect
 Combinamos tres tipos de fuentes para entender el panorama completo de la ciudad:
 
 - **Registros históricos de prensa (2020–2026):** más de 130 socavones documentados y verificados en medios locales del Área Metropolitana de Guadalajara.
-- **Reportes ciudadanos:** ubicaciones y detalles enviados directamente por vecinos de la ZMG.
+- **Reportes ciudadanos:** ubicaciones y detalles enviados directamente por vecinos de la ZMG a través de la aplicación ciudadana [ZocavonesApp](https://github.com/CarlosMuLa/ZocavonesApp).
 - **Imágenes satelitales y mapas públicos oficiales:** fotografías satelitales para medir cómo ha cambiado la vegetación y el pavimento a lo largo de los años, modelos de elevación del terreno y capas oficiales de **IMEPLAN** e **INEGI** (riesgo de inundaciones, red y presión del drenaje, crecimiento poblacional, densidad y licencias de urbanización).
 
 ---
